@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Models\Roles;
+use App\Models\Rolesnodes;
+use App\Http\Requests\RolesStore;
 
 class RolesController extends Controller
 {
@@ -42,12 +45,16 @@ class RolesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = DB::table('roles')->get();
+        //获得搜索内容
+        $search = $request->input('search','');
+
+        //获取数据
+        $data = Roles::where('rname','like','%'.$search.'%')->paginate(1);
 
         //显示便利
-        return view('admin.roles.index',['data'=>$data]);
+        return view('admin.roles.index',['data'=>$data,'requests'=>$request->input()]);
     }
 
     /**
@@ -71,7 +78,7 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RolesStore $request)
     {
         //开启事务
         DB::beginTransaction();
@@ -112,7 +119,14 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 获取用户信息
+        $roles = Roles::find($id);
+        // dd($roles);
+
+        $nodes = self::nodes();
+        $controllernames = self::controllernames();
+
+        return view('admin.roles.edit',['roles'=>$roles,'nodes'=>$nodes,'controllernames'=>$controllernames]);
     }
 
     /**
@@ -124,7 +138,23 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($id);
+        // 修改主信息
+        $roles = Roles::find($id);
+        $roles->rname = $request->input('rname');
+        $res1 = $roles->save();
+
+        $delroles = DB::table('roles_nodes')->where('rid',$id)->delete();
+      
+        foreach ($request->input('nid') as $key => $value) {
+            $insert = new Rolesnodes;
+            $insert->rid = $id;
+            $insert->nid = $value;
+            $insert->save();
+            
+        }
+       
+        return redirect('admin/roles')->with('success','修改成功');
     }
 
     /**
@@ -135,6 +165,24 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //开启事务
+        DB::beginTransaction();
+
+        // 删除主用户
+        $res1 = Roles::destroy($id);
+    
+        // 删除用户详情
+        $res2 = Rolesnodes::where('rid',$id)->delete();
+
+        // 判断
+        if($res1 && $res2){
+            // 提交事务
+            DB::commit();
+            return redirect('admin/roles')->with('success','删除成功');
+        }else{
+            // 事务回滚
+            DB::rollback();
+            return back()->with('error','删除失败');
+        }
     }
 }
