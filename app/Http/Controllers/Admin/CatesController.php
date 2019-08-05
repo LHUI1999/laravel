@@ -12,7 +12,7 @@ class CatesController extends Controller
 
     public static function getCates()
     {
-        $cates = DB::select("select *,concat(path,',',id) as paths from cates order by paths asc");
+        $cates = DB::select("select  *,concat(path,',',id) as paths from cates order by paths asc ");
         foreach($cates as $k=>$v){
             //统计，出现次数            
             $n = substr_count($v->path,',');
