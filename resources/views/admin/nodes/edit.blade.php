@@ -1,8 +1,9 @@
 @extends('admin.layout.index')
+
 @section('content')
 <div class="box span12" style="">
 	<div class="box-header" data-original-title="">
-		<h2><i class="halflings-icon white edit"></i><span class="break"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">权限添加</font></font></h2>
+		<h2><i class="halflings-icon white edit"></i><span class="break"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">权限修改</font></font></h2>
 		<div class="box-icon">
 			<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 			<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -10,30 +11,30 @@
 		</div>
 	</div>
 	<div class="box-content">
-		<form class="form-horizontal" action="/admin/nodes/store" method="post" enctype="multipart/form-data">
+		<form class="form-horizontal" action="/admin/nodes/{{ $nodes->id }}" method="post" enctype="multipart/form-data">
 			{{csrf_field()}}
-
+            {{ method_field('PUT') }}
 			<!-- <input type="hidden" name="_token" value="uhkuS5vb3gF17KSHh8Y0MmpJ6BgcXnbvlnTuRDUd"> -->
 			<fieldset>
 				<!-- 用户名 -->
 			  <div class="control-group">
 				<label class="control-label" for="focusedInput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">描述</font></font></label>
 				<div class="controls">
-				  <input class="input-xlarge focused" id="focusedInput" type="text" value="" name="desc">
+				  <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ $nodes->desc }}" name="desc">
 				</div>
 			  </div>
 			  <!-- 密码 -->
 			   <div class="control-group">
 				<label class="control-label" for="focusedInput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">控制器名称</font></font></label>
 				<div class="controls">
-				  <input class="input-xlarge focused" id="focusedInput" type="text" value="" name="cname">
+				  <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ $nodes->cname }}" name="cname">
 				</div>
 			  </div>
 			  <!-- 确认密码 -->
 			   <div class="control-group">
 				<label class="control-label" for="focusedInput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">方法名称</font></font></label>
 				<div class="controls">
-				  <input class="input-xlarge focused" id="focusedInput" type="text" value="" name="aname">
+				  <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ $nodes->aname }}" name="aname">
 				</div>
 			  </div>
 			 

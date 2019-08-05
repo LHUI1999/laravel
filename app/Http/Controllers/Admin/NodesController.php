@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Http\Requests\NodesStore;
+use App\Models\Nodes;
 
 class NodesController extends Controller
 {
@@ -13,12 +15,16 @@ class NodesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $data = DB::table('nodes')->get();
-        return view('admin.nodes.index',['data'=>$data]);
+        // 获取搜索内容
+        $search = $request->input('search','');
 
+        // 获取数据
+        $data = DB::table('nodes')->where('desc','like','%'.$search.'%')->paginate(4);
+        // dd($data);
+
+        return view('admin.nodes.index',['data'=>$data,'requests'=>$request->input()]);
 
     }
 
@@ -39,7 +45,7 @@ class NodesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NodesStore $request)
     {
         // dd($request);
         //
@@ -72,7 +78,11 @@ class NodesController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 获取用户信息
+        $nodes = Nodes::find($id);
+        // dd($nodes);
+
+        return view('admin.nodes.edit',['nodes'=>$nodes]);
     }
 
     /**
@@ -84,7 +94,24 @@ class NodesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 修改信息
+        $nodes = Nodes::find($id);
+        // dd($nodes);
+        $nodes->desc = $request->input('desc');
+        $nodes->cname = $request->input('cname');
+        $nodes->aname = $request->input('aname');
+        // dd($nodes->aname);
+        $res = $nodes->save();
+        // dd($res);
+        // 判断
+        if($res){
+            DB::commit();
+            return redirect('admin/nodes')->with('success','修改成功');
+        }else{
+            DB::rollback();
+            return back()->with('error','修改失败');
+        }
+        
     }
 
     /**
@@ -95,6 +122,21 @@ class NodesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // 开启事务
+        DB::beginTransaction();
+
+        // 删除主用户
+        $res = Nodes::destroy($id);
+
+        // 判断
+        if($res){
+            // 提交事务
+            DB::commit();
+            return redirect('admin/nodes')->with('success','删除成功');
+        }else{
+            // 事务回滚
+            DB::rollback();
+            return back()->with('error','删除失败');
+        }
     }
 }

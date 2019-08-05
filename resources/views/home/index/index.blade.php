@@ -40,7 +40,7 @@
 									
 									<div class="category">
 										<ul class="category-list" id="js_climit_li">
-											@foreach($cate as $k => $v)
+											@foreach($common_cates_data as $k => $v)
 											<li class="appliance js_toggle relative first">
 
 												<div class="category-info">

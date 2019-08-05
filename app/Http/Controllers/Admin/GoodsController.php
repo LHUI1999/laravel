@@ -31,8 +31,6 @@ class GoodsController extends Controller
         $goodspic = DB::table('goods_pic')->get();
         //获得商品详情图片
         $goodsinfopic = DB::table('goods_infopic')->get();
-        // $cates = DB::select('select *,c.cname from goods,cates as c where goods.cid = c.id and goods.title like %'.$search.'%')->paginate(3);
-        // dd($cates);
 
         return view('admin.goods.index',['goods'=>$goods,'goodspic'=>$goodspic,'goodsinfopic'=>$goodsinfopic,'requests'=>$request->input()]);
     }
@@ -44,27 +42,8 @@ class GoodsController extends Controller
      */
     public function create()
     {
-        // $cates = [];
-        // $cates_b = [];
-        // $cates_a = DB::table('cates')->where('pid',0)->get();
-        // // dd($cates);
-        // foreach($cates_a as $k => $v){
-        //     $cates[$k][$v->cname] = [];
-        //     $cates_1 = DB::table('cates')->where('pid',$v->id)->get();
-        //     foreach($cates_1 as $k1 => $v1){
-        //         array_push($cates[$k][$v->cname],$v1);
-        //         $cates_b[$k][$v->cname][$k1][$v1->cname] = [];
-        //         $cates_2 = DB::table('cates')->where('pid',$v1->id)->get();
-        //         foreach($cates_2 as $v2){
-        //             array_push($cates_b[$k][$v->cname][$k1][$v1->cname],$v2);
-        //         }
-        //     }
-
-
-        // }
+        //所属分类
         $cates = DB::table('cates')->where('pid',0)->get();
-        // dump($cates);
-
 
         return view('admin.goods.create' ,['cates'=>$cates]);
     }
@@ -77,6 +56,9 @@ class GoodsController extends Controller
      */
     public function store(GoodsStore $request)
     {
+         if(!$request->hasFile('infopic')){
+            return back();
+         }
         // dd($request->all());
         // 检测文件上传
         if($request->hasFile('goodspic')){
@@ -150,7 +132,11 @@ class GoodsController extends Controller
         //商品详情图片
         $goodsinfopic = Goodsinfopic::where('gid',$id)->get();
 
-        return view('admin.goods.edit',['goods'=>$goods,'goodspic'=>$goodspic,'goodsinfopic'=>$goodsinfopic]);
+        //所属分类
+        $cates = DB::table('cates')->where('pid',0)->get();
+        // dd($goods);
+
+        return view('admin.goods.edit',['goods'=>$goods,'goodspic'=>$goodspic,'goodsinfopic'=>$goodsinfopic,'cates'=>$cates]);
     }
 
     /**
@@ -162,10 +148,10 @@ class GoodsController extends Controller
      */
     public function update(GoodsUpdate $request, $id)
     {
-        //
+
 
         //检测用户是否文件上传
-        if(!$request->hasfile('goodspic') && !$request->hasfile('goodsinfopic')){
+        if(!$request->hasfile('goodspic') && !$request->hasfile('infopic')){
             $goods = Goods::find($id);
             $goods->title = $request->input('title',$goods->title);
             $goods->price = $request->input('price',$goods->price );
@@ -174,77 +160,91 @@ class GoodsController extends Controller
                 return redirect('admin/goods')->with('success','修改成功');
 
             }else{
-                return back()->with('error','修改失败');
+                return back();
 
             }
         }else{
-
-            //删除文件夹中图片
-            //查找商品图片
-            $goodspic=Goodspic::where('gid',$id)->get();
-            //查找商品详情图片
-            $goodsinfopic=Goodsinfopic::where('gid',$id)->get();
-            //获得图片路径
-            $pathpic = [];
-            foreach($goodspic as $k => $v){
-                $pathpic[$k] = $v->pic;
-            }
-            //获得详情图片路径
-            $pathinfopic = [];
-            foreach($goodsinfopic as $kk => $vv){
-                $pathinfopic[$kk] = $vv->infopic;
-            }
-             // 删除商品图片
-            $res1 = Goodspic::where('gid',$id)->delete();
-             // 删除商品详情图片
-            $res2 = Goodsinfopic::where('gid',$id)->delete();
-            if($res1 && $res2){
-                //删除图片
-                Storage::delete($pathpic);
-                Storage::delete($pathinfopic);
-            }
-
-            //存储新的图片
-            // 检测文件上传
-            $goodspic = [];
-            $infopic = [];
-            //获取商品图片
-            foreach($request['goodspic'] as $k=>$v){
-                $goodspic[$k]=$v->store(date('Ymd'));
-            }
-            //获取商品详情图片
-            foreach($request['infopic'] as $k=>$v){
-                $infopic[$k]=$v->store(date('Ymd'));
-            }
-
             //修改商品主信息
             $goods = Goods::find($id);
             $goods->title = $request->input('title');
             $goods->price = $request->input('price');
             $goods->num = $request->input('num');
-            //判断主信息是否添加成功
-            if($goods->save()){
-                $gid = $goods->id;
-                //添加商品图片库
+
+            if($request->hasfile('goodspic')){
+                //查找商品图片
+                $goodspic=Goodspic::where('gid',$id)->get();
+                //获得图片路径
+                $pathpic = [];
                 foreach($goodspic as $k => $v){
-                    $goodspic = new Goodspic;
-                    $goodspic->gid = $gid;
-                    $goodspic->pic = $v;
-                    $goodspic->save();
+                    $pathpic[$k] = $v->pic;
                 }
-                //添加商品详情库
-                foreach($infopic as $k => $v){
-                    $infopic = new Goodsinfopic;
-                    $infopic->gid = $gid;
-                    $infopic->infopic = $v;
-                    $infopic->save();
+                  // 删除商品图片
+                $res1 = Goodspic::where('gid',$id)->delete();
+                 //删除图片
+                Storage::delete($pathpic);
+
+                 // 检测文件上传
+                $goodspic = [];
+                 //获取商品图片
+                foreach($request['goodspic'] as $k=>$v){
+                    $goodspic[$k]=$v->store(date('Ymd'));
                 }
+                //判断主信息是否添加成功
+                if($goods->save()){
+                    $gid = $goods->id;
+                    //添加商品图片库
+                    foreach($goodspic as $k => $v){
+                        $goodspic = new Goodspic;
+                        $goodspic->gid = $gid;
+                        $goodspic->pic = $v;
+                        $goodspic->save();
+                    }
+                }
+            }
+            if($request->hasfile('infopic')){
+                 //查找商品详情图片
+                $goodsinfopic=Goodsinfopic::where('gid',$id)->get();
+                
+                //获得详情图片路径
+                $pathinfopic = [];
+                foreach($goodsinfopic as $kk => $vv){
+                    $pathinfopic[$kk] = $vv->infopic;
+                }
+               
+                 // 删除商品详情图片
+                $res2 = Goodsinfopic::where('gid',$id)->delete();
+                Storage::delete($pathinfopic);
+                //存储新的图片
+           
+                $infopic = [];
+               
+                //获取商品详情图片
+                foreach($request['infopic'] as $k=>$v){
+                    $infopic[$k]=$v->store(date('Ymd'));
+                }
+                 if($goods->save()){
+                    $gid = $goods->id;
+                      //添加商品详情库
+                    foreach($infopic as $k => $v){
+                        $infopic = new Goodsinfopic;
+                        $infopic->gid = $gid;
+                        $infopic->infopic = $v;
+                        $infopic->save();
+                    }
+
+                }
+
+               
+
+            }
+
+            //删除文件夹中图片
 
                 return redirect('admin/goods')->with('success','修改成功');
 
             }
         }
-    }
+    
 
     /**
      * 删除商品
