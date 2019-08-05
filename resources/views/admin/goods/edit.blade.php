@@ -26,6 +26,18 @@
 			{{ csrf_field() }}
 			{{method_field('PUT')}}
 			<fieldset>
+				 <div class="control-group">
+				<label class="control-label" for="selectError3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所属分类</font></font></label>
+				<div class="controls">
+				  <select id="selectError3" name='cates'>
+				  	@foreach($cates as $k => $v)
+					<option value="{{$v->id}}" @if($v->id==$goods['0']['cid']) selected @endif><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->cname}}</font></font></option>
+					@endforeach
+					
+				  </select>
+				</div>
+			  </div>
+
 				<!-- 用户名 -->
 			  <div class="control-group">
 				<label class="control-label" for="focusedInput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">标题</font></font></label>
