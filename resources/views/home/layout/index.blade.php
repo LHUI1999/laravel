@@ -41,7 +41,9 @@
 		
 		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
 
-
+		<!-- 收货地址 -->
+		<link href="/h/css/addstyle.css" rel="stylesheet" type="text/css">
+		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 	</head>
 
 	<body>

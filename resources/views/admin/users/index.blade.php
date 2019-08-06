@@ -71,7 +71,9 @@
 										<i class="halflings-icon white trash"></i> 
 									</button>
 								</form>
-								
+								<a href="/admin/users/address/{{ $v->id }}">
+									<i class="btn btn-danger">收货地址</i>
+								</a>
 							</td>
 						</tr>
 						@endforeach
