@@ -40,7 +40,15 @@
 		<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
 		
 		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+		<title>个人资料</title>
 
+		<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/h/css/infstyle.css" rel="stylesheet" type="text/css">
+		<script src="/h/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
 
 	</head>
 
@@ -53,7 +61,7 @@
 					@if(isset($_SESSION['user']))
 					<div class="menu-hd">
 						<img style="width:35px;height:35px;border-radius: 50%;" src="/uploads/{{$_SESSION['user']->profile}}">
-						{{$_SESSION['user']->uname}}
+						{{ $_SESSION['user']->uname }}
 					</div>
 					@else
 					<div class="menu-hd">

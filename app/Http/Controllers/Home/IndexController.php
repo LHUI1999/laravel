@@ -26,10 +26,10 @@ class IndexController extends Controller
     //前台首页
     public function index()
     {
-        $cate_data = self::getPidCatesData(0);
+        $cate = self::getPidCatesData(0);
         // dump($data);
 
-    	return view('home.index.index',['cate'=>$cate_data]);
+    	return view('home.index.index',['cate'=>$cate]);
     }
 
 

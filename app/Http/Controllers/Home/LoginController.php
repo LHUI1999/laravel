@@ -39,8 +39,11 @@ class LoginController extends Controller
     	}
     	$userinfo = DB::table('users_info')->where('uid',$user->id)->first();
     	$userinfo->uname = $uname;
-
-    	$_SESSION['user']=$userinfo;
+		$userinfo->id=$user->id;
+		
+		$_SESSION['user']=$userinfo;
+    
+		
 
 
 

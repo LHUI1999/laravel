@@ -26,10 +26,17 @@ class CatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        return view('admin.cates.index',['cates'=>self::getCates()]);
+        $search=$request->input('search','');
+        $cate=DB::table('cates')->where('cname','like','%'.$search.'%')->paginate(2);
+        foreach($cate as $k=>$v){
+            //统计，出现次数            
+            $n = substr_count($v->path,',');
+
+            $cate[$k]->cname = str_repeat('|---', $n).$v->cname;
+        }
+        return view('admin.cates.index',['cate'=>$cate,'requests'=>$request->input()]);
     }
 
     /**
@@ -115,6 +122,18 @@ class CatesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //开启事务
+        DB::beginTransaction();
+        //删除主信息
+        $res = Cates::where('id',$id)->delete();
+        if($res){
+            //提交事务
+            DB::commit();
+            return redirect('admin/cates')->with('success','删除成功');
+        }else{
+            //事务回滚
+            DB::rollback();
+            return back()->with('error','删除失败');
+        }
     }
 }

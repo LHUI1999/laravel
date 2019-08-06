@@ -70,21 +70,20 @@ Route::get('/home/car/addnum','Home\CarController@addNum');
 Route::get('/home/car/descnum','Home\CarController@descNum');
 //删除商品
 Route::get('/home/car/delete','Home\CarController@delete');
-
 //结算
 Route::get('/home/order/account','Home\OrderController@account');
 Route::post('/home/order/pay','Home\OrderController@pay');
-
-
-
 //前台登录路由
 Route::get('/home/login','Home\LoginController@index');
 Route::post('/home/login/dologin','Home\LoginController@dologin');
-
 //前台首页
 Route::get('/home/index','Home\IndexController@index');
 //个人中心
 Route::get('/home/center','Home\CenterController@index');
+//个人信息
+Route::resource('/home/geren','Home\GerenController');
+// Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
+
 
 
 

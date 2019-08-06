@@ -11,7 +11,7 @@
 				</div>
 			</div>
 			<div class="box-content">
-				<form action="/admin/users" method="get">
+				<form action="/admin/nodes" method="get">
 					关键字
 					<input type="text" name="search" placeholder="用户名" value="{{ $requests['search'] or '' }}">
 					<input type="submit"class="btn btn-danger"  value="搜索">
@@ -56,10 +56,10 @@
 							
 							<td class="center ">
 
-								<a class="btn btn-info" href="/admin/users/{{$v->id}}/edit">
+								<a class="btn btn-info" href="/admin/nodes/{{$v->id}}/edit">
 									<i class="halflings-icon white edit"></i> 
 								</a>
-								<form action="/admin/users/{{$v->id}}" method="post" style="display:inline">
+								<form action="/admin/nodes/{{$v->id}}" method="post" style="display:inline">
 									{{csrf_field()}}
 									{{method_field('DELETE')}}
 									<button class="btn btn-danger" href="#">
@@ -72,7 +72,8 @@
 						@endforeach
 					</tbody>
 				</table>
-
+				<div id="page_page">
+					{{ $nodes->links() }}
 			</div>
 		</div>
 	</div>

@@ -10,9 +10,9 @@
 		</div>
 	</div>
 	<div class="box-content">
-		<form action="/admin/users" method="get">
+		<form action="/admin/cates" method="get">
 			关键字
-			<input type="text" name="search" placeholder="用户名" value="">
+			<input type="text" name="search" placeholder="用户名" >
 			<input type="submit" class="btn btn-danger" value="搜索">
 		</form>
 		<table class="table table-striped table-bordered ">
@@ -43,7 +43,7 @@
 		  </thead>   
 		  
 	  		<tbody role="alert" aria-live="polite" aria-relevant="all">
-	  			@foreach($cates as $k=>$v)
+	  			@foreach($cate as $k=>$v)
 	  			<tr class="odd">
 		  			<td class="  sorting_1">
 						<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->id}}</font></font>
@@ -72,17 +72,25 @@
 						@if(substr_count($v->path,',')<2)
 						<a href="/admin/cates/create?id={{$v->id}}">
 							<button class='btn btn-info'>添加子分类</button>
-						
 						</a>
+						@if(substr_count($v->path,',')>1)
+						<form action="/admin/cates/{{$v->id}}" method="post" style="display:inline">
+							{{csrf_field()}}
+							{{method_field('DELETE')}}
+							<button class="btn btn-danger" href="#">
+								<i class="halflings-icon white trash"></i> 
+							</button>
+						</form>
+						@endif
 						@endif
 					</td>
 				</tr>
-
 				@endforeach
 			</tbody>
 		</table>
 		<div id="page_page">
-			
+			{{ $cate->appends($requests)->links() }}
+		
 		</div>
 				
 	</div>

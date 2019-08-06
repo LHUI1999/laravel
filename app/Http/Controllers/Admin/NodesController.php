@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-
+use App\Models\Nodes;
 class NodesController extends Controller
 {
     /**
@@ -13,11 +13,17 @@ class NodesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $data = DB::table('nodes')->get();
-        return view('admin.nodes.index',['data'=>$data]);
+         //获得搜索内容
+         $search = $request->input('search','');
+        //  dd($search);
+         //获取数据
+        //  $nodes=DB::table('nodes')->where('desc','like','%'.$search.'%')->paginate(2);
+         $data = DB::table('nodes')->where('desc','like','%'.$search.'%')->get();
+         $nodes=DB::table('nodes')->paginate(1);
+        return view('admin.nodes.index',['data'=>$data,'nodes'=>$nodes,'requests'=>$request->input()]);
 
 
     }
@@ -73,6 +79,10 @@ class NodesController extends Controller
     public function edit($id)
     {
         //
+        // dump($id);
+        $nodes=Nodes::find($id);
+        // dump($nodes);
+        return view('admin.nodes.edit',['data'=>$nodes]);
     }
 
     /**
@@ -84,9 +94,31 @@ class NodesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
 
+        // dump($request->all());
+        $desc=$request['desc'];
+        // dump($desc);
+        $cname=$request['cname'];
+        // dump($cname);
+        $aname=$request['aname'];
+        // dump($aname);
+        $res=DB::table('nodes')->where('id',$id)->update(['desc'=>$desc,'cname'=>$cname,'aname'=>$aname]);
+        // dump($res);
+        //开启事务
+        DB::beginTransaction();
+        // dump($request->all());
+        $nodes =Nodes::find($id);
+        // dump($nodes);
+        $res = $nodes->save();
+        // dump($res);
+        if($res){
+            DB::commit();
+            return redirect('admin/nodes')->with('success','修改成功');
+        }else{
+            DB::rollBack();
+             return back()->with('error','修改失败');
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -95,6 +127,19 @@ class NodesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        // dump($id);
+        //开启事务
+        DB::beginTransaction();
+        //删除主信息
+        $res=DB::table('nodes')->where('id','=',$id)->delete();
+        if($res){
+             DB::commit();
+             return redirect('admin/nodes')->with('success','删除成功');
+        }else {
+             DB::rollBack();
+             return back()->with('error','删除失败');
+        }
+       
     }
 }
