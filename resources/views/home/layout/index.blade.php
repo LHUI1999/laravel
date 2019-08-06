@@ -38,6 +38,8 @@
 		<!-- 个人中心 -->
 		<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
 		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+		<title>个人资料</title>
+
 
 		<!-- //安全设置 -->
 		<link href="/h/css/infstyle.css" rel="stylesheet" type="text/css">
@@ -57,7 +59,7 @@
 					@if(isset($_SESSION['user']))
 					<div class="menu-hd">
 						<img style="width:35px;height:35px;border-radius: 50%;" src="/uploads/{{$_SESSION['user']->profile}}">
-						{{$_SESSION['user']->uname}}
+						{{ $_SESSION['user']->uname }}
 					</div>
 					@else
 					<div class="menu-hd">
@@ -92,9 +94,10 @@
 
 				<div class="search-bar pr">
 					<a name="index_none_header_sysc" href="#"></a>
-					<form>
-						<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-						<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+					<form action="/home/index" method="post">
+						{{csrf_field()}}
+						<input id="searchInput" name="search" type="text" placeholder="搜索" autocomplete="off">
+						<input id="ai-topsearch" class="submit am-btn"  value="搜索" index="1" type="submit">
 					</form>
 				</div>
 			</div>

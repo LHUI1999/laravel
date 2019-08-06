@@ -61,8 +61,9 @@ Route::post('home/register/phonestore','Home\RegisterController@phonestore');
 //前台注册
 Route::resource('home/register','Home\RegisterController');
 
+
 //前台首页
-Route::get('/home/index','Home\IndexController@index');
+Route::any('/home/index','Home\IndexController@index');
 
 
 
@@ -101,7 +102,12 @@ Route::get('/home/index','Home\IndexController@index');
 	Route::get('/home/safe/email','Home\SafeController@email');
 	Route::post('/home/safe/changeemail','Home\SafeController@changeemail');
 
+	 //个人信息
+Route::resource('/home/geren','Home\GerenController');
+Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
+
 	
+
 
 
 

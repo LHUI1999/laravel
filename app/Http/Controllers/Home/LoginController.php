@@ -40,14 +40,13 @@ class LoginController extends Controller
     		return back()->with('error','添加失败');
     	}
     	$userinfo = DB::table('users_info')->where('uid',$user->id)->first();
-        // $userinfo->uname = $uname;
-        // $userinfo->id = $user->id;
-        // $userinfo->phone = $user->phone;
-        // $userinfo->phone = $user->phone;
+
+
 
         $user->profile = $userinfo->profile;
 
     	$_SESSION['user']=$user;
+
 
 
 

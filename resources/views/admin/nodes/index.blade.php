@@ -55,11 +55,13 @@
 							</td>
 							
 							<td class="center ">
+
 								<form action="/admin/nodes/{{ $v->id }}" method="post" style="display:inline;">
 									{{ csrf_field() }}
-									{{-- 类型伪装 --}}
+									
 									{{ method_field('DELETE') }}
 									<input type="submit" value="删除" class="btn btn-danger">
+
 								</form>
 
 								<a class="btn btn-info" href="/admin/nodes/{{ $v->id }}/edit">修改</a>
@@ -70,8 +72,10 @@
 					</tbody>
 				</table>
 				<div id="page_page">
+
 					{{ $data->appends($requests)->links() }}
 				</div>
+
 			</div>
 		</div>
 	</div>

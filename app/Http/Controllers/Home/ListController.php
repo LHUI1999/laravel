@@ -28,10 +28,10 @@ class ListController extends Controller
 
 	public function dataWord(){
 		$data = DB::table('goods')->select('title','id')->get();
-		dump($data);
+		// dump($data);
 		foreach($data as $k => $v){
 			$arr = $this->word($v->title);
-			dump($arr);
+			// dump($arr);
 			foreach($arr as $kk => $vv){
 				DB::table('goods_word')->insert(['gid'=>$v->id,'word'=>$vv]);
 			}
@@ -47,7 +47,7 @@ class ListController extends Controller
 
     	// $str = "荣耀20 4800万超广角AI四摄 3200W美颜自拍 麒麟Kirin980全网通版8GB+128GB 幻夜黑 移动联通电信4G全面屏";
     	// $this->word($str);
-    	// $this->dataWord();
+    	$this->dataWord();
     	//接受搜索参数
     	$search = $request->input('search','');
     	//中文分词start

@@ -1,12 +1,15 @@
 <?php
 
+
 namespace App\Http\Controllers\Admin;
+
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Http\Requests\NodesStore;
 use App\Models\Nodes;
+
 
 class NodesController extends Controller
 {
@@ -20,13 +23,17 @@ class NodesController extends Controller
         // 获取搜索内容
         $search = $request->input('search','');
 
+
         // 获取数据
         $data = DB::table('nodes')->where('desc','like','%'.$search.'%')->paginate(4);
         // dd($data);
 
+
         return view('admin.nodes.index',['data'=>$data,'requests'=>$request->input()]);
 
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,6 +45,7 @@ class NodesController extends Controller
         //加载模板
         return view('admin.nodes.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -59,6 +67,7 @@ class NodesController extends Controller
         }
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -69,6 +78,7 @@ class NodesController extends Controller
     {
         //
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -82,8 +92,10 @@ class NodesController extends Controller
         $nodes = Nodes::find($id);
         // dd($nodes);
 
+
         return view('admin.nodes.edit',['nodes'=>$nodes]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -114,6 +126,7 @@ class NodesController extends Controller
         
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -125,8 +138,10 @@ class NodesController extends Controller
         // 开启事务
         DB::beginTransaction();
 
+
         // 删除主用户
         $res = Nodes::destroy($id);
+
 
         // 判断
         if($res){

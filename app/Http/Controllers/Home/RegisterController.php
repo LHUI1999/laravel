@@ -160,8 +160,10 @@ class RegisterController extends Controller
             $userinfo = new Usersinfo;
             $userinfo->uid = $uid;
             $userinfo->profile = '20190726/a1wthG6a6oepzqa3SWp5FqTSXXz5pvCLNR6ILP4T.jpeg';
+
             $userinfo->save();
             echo '添加成功';
+
         }else{
             echo "添加失败";
         }

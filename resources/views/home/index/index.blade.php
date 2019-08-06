@@ -40,17 +40,14 @@
 									
 									<div class="category">
 										<ul class="category-list" id="js_climit_li">
+
 											@foreach($common_cates_data as $k => $v)
+
 											<li class="appliance js_toggle relative first">
 
 												<div class="category-info">
 													<h3 class="category-name b-category-name"><a class="ml-22" title="点心">{{$v->cname}}</a></h3>
 													<em>&gt;</em></div>
-											
-
-
-												
-
 												<div class="menu-item menu-in top" style="display: none;">
 													<div class="area-in">
 														<div class="area-bg">
@@ -78,7 +75,7 @@
 											
 											<b class="arrow"></b>	
 											</li>
-											@endforeach
+											@endforeach --}}
 											
 										</ul>
 									</div>
