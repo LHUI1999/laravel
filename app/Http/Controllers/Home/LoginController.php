@@ -19,6 +19,8 @@ class LoginController extends Controller
     //处理登录
     public function dologin(Request $request)
     {
+        //登陆成功
+        session(['home_login'=>true]);
     	//获取提交信息
     	$uname = $request->input('uname');
     	$upass = $request->input('pass');
@@ -38,9 +40,14 @@ class LoginController extends Controller
     		return back()->with('error','添加失败');
     	}
     	$userinfo = DB::table('users_info')->where('uid',$user->id)->first();
-    	$userinfo->uname = $uname;
+        // $userinfo->uname = $uname;
+        // $userinfo->id = $user->id;
+        // $userinfo->phone = $user->phone;
+        // $userinfo->phone = $user->phone;
 
-    	$_SESSION['user']=$userinfo;
+        $user->profile = $userinfo->profile;
+
+    	$_SESSION['user']=$user;
 
 
 

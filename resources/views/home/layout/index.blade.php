@@ -10,7 +10,6 @@
 		<!-- 购物车 -->
 		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="/h/basic/css/demo.css" rel="stylesheet" type="text/css" />
-<!--  -->
 		<link href="/h/css/optstyle.css" rel="stylesheet" type="text/css" />
 		<link href="/h/css/jsstyle.css" rel="stylesheet" type="text/css" />
 
@@ -38,8 +37,13 @@
 
 		<!-- 个人中心 -->
 		<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		
 		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+
+		<!-- //安全设置 -->
+		<link href="/h/css/infstyle.css" rel="stylesheet" type="text/css">
+
+		<!-- 手机验证 -->
+		<link href="/h/css/stepstyle.css" rel="stylesheet" type="text/css">
 
 
 	</head>
@@ -99,6 +103,17 @@
 
 			<!--购物车 -->
 			<div class="concent">
+
+				@if(session('success'))
+						<div class='alert alert-success'>
+							{{session('success')}}
+						</div>
+					@endif
+					@if(session('error'))
+						<div class='alert alert-error'>
+							{{session('success')}}
+						</div>
+					@endif
 
 				@section('content')
 				@show

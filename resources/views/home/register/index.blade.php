@@ -132,8 +132,6 @@
                         }
                       },1000);
 
-
-
                       //发送验证码
                       $.get('/home/register/sendPhone',{phone},function(res){
                         console.log(res);
@@ -146,9 +144,6 @@
                     }else{
 
                     }
-
-
-
                   }
                 </script>
             </div>

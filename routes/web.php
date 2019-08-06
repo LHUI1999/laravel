@@ -50,41 +50,58 @@ Route::group(['middleware'=>['login']],function(){
 	Route::resource('admin/goods','Admin\GoodsController');
  
 });
-Route::get('home/register/changestatus','Home\RegisterController@changestatus');
-Route::get('home/register/sendPhone','Home\RegisterController@sendPhone');
-Route::post('home/register/phonestore','Home\RegisterController@phonestore');
-
-//前台
-Route::resource('home/register','Home\RegisterController');
-
-//商品列表页面
-Route::get('home/list','Home\ListController@index');
-
-//加入购物车
-Route::get('/home/car/add','Home\CarController@add');
-//购物车列表
-Route::get('/home/car/index','Home\CarController@index');
-//增加商品数量
-Route::get('/home/car/addnum','Home\CarController@addNum');
-//减少商品数量
-Route::get('/home/car/descnum','Home\CarController@descNum');
-//删除商品
-Route::get('/home/car/delete','Home\CarController@delete');
-
-//结算
-Route::get('/home/order/account','Home\OrderController@account');
-Route::post('/home/order/pay','Home\OrderController@pay');
-
-
 
 //前台登录路由
 Route::get('/home/login','Home\LoginController@index');
 Route::post('/home/login/dologin','Home\LoginController@dologin');
 
+Route::get('home/register/changestatus','Home\RegisterController@changestatus');
+Route::get('home/register/sendPhone','Home\RegisterController@sendPhone');
+Route::post('home/register/phonestore','Home\RegisterController@phonestore');
+//前台注册
+Route::resource('home/register','Home\RegisterController');
+
 //前台首页
 Route::get('/home/index','Home\IndexController@index');
-//个人中心
-Route::get('/home/center','Home\CenterController@index');
+
+
+
+//商品列表页面
+	Route::get('home/list','Home\ListController@index');
+
+	//加入购物车
+	Route::get('/home/car/add','Home\CarController@add');
+	//购物车列表
+	Route::get('/home/car/index','Home\CarController@index');
+	//增加商品数量
+	Route::get('/home/car/addnum','Home\CarController@addNum');
+	//减少商品数量
+	Route::get('/home/car/descnum','Home\CarController@descNum');
+	//删除商品
+	Route::get('/home/car/delete','Home\CarController@delete');
+
+	//结算
+	Route::get('/home/order/account','Home\OrderController@account');
+	Route::post('/home/order/pay','Home\OrderController@pay');
+
+	//个人中心
+	Route::get('/home/center','Home\CenterController@index');
+	//安全设置
+	Route::get('/home/safe','Home\SafeController@index');
+	//登陆密码
+	Route::get('/home/safe/password','Home\SafeController@password');
+	Route::post('/home/safe/passedit/{id}','Home\SafeController@passedit');
+	//支付密码
+	Route::get('/home/safe/paypass','Home\SafeController@paypass');
+	Route::post('/home/safe/paystore','Home\SafeController@paystore');
+	//手机验证
+	Route::get('/home/safe/bindphone','Home\SafeController@bindphone');
+	Route::post('/home/safe/changephone','Home\SafeController@changephone');
+	//邮箱换绑
+	Route::get('/home/safe/email','Home\SafeController@email');
+	Route::post('/home/safe/changeemail','Home\SafeController@changeemail');
+
+	
 
 
 

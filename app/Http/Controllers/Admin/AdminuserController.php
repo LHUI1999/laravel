@@ -70,13 +70,8 @@ class AdminuserController extends Controller
         $upass = Hash::make($request->input('upass'));
         // 上传头像
         $adminusers->profile = $path;
-        // dd($res);
-      
         $rid = DB::table('roles')->select('id')->get();
-        // dd($rid);
-
         $uid = DB::table('admin_users')->insertGetId(['uname'=>$uname,'upass'=>$upass,'profile'=>$adminusers->profile]);
-        // dd($uid);
         
         // 判断头像信息是否上传成功
         if($uid){
