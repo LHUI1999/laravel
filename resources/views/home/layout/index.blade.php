@@ -47,7 +47,9 @@
 		<!-- 手机验证 -->
 		<link href="/h/css/stepstyle.css" rel="stylesheet" type="text/css">
 
-
+		<!-- 收货地址 -->
+		<link href="/h/css/addstyle.css" rel="stylesheet" type="text/css">
+		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 	</head>
 
 	<body>
@@ -121,7 +123,7 @@
 				@section('content')
 				@show
 
-				<div class="footer">
+				<div class="footer" style="margin-left: auto;">
 					<div class="footer-hd">
 						<p>
 							<a href="#">恒望科技</a>

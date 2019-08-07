@@ -113,3 +113,38 @@ Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 后台收货地址
+Route::get('admin/users/address/{id}','Admin\UserController@address');
+
+// 收货地址
+Route::get('/home/address','Home\AddressController@index');
+// 添加收货地址
+Route::post('/home/address/add','Home\AddressController@add');
+// 删除收货地址
+Route::get('/home/address/destroy/{id}','Home\AddressController@destroy');
+// 修改收货地址
+Route::get('/home/address/{id}/edit','Home\AddressController@edit');
+Route::get('/home/address/update/{id}','Home\AddressController@update');
+
+
+
+
+
+

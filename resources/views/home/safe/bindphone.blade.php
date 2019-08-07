@@ -142,18 +142,7 @@
                         }
                       },1000);
 
-                      //发送验证码
-                      $.get('/home/register/sendPhone',{phone},function(res){
-                        console.log(res);
-                        if(res.error_code == 0){
-                          alert('发送成功，验证码十分钟有效');
-                        }else{
-                          alert('发送失败');
-                        }
-                      },'json');
-                    }else{
-
-                    }
+                      
                   }
                   function sendMobileCode(obj){
 

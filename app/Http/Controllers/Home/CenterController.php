@@ -12,5 +12,5 @@ class CenterController extends Controller
     {
     	return view('home.center.index');
     }
-  
+
 }

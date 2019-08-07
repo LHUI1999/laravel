@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Models\Cates;
+use App\Models\Goods;
+use App\Models\Goodspic;
 use App\Http\Controllers\Home\CarController;
 
 class IndexController extends Controller
@@ -60,14 +62,10 @@ class IndexController extends Controller
 
         //购物车商品数量
         $count = CarController::countCar();
-
-
-        // $str = "土豆 啊啊";
-        // $this->word($str);
+        //分词写入数据库
         // $this->dataWord();
         //接受搜索参数
         $search = $request->input('search','');
-        // dd($search);
         //中文分词start
         if(!empty($search)){
             $gid = DB::table('view_goods_word')->select('gid')->where('word',$search)->get();
@@ -76,20 +74,13 @@ class IndexController extends Controller
             foreach($gid as $k => $v){
                 $gids[] = $v->gid;
             }
-            $data2 = DB::table('goods')->whereIn('id',$gids)->get();
-            // dd($data2);
+            $data2 = Goods::whereIn('id',$gids)->get();
              return view('home.list.index',['data'=>$data2,'countcar'=>$count]);
         }else{
-            // $data2 = DB::table('goods')->get();
             return view('home.index.index');
 
         }
         
-        //中文分词end
-
-       
-
-
     }
 
     public  function word($text)

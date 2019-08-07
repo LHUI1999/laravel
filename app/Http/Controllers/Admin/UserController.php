@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UsersStore;
 use App\Models\Users;
 use App\Models\Usersinfo;
+use App\Models\Address;
 use Hash;
 use DB;
 use Storage;
@@ -24,6 +25,7 @@ class UserController extends Controller
         $search = $request->input('search','');
         //获取数据
         $users=Users::where('uname','like','%'.$search.'%')->paginate(1);
+        dd($users);
         return view("admin.users.index",['users'=>$users,'requests'=>$request->input()]);
     }
 
@@ -185,5 +187,17 @@ class UserController extends Controller
             DB::rollback();
             return back()->with('error','删除失败');
         }
+    }
+
+    // 收货地址
+    public function address(Request $request,$id)
+    {
+        //获得搜索内容
+        $search = $request->input('search','');
+        
+        // 获取信息
+        $data = DB::table('address')->where('uid',$id)->where('uname','like','%'.$search.'%')->paginate(2);
+        // dd($data);
+        return view('admin.users.address',['data'=>$data,'requests'=>$request->input()]);
     }
 }
