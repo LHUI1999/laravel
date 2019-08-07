@@ -1,6 +1,14 @@
 @extends('home.layout.index')
 
 @section('content')
+<!-- <link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+        <link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+        <link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+        <link href="/h/css/addstyle.css" rel="stylesheet" type="text/css">
+        <script src="/h/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+        <script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script> -->
+
 
 <div class="nav-table">
     <div class="long-title"><span class="all-goods">全部分类</span></div>
@@ -116,8 +124,8 @@
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="submit" class="am-btn am-btn-danger">保存</button>
-                                        <button type="reset" class="am-btn am-btn-danger">取消</button>
+                                        <button style="margin-top:30px" type="submit" class="am-btn am-btn-danger">保存</button>
+                                        <button style="margin-top:30px" type="reset" class="am-btn am-btn-danger">取消</button>
                                         {{-- <a href="" class="am-close am-btn am-btn-danger" data-am-modal-close>取消</a> --}}
                                     </div>
                                 </div>

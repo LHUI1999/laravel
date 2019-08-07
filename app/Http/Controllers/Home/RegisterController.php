@@ -135,7 +135,7 @@ class RegisterController extends Controller
 
     //执行手机号注册
     public function  phonestore(Request $request){
-        dump($request->all());
+        // dump($request->all());
         //验证手机验证码
         $phone = $request->input('phone',0);
         $code = $request->input('code',0);
@@ -153,13 +153,17 @@ class RegisterController extends Controller
         $users->uname = $request->input('phone','');
         $users->token = str_random(30);
         $users->upass = Hash::make($request->input('upass',''));
+        $users->status = 1;
         if($users->save()){
+            // dd('a');
             $uid = $users->id;
             $userinfo = new Usersinfo;
             $userinfo->uid = $uid;
             $userinfo->profile = '20190726/a1wthG6a6oepzqa3SWp5FqTSXXz5pvCLNR6ILP4T.jpeg';
-            
+
+            $userinfo->save();
             echo '添加成功';
+
         }else{
             echo "添加失败";
         }

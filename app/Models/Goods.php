@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Goods extends Model
 {
+	//设置模型表明
+    public $table = 'goods';
     //
     public function goodspic(){
-    	return $this->hasOne('App\Models\Goodspic','gid');
+    	return $this->hasOne('App\Models\goodspic','gid');
     }
-    //  //获取用户头像
-    // public function cates(){
-    // 	return $this->hasOne('App\Models\Cates','id');
-    // }
+   
 }

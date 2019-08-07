@@ -1,8 +1,6 @@
 @extends('home.layout.index')
 @section('content')
-		<link href="/h/css/systyle.css" rel="stylesheet" type="text/css">
-		<!-- <link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css"> -->
-
+<link href="/h/css/systyle.css" rel="stylesheet" type="text/css">
 
 <div class="nav-table">
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
@@ -415,9 +413,11 @@
 					<li class="person">
 						<a href="#">个人资料</a>
 						<ul>
-							<li> <a href="information.html">个人信息</a></li>
-							<li> <a href="safety.html">安全设置</a></li>
+
+							<li> <a href="/home/geren">个人信息</a></li>
+							<li> <a href="/home/safe">安全设置</a></li>
 							<li> <a href="/home/address">收货地址</a></li>
+
 						</ul>
 					</li>
 					<li class="person">

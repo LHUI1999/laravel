@@ -25,6 +25,7 @@ class UserController extends Controller
         $search = $request->input('search','');
         //获取数据
         $users=Users::where('uname','like','%'.$search.'%')->paginate(1);
+        dd($users);
         return view("admin.users.index",['users'=>$users,'requests'=>$request->input()]);
     }
 
@@ -55,10 +56,8 @@ class UserController extends Controller
         }else{
             return back();
         }
-
         //开启事务
         DB::beginTransaction();
-
         //实例化模型
         //上传用户主信息
         $user = new Users;
@@ -67,14 +66,12 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
         $res1 = $user->save();
-
         // 上传头像
         $userinfo = new Usersinfo;
         $userinfo->uid = $user->id;
         $userinfo->profile = $path;
         $res2 = $userinfo->save();
-
-        //判断头像哥信息是否上传成功
+        //判断头像he信息是否上传成功
         if($res1 && $res2){
             //事务添加
             DB::commit();
@@ -84,7 +81,6 @@ class UserController extends Controller
             DB::rollback();
             return back()->with('error','添加失败');
         }
-
     }
 
     /**
@@ -110,10 +106,7 @@ class UserController extends Controller
         $user = Users::find($id);
         $userinfo = Usersinfo::where('uid',$id)->first();
         $user->profile = $userinfo->profile;
-
         return view('admin.users.edit',['user'=>$user]);
-
-
     }
 
     /**
@@ -125,8 +118,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-       
         //检测用户是否文件上传
         if(!$request->hasfile('profile')){
             $user = Users::find($id);
@@ -138,11 +129,9 @@ class UserController extends Controller
                  return back()->with('error','修改失败');
             }
         }else{
-
             //开启事务
             DB::beginTransaction();
             $path = $request->file('profile')->store(date('Ymd'));
-
             $userinfo = Usersinfo::where('uid',$id)->first();
             //删除图片
             Storage::delete([$userinfo->profile]);
@@ -150,13 +139,11 @@ class UserController extends Controller
             $userinfo->profile = $path;
             //执行修改
             $res1 = $userinfo->save();
-
             //修改用户主信息
             $user = Users::find($id);
             $user->email = $request->input('email','');
             $user->phone = $request->input('phone','');
             $res2 = $user->save();
-
             if($res1 && $res2){
                 DB::commit();
                 return redirect('admin/users')->with('success','修改成功');
@@ -165,8 +152,7 @@ class UserController extends Controller
                  return back()->with('error','修改失败');
             }
         }
-        dump($request->all());
-       
+        // dump($request->all());
     }
 
     /**

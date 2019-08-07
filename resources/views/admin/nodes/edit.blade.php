@@ -1,5 +1,6 @@
 @extends('admin.layout.index')
 
+
 @section('content')
 <div class="box span12" style="">
 	<div class="box-header" data-original-title="">
@@ -46,5 +47,6 @@
 		  </form>
 	
 	</div>
+
 </div>
 @endsection

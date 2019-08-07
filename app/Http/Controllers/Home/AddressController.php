@@ -13,7 +13,7 @@ class AddressController extends Controller
     public function index()
     {
         // 获取id
-        $id = $_SESSION['user']->uid;
+        $id = $_SESSION['user']->id;
 
         // 获取数据
         $address = DB::table('address')->where('uid',$id)->get();
@@ -52,7 +52,7 @@ class AddressController extends Controller
         }
         
         // 获取uid
-        $uid = $_SESSION['user']->uid;
+        $uid = $_SESSION['user']->id;
         
         // 检查地址
         $province = $request->input('province','');
