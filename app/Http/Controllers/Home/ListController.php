@@ -13,7 +13,7 @@ class ListController extends Controller
 	public function __construct()
 	{
 		// 引入类文件
-		require 'E:/xampp/htdocs/laravel/public/pscws4/pscws4.class.php';
+		require 'B:/xampp/htdocs/laravel/public/pscws4/pscws4.class.php';
 		// 实例化
 		@$this->cws = new \PSCWS4;
 		//设置字符集
@@ -57,9 +57,11 @@ class ListController extends Controller
 	    	foreach($gid as $k => $v){
 	    		$gids[] = $v->gid;
 	    	}
-	    	$data2 = DB::table('goods')->whereIn('id',$gids)->get();
+				$data2 = DB::table('goods')->whereIn('id',$gids)->get();
+			
     	}else{
-    		$data2 = DB::table('goods')->get();
+				$data2 = DB::table('goods')->get();
+				
     	}
     	
     	//中文分词end

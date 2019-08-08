@@ -105,6 +105,8 @@ Route::any('/home/index','Home\IndexController@index');
 	 //个人信息
 Route::resource('/home/geren','Home\GerenController');
 Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
+//点击查看商品详情
+Route::resource('/home/goods', 'Home\GoodsController');
 
 	
 

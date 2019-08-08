@@ -108,27 +108,26 @@
 								</div>
 								<div class="clear"></div>
 
-								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-									@foreach($data as $k => $v)
-									
-									<li>
-										<div class="i-pic limit">
-
-											<img src="/uploads/{{$v->goodspic->pic}}">											
-											<p class="title fl">{{$v->title}}</p>
-											<p class="price fl">
-												<b>¥</b>
-												<strong>{{$v->price}}</strong>
-											</p>
-											<p class="number fl">
-												销量<span>1110</span>
-											</p>
-										</div>
-									</li>
-									@endforeach
-								
-								</ul>
-							</div>
+			<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+				@foreach($data as $k => $v)
+				
+				<li>
+					<div class="i-pic limit">
+					<a href="/home/goods?id={{ $v->id }}"><img src="/uploads/{{$v->goodspic->pic}}"></a>											
+						<p class="title fl">{{$v->title}}</p>
+						<p class="price fl">
+							<b>¥</b>
+							<strong>{{$v->price}}</strong>
+						</p>
+						<p class="number fl">
+							销量<span>1110</span>
+						</p>
+					</div>
+				</li>
+				@endforeach
+			
+			</ul>
+		</div>
 							<div class="search-side">
 
 								<div class="side-title">
