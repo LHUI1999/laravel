@@ -50,6 +50,8 @@
 		<!-- 收货地址 -->
 		<link href="/h/css/addstyle.css" rel="stylesheet" type="text/css">
 		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<!-- 账单 -->
+		<link href="/h/css/blstyle.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -79,7 +81,7 @@
 					<div class="menu-hd MyShangcheng"><a href="/home/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 				</div>
 				<div class="topMessage mini-cart">
-					<div class="menu-hd"><a id="mc-menu-hd" href="/home/car/index" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+					<div class="menu-hd"><a id="mc-menu-hd" href="/home/car/index" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">{{$carcount}}</strong></a></div>
 				</div>
 				<div class="topMessage favorite">
 					<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>

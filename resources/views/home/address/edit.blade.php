@@ -80,14 +80,14 @@
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="submit" class="am-btn am-btn-danger">保存</button>
+                                        <button style="margin-top: 40px" type="submit" class="am-btn am-btn-danger">保存</button>
                                         
-                                        {{-- <a href="" class="am-close am-btn am-btn-danger" data-am-modal-close>取消</a> --}}
+                                        <a href="/home/address" class="am-close am-btn am-btn-danger" style="margin-top: 40px" data-am-modal-close>取消</a> 
                                     </div>
                                 </div>
                             </form>
                             <a href="/home/address">
-                                <button type="reset" class="am-btn am-btn-danger" style="margin-left:250px;margin-top:-53px;">取消</button>
+                                <!-- <button type="reset" class="am-btn am-btn-danger" style="margin-left:272px;margin-top:-50px;">取消</button> -->
                             </a>
                         </div>
 
@@ -125,9 +125,9 @@
             <li class="person">
                 <a href="#">个人资料</a>
                 <ul>
-                    <li> <a href="information.html">个人信息</a></li>
-                    <li> <a href="safety.html">安全设置</a></li>
-                    <li class="active"> <a href="/home/address">收货地址</a></li>
+                    <li> <a href="/home/geren">个人信息</a></li>
+                            <li> <a href="/home/safe">安全设置</a></li>
+                            <li> <a href="/home/address">收货地址</a></li>
                 </ul>
             </li>
             <li class="person">

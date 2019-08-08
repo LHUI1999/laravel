@@ -40,17 +40,10 @@ class LoginController extends Controller
     		return back()->with('error','添加失败');
     	}
     	$userinfo = DB::table('users_info')->where('uid',$user->id)->first();
-
-
-
         $user->profile = $userinfo->profile;
-
     	$_SESSION['user']=$user;
 
-
-
-
-    	return view('home.index.index',['id'=>$userinfo->uid]);
+         return redirect('/home/index');
     	
     }
 

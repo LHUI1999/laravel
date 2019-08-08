@@ -74,7 +74,7 @@ class AddressController extends Controller
         if($res){
             // 提交事务
             DB::commit();
-            return redirect('home/address')->with('success','添加成功');
+            return redirect('home/address');
         }else{
             // 回滚事务
             DB::rollback();
@@ -96,7 +96,12 @@ class AddressController extends Controller
     // 执行修改操作
     public function update(AddressStore $request,$id)
     {
+
         $address = Address::find($id);
+        if(empty($request->input('addr'))){
+            echo "<script>alert('地址不能为空');location.href='/home/address/".$address->id."/edit'</script>";
+            exit;
+        }
         $address->uname = $request->input('uname');
         $address->phone = $request->input('phone');
         $address->province = $request->input('province');
@@ -115,7 +120,7 @@ class AddressController extends Controller
         if($res){
             // 提交事务
             DB::commit();
-            return redirect('home/address')->with('success','修改成功');
+            return redirect('home/address');
         }else{
             // 事务回滚
             DB::rollback();

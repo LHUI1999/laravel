@@ -19,9 +19,9 @@
 							<div class="th th-amount">
 								<div class="td-inner">数量</div>
 							</div>
-							<div class="th th-sum">
+							<!-- <div class="th th-sum">
 								<div class="td-inner">金额</div>
-							</div>
+							</div> -->
 							<div class="th th-op">
 								<div class="td-inner">操作</div>
 							</div>
@@ -34,16 +34,11 @@
 								
 							@foreach($data as $k => $v)
 								<ul class="item-content clearfix">
-									<li class="td td-chk">
-										<div class="cart-checkbox ">
-											<input class="check" id="J_CheckBox_170037950254" name="items[]" value="170037950254" type="checkbox">
-											<label for="J_CheckBox_170037950254"></label>
-										</div>
-									</li>
+									
 									<li class="td td-item">
 										<div class="item-pic">
-											<a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="/h/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+											<a href="#" target="_blank" data-title="{{$v->title}}" class="J_MakePoint" data-point="tbcart.8.12">
+												<img src="/uploads/{{$v->pic->pic}}" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
@@ -53,18 +48,13 @@
 									</li>
 									<li class="td td-info">
 										<div class="item-props item-props-can">
-											<span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
+											
 											<i class="theme-login am-icon-sort-desc"></i>
 										</div>
 									</li>
 									<li class="td td-price">
 										<div class="item-price price-promo-promo">
 											<div class="price-content">
-												<!-- <div class="price-line">
-													<em class="price-original">{{$v->price}}</em>
-												</div> -->
 												<div class="price-line">
 													<em class="J_Price price-now" tabindex="0">{{$v->price}}</em>
 												</div>
@@ -82,11 +72,7 @@
 											</div>
 										</div>
 									</li>
-									<li class="td td-sum">
-										<div class="td-inner">
-											<em tabindex="0" class="J_ItemSum number">{{$v->xiaoji}}</em>
-										</div>
-									</li>
+						
 									<li class="td td-op">
 										<div class="td-inner">
 											<a title="移入收藏夹" class="btn-fav" href="#">

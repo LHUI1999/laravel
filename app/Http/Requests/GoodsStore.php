@@ -26,7 +26,7 @@ class GoodsStore extends FormRequest
         return [
             //验证规则
             'title' => 'required|',
-            'price' => 'required|regex:/^[\d]{1,9}$/',
+            'price' => 'required|regex:/^[\w]{1,9}[\.][\w]{1,9}$/',
             'num' => 'required|regex:/^[\d]{1,9}$/'
             
         ];

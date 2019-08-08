@@ -27,30 +27,36 @@
 							<div class="u-progress-bar-inner"></div>
 						</div>
 					</div>
-					<form action='/home/safe/changeemail' method="post" class="am-form am-form-horizontal">
+					<form action='/home/safe/sendemail' method="post" class="am-form am-form-horizontal">
 						{{csrf_field()}}
 						<div class="am-form-group">
 							<label for="user-email" class="am-form-label">验证邮箱</label>
 							<div class="am-form-content">
-								<input type="email" id='email' name="email" id="user-email" placeholder="请输入邮箱地址">
+								<input type="email" id='email' value={{$_SESSION['email']}} name="email" id="user-email" placeholder="请输入邮箱地址">
 							</div>
 						</div>
 						<div class="am-form-group code">
 							<label for="user-code" class="am-form-label">验证码</label>
-							<div class="am-form-content">
-								<input name="code" type="tel" id="user-code" placeholder="验证码">
-							</div>
 							<a class="btn" href="javascript:void(0);" onclick="sendPhoneCode();" id="sendMobileCode">
 								<div class="am-btn am-btn-danger"  href="javascript:void(0);"  id="sendPhoneCode">
-                      			<span onclick="sendPhoneCode();" id="dyPhoneButton">获取</span></div>
+                      			<button onclick="sendPhoneCode();" id="dyPhoneButton">获取</button></div>
 							</a>
+							</form>
+						<form action="/home/safe/changeemail" method="post">
+							{{csrf_field()}}
+								<div class="am-form-content">
+									<input name="code" type="tel" id="user-code" placeholder="验证码">
+									<input name="email" type="hidden" value="{{$_SESSION['email']}}" id="user-code" >
+								</div>
 
-						</div>
-						<div class="info-btn">
-							<button class="am-btn am-btn-danger">保存修改</button>
-						</div>
+							</div>
+						
 
-					</form>
+							<div class="info-btn">
+								<button class="am-btn am-btn-danger">保存修改</button>
+							</div>
+						</form>
+
 
 				</div>
 				<!--底部-->
@@ -65,9 +71,9 @@
 					<li class="person">
 						<a href="#">个人资料</a>
 						<ul>
-							<li> <a href="information.html">个人信息</a></li>
-							<li> <a href="safety.html">安全设置</a></li>
-							<li> <a href="address.html">收货地址</a></li>
+							<li> <a href="/home/geren">个人信息</a></li>
+							<li> <a href="/home/safe">安全设置</a></li>
+							<li> <a href="/home/address">收货地址</a></li>
 						</ul>
 					</li>
 					<li class="person">
@@ -102,7 +108,15 @@
 		</div>
 		<script type="text/javascript">
 			function sendPhoneCode(obj){
-                  
+                  //获取用户验证码
+                      let phone = $('#email').val();
+                      console.log(phone);
+                      //验证格式
+                      // let phone_preg = /^1{1}[3-9]{1}[\d]{9}$/;
+                      if(phone==''){
+                        alert('请填写邮箱');
+                        return false;
+                      }
                     $('#sendPhoneCode').attr('disabled',true);
                     $('#sendPhoneCode').css('color','#ccc');
                     $('#sendPhoneCode').css('cursor','no-drop');

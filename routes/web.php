@@ -101,10 +101,14 @@ Route::any('/home/index','Home\IndexController@index');
 	//邮箱换绑
 	Route::get('/home/safe/email','Home\SafeController@email');
 	Route::post('/home/safe/changeemail','Home\SafeController@changeemail');
+	Route::post('/home/safe/sendemail','Home\SafeController@sendemail');
 
 	 //个人信息
-Route::resource('/home/geren','Home\GerenController');
-Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
+	Route::resource('/home/geren','Home\GerenController');
+	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
+
+	//账单
+	Route::get('/home/bill','Home\BillController@index');
 
 	
 

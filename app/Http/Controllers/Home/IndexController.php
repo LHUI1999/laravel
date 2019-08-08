@@ -39,7 +39,6 @@ class IndexController extends Controller
             }
             
         }
-        // dd($arr);
     }
 
 
@@ -48,20 +47,16 @@ class IndexController extends Controller
         //获取一级分类
         $data = Cates::where('pid',$pid)->get();
         foreach($data as $k => $v){
-            // $erji = Cates::where('pid',$v->id)->get();
-            // $v->sub = $erji;
             $v->sub = self::getPidCatesData($v->id);
 
         }
         return $data;
     }
-
     //前台首页
     public function index(Request $request)
     {
+       // dump($_SESSION['car']);
 
-        //购物车商品数量
-        $count = CarController::countCar();
         //分词写入数据库
         // $this->dataWord();
         //接受搜索参数
@@ -75,9 +70,22 @@ class IndexController extends Controller
                 $gids[] = $v->gid;
             }
             $data2 = Goods::whereIn('id',$gids)->get();
-             return view('home.list.index',['data'=>$data2,'countcar'=>$count]);
+
+            
+             return view('home.list.index',['data'=>$data2]);
         }else{
-            return view('home.index.index');
+            //商品分类
+           
+            $data = Cates::where('pid',0)->get();
+            foreach($data as $k => $v){
+                $data[$k]['name'] = Goods::where('cid',$v->id)->take(8)->get();
+            }
+            // $_SESSION['car'] = null;
+
+            // dump($_SESSION['car']);
+            $carcount = CarController::countCar();
+
+            return view('home.index.index',['data'=>$data,'carcount'=>$carcount]);
 
         }
         
