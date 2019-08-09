@@ -50,6 +50,7 @@ class IndexController extends Controller
             $v->sub = self::getPidCatesData($v->id);
 
         }
+        // dd($data);
         return $data;
     }
     //前台首页
@@ -61,6 +62,7 @@ class IndexController extends Controller
         // $this->dataWord();
         //接受搜索参数
         $search = $request->input('search','');
+
         //中文分词start
         if(!empty($search)){
             $gid = DB::table('view_goods_word')->select('gid')->where('word',$search)->get();
@@ -71,8 +73,10 @@ class IndexController extends Controller
             }
             $data2 = Goods::whereIn('id',$gids)->get();
 
+
             
              return view('home.list.index',['data'=>$data2]);
+
         }else{
             //商品分类
            

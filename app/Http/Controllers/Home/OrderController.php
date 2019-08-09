@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Home\CarController;
+
 use App\Models\Goods;
 use App\Models\Address;
+
+use App\Models\Orderinfo;
+use Illuminate\Support\Facades\DB;
+
 
 class OrderController extends Controller
 {
@@ -33,6 +38,7 @@ class OrderController extends Controller
 
     	//检查地址
     	dump($request->all());
+
     }
 
     public function index(Request $request)
@@ -44,4 +50,5 @@ class OrderController extends Controller
         
         return view('home.order.account',['data'=>$data,'address'=>$address]);
     }
+
 }

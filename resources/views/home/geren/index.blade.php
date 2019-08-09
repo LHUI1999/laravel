@@ -80,12 +80,14 @@
         <aside class="menu">
             <ul>
                 <li class="person">
-                    <a href="index.html">个人中心</a>
+                    <a href="/home/center">个人中心</a>
                 </li>
                 <li class="person">
                     <a href="#">个人资料</a>
                     <ul>
+
                         <li class="active"> <a href="/home/geren">个人信息</a></li>
+
                         <li> <a href="/home/safe">安全设置</a></li>
                         <li> <a href="/home/address">收货地址</a></li>
                     </ul>
@@ -93,7 +95,7 @@
                 <li class="person">
                     <a href="#">我的交易</a>
                     <ul>
-                        <li><a href="order.html">订单管理</a></li>
+                        <li><a href="/home/order">订单管理</a></li>
                         <li> <a href="change.html">退款售后</a></li>
                     </ul>
                 </li>

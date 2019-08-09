@@ -7,14 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<title>Orange lala</title>
-		<!-- 购物车 -->
-		<!--  -->
 
-		<!-- 结算 -->
-		<!-- <script type="text/javascript" src="/h/js/jquery.js"></script>
-		<script type="text/javascript" src="/h/js/address.js"></script>
-
-		<script type="text/javascript" src="http://lib.h-ui.net/jquery/1.9.1/jquery.min.js"></script> -->
 
 		<!-- 城市三级连动 -->
 		<script type="text/javascript" src="/h/3/jquery.provincesCity.js"></script>

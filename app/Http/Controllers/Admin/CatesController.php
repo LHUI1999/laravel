@@ -29,7 +29,7 @@ class CatesController extends Controller
     public function index(Request $request)
     {
         $search=$request->input('search','');
-        $cate=DB::table('cates')->where('cname','like','%'.$search.'%')->paginate(2);
+        $cate=DB::table('cates')->where('cname','like','%'.$search.'%')->paginate(10);
         foreach($cate as $k=>$v){
             //统计，出现次数            
             $n = substr_count($v->path,',');

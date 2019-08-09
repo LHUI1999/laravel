@@ -88,6 +88,7 @@
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
+
                                         <button style="margin-top: 40px" type="submit" class="am-btn am-btn-danger">保存</button>
                                         
                                         <a href="/home/address" class="am-close am-btn am-btn-danger" style="margin-top: 40px" data-am-modal-close>取消</a> 
@@ -97,6 +98,7 @@
                             <a href="/home/address">
                                 <!-- <button type="reset" class="am-btn am-btn-danger" style="margin-left:272px;margin-top:-50px;">取消</button> -->
                             </a>
+
                         </div>
 
                     </div>
