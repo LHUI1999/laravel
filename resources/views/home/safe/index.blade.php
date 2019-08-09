@@ -1,6 +1,12 @@
 @extends('home.layout.index')
 @section('content')
 
+<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/h/css/infstyle.css" rel="stylesheet" type="text/css">
+
 
 <div class="center">
 			<div class="col-main">
@@ -201,4 +207,6 @@
 
 			</aside>
 		</div>
+		@include('home.layout.footer')
+		
 @endsection

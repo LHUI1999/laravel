@@ -1,6 +1,10 @@
 @extends('home.layout.index')
 @section('content')
-<link href="/h/css/systyle.css" rel="stylesheet" type="text/css">
+
+		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/h/css/systyle.css" rel="stylesheet" type="text/css">
+
 
 <div class="nav-table">
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
@@ -449,4 +453,6 @@
 			<li><a href="home/shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>	
 			<li class="active"><a href="index.html"><i class="am-icon-user"></i>我的</a></li>					
 		</div>
-@endsection
+		@include('home.layout.footer')
+
+		@endsection

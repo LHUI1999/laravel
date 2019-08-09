@@ -1,5 +1,9 @@
 @extends('home.layout.index')
 @section('content')
+<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="/h/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link href="/h/css/optstyle.css" rel="stylesheet" type="text/css" />
+		<link href="/h/css/jsstyle.css" rel="stylesheet" type="text/css" />
 		<link href="/h/css/cartstyle.css" rel="stylesheet" type="text/css" />
 <div id="cartTable">
 					@if(!$data)	
@@ -38,7 +42,7 @@
 									<li class="td td-item">
 										<div class="item-pic">
 											<a href="#" target="_blank" data-title="{{$v->title}}" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="/uploads/{{$v->pic->pic}}" class="itempic J_ItemImg"></a>
+												<img style="width:80px" src="/uploads/{{$v->pic->pic}}" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
@@ -176,4 +180,6 @@
 					</form>
 				</div>
 			</div>
+		@include('home.layout.footer')
+			
 @endsection

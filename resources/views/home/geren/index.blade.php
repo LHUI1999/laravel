@@ -1,5 +1,13 @@
 @extends('home.layout.index')
 @section('content')
+<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+        <link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+        <link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+        <link href="/h/css/infstyle.css" rel="stylesheet" type="text/css">
+        <script src="/h/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+        <script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
+
 <div class="center">
         <div class="col-main">
             <div class="main-wrap">
@@ -16,7 +24,7 @@
 
                         <div class="filePic">
                             <input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*"> 
-                            <img style="border-radius: 50%;" src="/uploads/{{$_SESSION['user']->profile}}">
+                            <img style="border-radius: 50%;width:100px" src="/uploads/{{$_SESSION['user']->profile}}">
                         </div>
                         <p class="am-form-help">头像</p>
 
@@ -112,4 +120,6 @@
 
         </aside>
     </div>
+        @include('home.layout.footer')
+    
 @endsection

@@ -259,6 +259,7 @@ class SafeController extends Controller
         $code = $request->input('code',0);
         //获取发送到手机的验证码
         $k = $email.'_code';
+        // dd($email);
         $email_code = $_SESSION[$k];
         // dd($email_code);
 

@@ -83,6 +83,7 @@ Route::any('/home/index','Home\IndexController@index');
 
 	//结算
 	Route::get('/home/order/account','Home\OrderController@account');
+	Route::get('/home/order/index','Home\OrderController@index');
 	Route::post('/home/order/pay','Home\OrderController@pay');
 
 	//个人中心
@@ -104,11 +105,18 @@ Route::any('/home/index','Home\IndexController@index');
 	Route::post('/home/safe/sendemail','Home\SafeController@sendemail');
 
 	 //个人信息
+
 	Route::resource('/home/geren','Home\GerenController');
 	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
 
 	//账单
 	Route::get('/home/bill','Home\BillController@index');
+
+	Route::resource('/home/geren','Home\GerenController');
+	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
+	//点击查看商品详情
+	Route::resource('/home/goods', 'Home\GoodsController');
+
 
 	
 

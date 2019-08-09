@@ -1,13 +1,13 @@
 @extends('home.layout.index')
 
 @section('content')
-<!-- <link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+<!-- <link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css"> -->
         <link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
         <link href="/h/css/personal.css" rel="stylesheet" type="text/css">
         <link href="/h/css/addstyle.css" rel="stylesheet" type="text/css">
         <script src="/h/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
-        <script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script> -->
+        <script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 
 <div class="nav-table">
@@ -201,5 +201,6 @@
 
     </aside>
 </div>
+        @include('home.layout.footer')
 
 @endsection

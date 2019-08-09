@@ -1,6 +1,12 @@
 @extends('home.layout.index')
 @section('content')
+<!-- <link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css"> -->
+        <link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
+        <link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+        <link href="/h/css/infstyle.css" rel="stylesheet" type="text/css">
+        <script src="/h/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+        <script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
 <div class="center">
         <div class="col-main">
             <div class="main-wrap">
@@ -82,8 +88,8 @@
                     <a href="#">个人资料</a>
                     <ul>
                         <li class="active"> <a href="/home/center">个人信息</a></li>
-                        <li> <a href="safety.html">安全设置</a></li>
-                        <li> <a href="address.html">收货地址</a></li>
+                        <li> <a href="/home/safe">安全设置</a></li>
+                        <li> <a href="/home/address">收货地址</a></li>
                     </ul>
                 </li>
                 <li class="person">
@@ -116,4 +122,6 @@
 
         </aside>
     </div>
+        @include('home.layout.footer')
+    
 @endsection

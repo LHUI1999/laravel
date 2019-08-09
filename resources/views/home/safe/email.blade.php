@@ -1,5 +1,14 @@
 @extends('home.layout.index')
 @section('content')
+<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/h/css/stepstyle.css" rel="stylesheet" type="text/css">
+
+		<script type="text/javascript" src="/h/js/jquery-1.7.2.min.js"></script>
+		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+
+
 <div class="center">
 			<div class="col-main">
 				<div class="main-wrap">
@@ -32,7 +41,11 @@
 						<div class="am-form-group">
 							<label for="user-email" class="am-form-label">验证邮箱</label>
 							<div class="am-form-content">
-								<input type="email" id='email' value={{$_SESSION['email']}} name="email" id="user-email" placeholder="请输入邮箱地址">
+								<input type="email" id='email' value="<?php 
+								if(isset($_SESSION['email'])){
+									echo $_SESSION['email'];
+									}else{echo '';}
+								?>" name="email" id="user-email" placeholder="请输入邮箱地址">
 							</div>
 						</div>
 						<div class="am-form-group code">
@@ -46,7 +59,11 @@
 							{{csrf_field()}}
 								<div class="am-form-content">
 									<input name="code" type="tel" id="user-code" placeholder="验证码">
-									<input name="email" type="hidden" value="{{$_SESSION['email']}}" id="user-code" >
+									<input type="hidden" id='email' value="<?php 
+								if(isset($_SESSION['email'])){
+									echo $_SESSION['email'];
+									}else{echo '';}
+								?>" name="email" id="user-email" >
 								</div>
 
 							</div>
@@ -150,4 +167,6 @@
                     }
                   }
               </script>
+		@include('home.layout.footer')
+              
 @endsection

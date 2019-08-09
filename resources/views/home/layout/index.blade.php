@@ -8,50 +8,18 @@
 
 		<title>Orange lala</title>
 		<!-- 购物车 -->
-		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="/h/basic/css/demo.css" rel="stylesheet" type="text/css" />
-		<link href="/h/css/optstyle.css" rel="stylesheet" type="text/css" />
-		<link href="/h/css/jsstyle.css" rel="stylesheet" type="text/css" />
+		<!--  -->
 
 		<!-- 结算 -->
-		<script type="text/javascript" src="/h/js/jquery.js"></script>
+		<!-- <script type="text/javascript" src="/h/js/jquery.js"></script>
 		<script type="text/javascript" src="/h/js/address.js"></script>
 
-		<script type="text/javascript" src="http://lib.h-ui.net/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="http://lib.h-ui.net/jquery/1.9.1/jquery.min.js"></script> -->
 
 		<!-- 城市三级连动 -->
 		<script type="text/javascript" src="/h/3/jquery.provincesCity.js"></script>
 		<script type="text/javascript" src="/h/3/provincesData.js"></script>
 
-		<!-- 首页 -->
-		
-		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
-
-		<link href="/h/basic/css/demo.css" rel="stylesheet" type="text/css" />
-
-		<link href="/h/css/hmstyle.css" rel="stylesheet" type="text/css" />
-		<script src="/h/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
-
-
-		<!-- 个人中心 -->
-		<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
-		<title>个人资料</title>
-
-
-		<!-- //安全设置 -->
-		<link href="/h/css/infstyle.css" rel="stylesheet" type="text/css">
-
-		<!-- 手机验证 -->
-		<link href="/h/css/stepstyle.css" rel="stylesheet" type="text/css">
-
-		<!-- 收货地址 -->
-		<link href="/h/css/addstyle.css" rel="stylesheet" type="text/css">
-		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-		<!-- 账单 -->
-		<link href="/h/css/blstyle.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -125,43 +93,18 @@
 				@section('content')
 				@show
 
-				<div class="footer" style="margin-left: auto;">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有</em>
-						</p>
-					</div>
-				</div>
+				
 
 			</div>
+
+			
 
 			<!--操作页面-->
 
 			<div class="theme-popover-mask"></div>
 
 			
-		<!--引导 -->
-		<div class="navCir">
-			<li><a href="home.html"><i class="am-icon-home "></i>首页</a></li>
-			<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
-			<li class="active"><a href="shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>	
-			<li><a href="person/index.html"><i class="am-icon-user"></i>我的</a></li>					
-		</div>
+		
 	</body>
 
 </html>

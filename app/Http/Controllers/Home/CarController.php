@@ -53,19 +53,22 @@ class CarController extends Controller
 
     	//判断商品是否第一次加购
     	if(empty($_SESSION['car'][$id])){
+
     		// 获取对应商品
             $data = DB::table('goods')->where('id',$id)->first();
             $data->pic = DB::table('goods_pic')->select('pic')->where('gid',$data->id)->first();
+
 	    	$data->num = 1;
 	    	$data->xiaoji = ($data->price * $data->num);
-	    	$_SESSION['car'][$id] = $data;
+			$_SESSION['car'][$id] = $data;
+			
 	    	
 	    }else{
 	    	$_SESSION['car'][$id]->num = $_SESSION['car'][$id]->num + 1;
 	    	$_SESSION['car'][$id]->xiaoji = ($_SESSION['car'][$id]->num*$_SESSION['car'][$id]->price);
 	    }
 	    //返回商品列表
-	    return redirect('/home/index');
+	    return back();
     }	
 
     //统计购物车数量
@@ -91,7 +94,7 @@ class CarController extends Controller
     	if(empty($_SESSION['car'])){
     		return back();
     	}else{
-    		dump($_SESSION['car'][$id]);
+    		// dump($_SESSION['car'][$id]);
     		//数量
     		$n = $_SESSION['car'][$id]->num+1;
     		$_SESSION['car'][$id]->num = $n;
@@ -113,7 +116,7 @@ class CarController extends Controller
     			return back();
     			exit;
     		}
-    		dump($_SESSION['car'][$id]);
+    		// dump($_SESSION['car'][$id]);
     		//数量
     		$n = $_SESSION['car'][$id]->num-1;
     		$_SESSION['car'][$id]->num = $n;

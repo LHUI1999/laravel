@@ -108,7 +108,8 @@
 								</div>
 								<div class="clear"></div>
 
-								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+<!-- <<<<<<< HEAD -->
+								<!-- <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
 									@foreach($data as $k => $v)
 									
 									<li>
@@ -128,8 +129,77 @@
 									@endforeach
 								
 								</ul>
-							</div>
+							</div> -->
 							
+<!-- ======= -->
+			<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+				@foreach($data as $k => $v)
+				
+				<li>
+					<div class="i-pic limit">
+					<a href="/home/goods?id={{ $v->id }}"><img src="/uploads/{{$v->goodspic->pic}}"></a>											
+						<p class="title fl">{{$v->title}}</p>
+						<p class="price fl">
+							<b>¥</b>
+							<strong>{{$v->price}}</strong>
+						</p>
+						<p class="number fl">
+							销量<span>1110</span>
+						</p>
+					</div>
+				</li>
+				@endforeach
+			
+			</ul>
+		</div>
+							<div class="search-side">
+
+								<div class="side-title">
+									经典搭配
+								</div>
+
+								<li>
+									<div class="i-pic check">
+										<img src="/h/images/cp.jpg">
+										<p class="check-title">萨拉米 1+1小鸡腿</p>
+										<p class="price fl">
+											<b>¥</b>
+											<strong>29.90</strong>
+										</p>
+										<p class="number fl">
+											销量<span>1110</span>
+										</p>
+									</div>
+								</li>
+								<li>
+									<div class="i-pic check">
+										<img src="/h/images/cp2.jpg">
+										<p class="check-title">ZEK 原味海苔</p>
+										<p class="price fl">
+											<b>¥</b>
+											<strong>8.90</strong>
+										</p>
+										<p class="number fl">
+											销量<span>1110</span>
+										</p>
+									</div>
+								</li>
+								<li>
+									<div class="i-pic check">
+										<img src="/h/images/cp.jpg">
+										<p class="check-title">萨拉米 1+1小鸡腿</p>
+										<p class="price fl">
+											<b>¥</b>
+											<strong>29.90</strong>
+										</p>
+										<p class="number fl">
+											销量<span>1110</span>
+										</p>
+									</div>
+								</li>
+
+							</div>
+<!-- >>>>>>> origin/songxin -->
 							<div class="clear"></div>
 							<!--分页 -->
 							<ul class="am-pagination am-pagination-right">
@@ -317,4 +387,6 @@
 		</script>
 		<script type="text/javascript" src="/h/basic/js/quick_links.js"></script>
 		<div class="theme-popover-mask"></div>
+		@include('home.layout.footer')
+		
 @endsection
