@@ -143,6 +143,18 @@ Route::get('/home/address/destroy/{id}','Home\AddressController@destroy');
 Route::get('/home/address/{id}/edit','Home\AddressController@edit');
 Route::get('/home/address/update/{id}','Home\AddressController@update');
 
+// 订单管理
+Route::get('/home/order','Home\OrderController@index');
+
+// 优惠券
+Route::get('/home/coupon','Home\CouponController@index');
+
+// 新闻
+Route::get('/home/news/new1','Home\NewsController@new1');
+Route::get('/home/news/new2','Home\NewsController@new2');
+Route::get('/home/news/new3','Home\NewsController@new3');
+Route::get('/home/news/new4','Home\NewsController@new4');
+Route::get('/home/news/new5','Home\NewsController@new5');
 
 
 

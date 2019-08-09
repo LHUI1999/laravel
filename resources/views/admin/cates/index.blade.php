@@ -89,7 +89,7 @@
 			</tbody>
 		</table>
 		<div id="page_page">
-
+			{{ $cate->appends($requests)->links() }}
 		</div>
 				
 	</div>

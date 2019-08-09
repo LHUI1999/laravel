@@ -134,15 +134,19 @@
 						<div class="demo">
 
 							<ul>
-								<li class="title-first"><a target="_blank" href="#">
-									<img src="/h/images/TJ2.jpg">
-									<span>[特惠]</span>商城爆品1分秒								
-								</a></li>
-								<li class="title-first"><a target="_blank" href="#">
-									<span>[公告]</span>商城与广州市签署战略合作协议
-								     <img src="/h/images/TJ.jpg">
-								     <p>XXXXXXXXXXXXXXXXXX</p>
-							    </a></li>
+								<li class="title-first">
+									<a target="_blank" href="/home/news/new4">
+										<img src="/h/images/TJ2.jpg">
+										<span>[公告]</span>东北大米征服半个中国								
+									</a>
+								</li>
+								<li class="title-first">
+									<a target="_blank" href="/home/news/new5">
+										<span>[安全]</span>卖家注意：风险通报！
+										<img src="/h/images/TJ.jpg">
+										<p>XXXXXXXXXXXXXXXXXX</p>
+									</a>
+								</li>
 							    
 						<div class="mod-vip">
 
@@ -185,9 +189,9 @@
 							<div class="clear"></div>	
 						</div>																    
 							    
-								<li><a target="_blank" href="#"><span>[特惠]</span>洋河年末大促，低至两件五折</a></li>
-								<li><a target="_blank" href="#"><span>[公告]</span>华北、华中部分地区配送延迟</a></li>
-								<li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
+								<li><a target="_blank" href="/home/news/new1"><span>[特惠]</span>疯狂购物城</a></li>
+								<li><a target="_blank" href="/home/news/new2"><span>[公益]</span>豆腐妈妈公益项目</a></li>
+								<li><a target="_blank" href="/home/news/new3"><span>[公告]</span>盲盒背后的千万级市场</a></li>
 								
 							</ul>
                         <div class="advTip"><img src="/h/images/advTip.jpg"></div>

@@ -80,15 +80,13 @@
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="submit" class="am-btn am-btn-danger">保存</button>
+                                        <button type="submit" class="am-btn am-btn-danger" style="margin-left:1px;margin-top:25px;">保存</button>
                                         
-                                        {{-- <a href="" class="am-close am-btn am-btn-danger" data-am-modal-close>取消</a> --}}
+                                        <a href="/home/address" class="am-btn am-btn-danger" data-am-modal-close style="margin-top:25px;">取消</a>
                                     </div>
                                 </div>
                             </form>
-                            <a href="/home/address">
-                                <button type="reset" class="am-btn am-btn-danger" style="margin-left:250px;margin-top:-53px;">取消</button>
-                            </a>
+                            
                         </div>
 
                     </div>

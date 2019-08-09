@@ -15,7 +15,7 @@ class IndexController extends Controller
     public function __construct()
     {
         // 引入类文件
-        require 'E:/xampp/htdocs/laravel/public/pscws4/pscws4.class.php';
+        require 'D:/xampp/htdocs/laravel/public/pscws4/pscws4.class.php';
         // 实例化
         @$this->cws = new \PSCWS4;
         //设置字符集
@@ -53,6 +53,7 @@ class IndexController extends Controller
             $v->sub = self::getPidCatesData($v->id);
 
         }
+        // dd($data);
         return $data;
     }
 
@@ -66,6 +67,7 @@ class IndexController extends Controller
         // $this->dataWord();
         //接受搜索参数
         $search = $request->input('search','');
+
         //中文分词start
         if(!empty($search)){
             $gid = DB::table('view_goods_word')->select('gid')->where('word',$search)->get();
@@ -75,6 +77,7 @@ class IndexController extends Controller
                 $gids[] = $v->gid;
             }
             $data2 = Goods::whereIn('id',$gids)->get();
+            
              return view('home.list.index',['data'=>$data2,'countcar'=>$count]);
         }else{
             return view('home.index.index');

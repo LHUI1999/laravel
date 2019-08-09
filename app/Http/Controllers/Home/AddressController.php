@@ -80,11 +80,11 @@ class AddressController extends Controller
         if($res){
             // 提交事务
             DB::commit();
-            return redirect('home/address')->with('success','添加成功');
+            echo "<script>alert('添加成功');location.href='/home/address'</script>";
         }else{
             // 回滚事务
             DB::rollback();
-            return back()->with('error','添加失败');
+            return back();
         }
         
     }
@@ -147,11 +147,11 @@ class AddressController extends Controller
         if($res){
             // 提交事务
             DB::commit();
-            return redirect('home/address')->with('success','修改成功');
+            echo "<script>alert('修改成功');location.href='/home/address'</script>";
         }else{
             // 事务回滚
             DB::rollback();
-            return back()->with('error','修改失败');
+            return back();
         }
     }
 
@@ -169,11 +169,11 @@ class AddressController extends Controller
         if($res){
             // 提交事务
             DB::commit();
-            return redirect('home/address')->with('success','删除成功');
+            echo "<script>alert('删除成功');location.href='/home/address'</script>";
         }else{
             // 事务回滚
             DB::rollback();
-            return back()->with('error','删除失败');
+            return back();
         }
     }
     

@@ -50,6 +50,14 @@
 		<!-- 收货地址 -->
 		<link href="/h/css/addstyle.css" rel="stylesheet" type="text/css">
 		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+
+		<!-- 订单管理 -->		
+		<link href="/h/css/orstyle.css" rel="stylesheet" type="text/css">
+
+		<!-- 优惠券 -->
+		<link href="/h/css/cpstyle.css" rel="stylesheet" type="text/css">
+
+
 	</head>
 
 	<body>
