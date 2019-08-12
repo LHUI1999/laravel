@@ -228,7 +228,7 @@
 								<h4>开年福利篇</h4>
 							</div>
 							<div class="recommendationMain one">
-								<img src="/h/images/tj.png ">
+								<a href="/home/tuijian"><img src="/h/images/tj.png "></a>
 							</div>
 						</div>						
 						<div class="am-u-sm-4 am-u-lg-3 ">
@@ -237,7 +237,10 @@
 								<h4>让爱早回家</h4>
 							</div>
 							<div class="recommendationMain two">
-								<img src="/h/images/tj1.png ">
+								<a href="/home/tunhuo">
+									<img src="/h/images/tj1.png ">
+								</a>
+								
 							</div>
 						</div>
 						<div class="am-u-sm-4 am-u-lg-3 ">
@@ -246,7 +249,10 @@
 								<h4>甜甜蜜蜜</h4>
 							</div>
 							<div class="recommendationMain three ">
-								<img src="/h/images/tj2.png ">
+								<a href="/home/langman">
+									<img src="/h/images/tj2.png ">
+
+								</a>
 							</div>
 						</div>
 

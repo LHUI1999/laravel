@@ -42,21 +42,21 @@
 									</li>
 									<li class="td td-item">
 										<div class="item-pic">
-											<a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												<img src="/h/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+											<a href="#" target="_blank" data-title="" class="J_MakePoint" data-point="tbcart.8.12">
+												<img src="/uploads/{{ $v->pic->pic }}" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
-												<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v->title}}</a>
+												<a href="#" target="_blank" title="" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v->title}}</a>
 											</div>
 										</div>
 									</li>
 									<li class="td td-info">
 										<div class="item-props item-props-can">
-											<span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i>
+											{{-- <span class="sku-line">颜色：</span> --}}
+											{{-- <span class="sku-line">包装：裸装</span> --}}
+											{{-- <span tabindex="0" class="btn-edit-sku theme-login">修改</span>
+											<i class="theme-login am-icon-sort-desc"></i> --}}
 										</div>
 									</li>
 									<li class="td td-price">
@@ -90,9 +90,11 @@
 									<li class="td td-op">
 										<div class="td-inner">
 											<a title="移入收藏夹" class="btn-fav" href="#">
-                  移入收藏夹</a>
+												移入收藏夹
+											</a>
 											<a href="/home/car/delete?id={{$v->id}}" data-point-url="#" class="delete">
-                  删除</a>
+												  删除
+											</a>
 										</div>
 									</li>
 								</ul>
@@ -108,8 +110,29 @@
 						<div class="cart-checkbox">
 							<input class="check-all check" id="J_SelectAllCbx2" name="select-all" value="true" type="checkbox">
 							<label for="J_SelectAllCbx2"></label>
+							<button type="button">全选</button>
+							<button type="button">取消</button>
 						</div>
-						<span>全选</span>
+					
+						
+						<script type="text/javascript">
+							var btns=document.getElementsByTagName('button');
+							var btnq=btns[0];
+							var btnx=btns[1];
+							var inputs=document.getElementsByTagName('input');
+							btnq.onclick=function(){
+								for(var i=0;i<inputs.length;i++){
+									inputs[i].checked=true;
+								}
+							}
+							//全部取消
+							btnx.onclick=function(){
+								//遍历选项
+								for (var i = 0; i < inputs.length; i++) {
+									inputs[i].checked=false;
+								};
+							};
+						</script>
 					</div>
 					<div class="operations">
 						<a href="" hidefocus="true" class="deleteAll">删除</a>
@@ -118,7 +141,7 @@
 					<div class="float-bar-right">
 						<div class="amount-sum">
 							<span class="txt">已选商品</span>
-							<em id="J_SelectedItemsCount">0</em><span class="txt">件</span>
+							<em id="J_SelectedItemsCount"></em><span class="txt">件</span>
 							<div class="arrow-box">
 								<span class="selected-items-arrow"></span>
 								<span class="arrow"></span>
@@ -146,20 +169,20 @@
 
 						<div class="theme-signin-left">
 
-							<li class="theme-options">
+							{{-- <li class="theme-options">
 								<div class="cart-title">颜色：</div>
 								<ul>
 									<li class="sku-line selected">12#川南玛瑙<i></i></li>
 									<li class="sku-line">10#蜜橘色+17#樱花粉<i></i></li>
 								</ul>
-							</li>
-							<li class="theme-options">
+							</li> --}}
+							{{-- <li class="theme-options">
 								<div class="cart-title">包装：</div>
 								<ul>
 									<li class="sku-line selected">包装：裸装<i></i></li>
 									<li class="sku-line">两支手袋装（送彩带）<i></i></li>
 								</ul>
-							</li>
+							</li> --}}
 							<div class="theme-options">
 								<div class="cart-title number">数量</div>
 								<dd>

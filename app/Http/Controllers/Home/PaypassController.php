@@ -18,7 +18,7 @@ class PaypassController extends Controller
     }
     public function store(Request $request)
     {
-    	dump($request->all());
+    	// dump($request->all());
     	if(strlen($request->input('num'))!=6){
     		echo "<script>alert('密码长度为六位');location.href='/home/paypass'</script>";
     		exit;

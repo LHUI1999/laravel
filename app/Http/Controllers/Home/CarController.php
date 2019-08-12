@@ -5,16 +5,20 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Models\Goods;
 
 class CarController extends Controller
 {
 
 	//购物车列表页面
-    public function index()
+    public function index(Request $request)
     {
+				
     	// $_SESSION['car']=null;
     	if(!empty($_SESSION['car'])){
-    		$data = $_SESSION['car'];
+				$data = $_SESSION['car'];
+				// dump($data);
+		
     	}else{
     		$data = [];
     		// return view('home.car.empty');
@@ -36,9 +40,10 @@ class CarController extends Controller
     	if(empty($_SESSION['car'][$id])){
     		//获取对应商品
 			$data = DB::table('goods')->select('id','title','price')->where('id',$id)->first();
-			
-	    	$data->num = 1;
-	    	$data->xiaoji = ($data->price * $data->num);
+			$data->pic=DB::table('goods_pic')->select('pic')->where('gid',$data->id)->first();
+			// dump($data->pic);
+			$data->num = 1;
+			$data->xiaoji = ($data->price * $data->num);
 			$_SESSION['car'][$id] = $data;
 			
 	    	
