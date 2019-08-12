@@ -14,7 +14,7 @@
    
             {{-- 商品 --}}
             <div>
-                <div style='width:1515px;height:3500px;background:#649DD3;'>
+                <div style='width:1515px;height:3352px;background:#649DD3;'>
                     <div>
                         <img src="/h/images/tun1.png" style="width:900px;float:left;margin-left:323px;" alt="">
                         <img src="/h/images/tun2.jpg" style="width:900px;float:left;margin-left:323px;" alt="">

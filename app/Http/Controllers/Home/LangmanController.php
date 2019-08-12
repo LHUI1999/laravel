@@ -24,7 +24,7 @@ class LangmanController extends Controller
         // $pic=DB::table('goods_pic')->where('gid',$data[0]->id)->paginate(1);
         // dump($pic);
         foreach ($data as $k=>$v) {
-            $pic=DB::table('goods_pic')->where('gid',$data[0]->id)->paginate(6);
+            $pic=DB::table('goods_pic')->where('gid',$data[0]->id)->paginate(2);
             $v->pic=$pic[0]->pic;
 
         }

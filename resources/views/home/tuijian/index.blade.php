@@ -13,7 +13,7 @@
             </div>
          
             <div>
-                <div style='width:1500px;height:4495px;background:#E6E2D9;'>
+                <div style='width:1500px;height:4428px;background:#E6E2D9;'>
                     <div>
                         <div style='background:#EEEBE2;width:908px;height:300px;float:left;margin-left:304px;margin-top:50px;border-radius:18px;border:3px solid #B88E66;'>
                             <div>

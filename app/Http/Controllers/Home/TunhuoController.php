@@ -23,7 +23,7 @@ class TunhuoController extends Controller
         // dump($data);
         
         foreach ($data as $k=>$v) {
-            $pic=DB::table('goods_pic')->where('gid',$data[0]->id)->paginate(6);
+            $pic=DB::table('goods_pic')->where('gid',$data[0]->id)->paginate(3);
             $v->pic=$pic[0]->pic;
 
         }

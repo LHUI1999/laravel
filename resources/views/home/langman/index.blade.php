@@ -15,13 +15,13 @@
 
             {{-- 商品 --}}
             <div>
-                <div style='width:1515px;height:846px;background:#FDC9CB;'>
+                <div style='width:1515px;height:539px;background:#FDC9CB;'>
                     <div>
                         <img src="/h/images/lang1.jpg" style="width:794px;float:left;margin-left:357px;" alt="">
                         @foreach ($data as $k=>$v)
                             
                         
-                        <div style="width:1100px;background:#FDC9CB;height:691px;float:left;margin-left:214px;margin-top:74px;">
+                        <div style="width:1100px;background:#FDC9CB;height:385px;float:left;margin-left:214px;margin-top:74px;">
                             <div style="float:left;margin-left:13px;margin-top:15px;width:499px;height:239px;background:white;border:3px solod #ccc;">
                                 <img style="width:165px;height:165px;float:left;margin-left:41px;margin-top:36px;" src="/uploads/{{ $v->pic }}" alt="">
                                 <div style="background:white;width:194px;height:50px;float:left;margin-left:63px;margin-top:43px;">
