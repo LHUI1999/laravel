@@ -173,6 +173,14 @@ Route::get('/home/news/new3','Home\NewsController@new3');
 Route::get('/home/news/new4','Home\NewsController@new4');
 Route::get('/home/news/new5','Home\NewsController@new5');
 
+// 收藏
+Route::get('/home/collection','Home\CollectionController@index');
+Route::get('/home/collection/add','Home\CollectionController@add');
+Route::get('/home/collection/delete','Home\CollectionController@delete');
+
+
+
+
 
 
 
