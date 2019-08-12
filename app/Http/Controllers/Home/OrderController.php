@@ -8,9 +8,11 @@ use App\Http\Controllers\Home\CarController;
 
 use App\Models\Goods;
 use App\Models\Address;
+use App\Models\Orders;
 
 use App\Models\Orderinfo;
 use Illuminate\Support\Facades\DB;
+use Hash;
 
 
 class OrderController extends Controller
@@ -24,25 +26,16 @@ class OrderController extends Controller
                     $data[$k] = $v;
                 }
             }
-    		dump($data);
+
     	}else{
     		$data = [];
     		// return view('home.car.empty');
     	}
         if(empty($_SESSION['address'])){
-            $_SESSION['address'] = Address::where('uid',$_SESSION['user']->id)->first();
-            dump($_SESSION['address']);
-        }else{
-            $_SESSION['address']=[];
+            $_SESSION['address'] = DB::table('address')->where('uid',$_SESSION['user']->id)->first();
+            
         }
-        
-        // if(!isset($_SESSION['adderss'])){
-        // $_SESSION['address']=[];
 
-
-        // }else{
-        //     dump($_SESSION['address']);
-        // }
     	//总价格
     	$pricecount = CarController::priceCount();
         //收货地址
@@ -52,13 +45,9 @@ class OrderController extends Controller
 
     public function pay(Request $request)
     {
-    	//检测登录
-    	// if(session('home_login')){
-
-    	// }
-
-    	//检查地址
-    	dump($request->all());
+        //设置单号
+        $order = rand(100000000,999999999);
+        return view('home.order.pay',['order'=>$order]);
 
     }
 
@@ -76,9 +65,52 @@ class OrderController extends Controller
     {
         $address = Address::where('id',$request->id)->first();
         // dd($address);
-        $_SESSION['address']=$address;
+        // $_SESSION['address']=Address::where('id',$request->id)->first();
+        $_SESSION['address']=DB::table('address')->where('id',$request->id)->first();
         // dd($_SESSION['address']);
         return back();
     }   
+    //支付成功
+    public function success(Request $request)
+    {   
+        $pass = DB::table('users_pay')->where('uid',$_SESSION['user']->id)->first();
+        if($request->pay == null){
+             echo "<script>alert('请选择支付方式')</script>";
+            return redirect('/home/order/account');
+        }
+        if(!Hash::check($request->pass,$pass->pay)){
+            echo "<script>alert('支付密码不正确')</script>";
+            return redirect('/home/order/account');
+        }
+        //价格
+        $pricecount = CarController::priceCount();
+        //数量
+         //已选商品
+        $goods = 0;
+        foreach($_SESSION['car'] as $k=> $v)
+        {
+            if($v->select==1){
+                $goods+=$v->num;
+            }
+        }
+        $order = new Orders;
+        $order->order = $request->input('order');
+        $order->uid = $_SESSION['user']->id;
+        $order->price = $pricecount;
+        $order->num = $goods;
+        $order->addr = $_SESSION['address']->addr;
+        $order->uname = $_SESSION['address']->uname;
+        $order->phone = $_SESSION['address']->phone;
+        $order->pay = $request->pay;
+        if($order->save()){
+            return redirect('/home/order/over');
+        }
+    }
+    public function over()
+    {
+        //价格
+        $pricecount = CarController::priceCount();
+        return view('home.order.success',['pricecount'=>$pricecount]);
+    }
 
 }

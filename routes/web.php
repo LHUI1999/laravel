@@ -90,6 +90,8 @@ Route::any('/home/index','Home\IndexController@index');
 	Route::get('/home/order/index','Home\OrderController@index');
 	Route::post('/home/order/pay','Home\OrderController@pay');
 	Route::get('/home/order/addr','Home\OrderController@addr');
+	Route::post('/home/order/success','Home\OrderController@success');
+	Route::get('/home/order/over','Home\OrderController@over');
 
 	//个人中心
 	Route::get('/home/center','Home\CenterController@index');

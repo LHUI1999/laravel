@@ -21,7 +21,7 @@
 							<div class="per-border"></div>
 							<a href="/home/order/addr?id={{$v->id}}">
 							
-							<li   class="user-addresslist ">
+							<li   class="user-addresslist @if($_SESSION['address']->id == $v->id) defaultAddr @endif ">
 								
 								<div class="address-left">									<div class="user DefaultAddr">
 										<span class="buy-address-detail">   
@@ -59,16 +59,7 @@
 
 					<div class="clear"></div>
 
-					<!--支付方式-->
-					<div class="logistics">
-						<h3>选择支付方式</h3>
-						<ul class="pay-list">
-							<li class="pay card"><img src="/h/images/wangyin.jpg">银联<span></span></li>
-							<li class="pay qq"><img src="/h/images/weizhifu.jpg">微信<span></span></li>
-							<li class="pay taobao"><img src="/h/images/zhifubao.jpg">支付宝<span></span></li>
-						</ul>
-					</div>
-					<div class="clear"></div>
+					
 
 					<!--订单 -->
 					<div class="concent">
@@ -112,12 +103,7 @@
 														</div>
 													</div>
 												</li>
-												<!-- <li class="td td-info">
-													<div class="item-props">
-														<span class="sku-line">颜色：10#蜜橘色+17#樱花粉</span>
-														<span class="sku-line">包装：两支手袋装（送彩带）</span>
-													</div>
-												</li> -->
+
 												<li class="td td-price">
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
@@ -166,7 +152,7 @@
 								<div class="order-user-info">
 									<div id="holyshit257" class="memo">
 										<label>买家留言：</label>
-										<input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close">
+										<input type="text" name="liuyan" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close">
 										<div class="msg hidden J-msg">
 											<p class="error">最多输入500个字符</p>
 										</div>
@@ -201,18 +187,16 @@
 											<p class="buy-footer-address">
 												<span class="buy-line-title buy-line-title-type">寄送至：</span>
 												<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-												<span class="city">武汉</span>市
-												<span class="dist">洪山</span>区
-												<span class="street">雄楚大道666号(中南财经政法大学)</span>
+								   					{{$_SESSION['address']->addr}}
+												
 												</span>
 												
 											</p>
 											<p class="buy-footer-address">
 												<span class="buy-line-title">收货人：</span>
 												<span class="buy-address-detail">   
-                                         <span class="buy-user">{{$_SESSION['address']->id}} </span>
-												<span class="buy-phone"></span>
+                                         <span class="buy-user">{{$_SESSION['address']->uname}} </span>
+												<span class="buy-phone">{{$_SESSION['address']->phone}}</span>
 												</span>
 											</p>
 										</div>
@@ -223,7 +207,7 @@
 
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
-											<a id="J_Go" href="success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+											<button><a id="J_Go" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a></button>
 										</div>
 									</div>
 									<div class="clear"></div>
