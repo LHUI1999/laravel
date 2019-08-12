@@ -19,14 +19,35 @@ class OrderController extends Controller
     public function account()
     {
     	if(!empty($_SESSION['car'])){
-    		$data = $_SESSION['car'];
+            foreach($_SESSION['car'] as $k=>$v){
+                if($v->select == '1'){
+                    $data[$k] = $v;
+                }
+            }
+    		dump($data);
     	}else{
     		$data = [];
     		// return view('home.car.empty');
     	}
+        if(empty($_SESSION['address'])){
+            $_SESSION['address'] = Address::where('uid',$_SESSION['user']->id)->first();
+            dump($_SESSION['address']);
+        }else{
+            $_SESSION['address']=[];
+        }
+        
+        // if(!isset($_SESSION['adderss'])){
+        // $_SESSION['address']=[];
+
+
+        // }else{
+        //     dump($_SESSION['address']);
+        // }
     	//总价格
     	$pricecount = CarController::priceCount();
-    	return view('home.order.account',['data'=>$data,'pricecount'=>$pricecount]);
+        //收货地址
+        $address = Address::where('uid',$_SESSION['user']->id)->get();
+    	return view('home.order.account',['data'=>$data,'pricecount'=>$pricecount,'address'=>$address]);
     }
 
     public function pay(Request $request)
@@ -50,5 +71,14 @@ class OrderController extends Controller
         
         return view('home.order.account',['data'=>$data,'address'=>$address]);
     }
+
+    public function addr(Request $request)
+    {
+        $address = Address::where('id',$request->id)->first();
+        // dd($address);
+        $_SESSION['address']=$address;
+        // dd($_SESSION['address']);
+        return back();
+    }   
 
 }

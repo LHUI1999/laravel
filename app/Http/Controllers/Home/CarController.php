@@ -17,10 +17,57 @@ class CarController extends Controller
         }else{
             $pricecount = 0;
             foreach($_SESSION['car'] as $k => $v){
-                $pricecount += $v->xiaoji;
+                if($v->select ==1){
+                    $pricecount += $v->xiaoji;
+                }
+
             }
         }
         return $pricecount;
+    }
+
+    public function select(Request $request)
+    {
+        if($request->select=='0'){
+            $_SESSION['car'][$request->id]->select=1;
+
+        }else{
+            $_SESSION['car'][$request->id]->select=0;
+
+        }
+        //全选是否勾上
+        foreach($_SESSION['car'] as $k=>$v)
+        {
+            if($v->select =='0'){
+            $_SESSION['selectall'] = 0;
+
+            }
+        }
+
+        return back();
+    }
+    //全选
+    public function selectall(Request $request)
+    {
+        if($request->select=='1'){
+            foreach($_SESSION['car'] as $k=>$v)
+            {
+                $v->select = 0;
+            }
+        $_SESSION['selectall'] = 0;
+
+        }else{
+            foreach($_SESSION['car'] as $k=>$v)
+            {
+                $v->select = 1;
+
+            }
+
+            $_SESSION['selectall'] = 1;
+
+        }
+        
+        return back();
     }
 
 
@@ -34,12 +81,18 @@ class CarController extends Controller
            
     	}else{
     		$data = [];
-    		// return view('home.car.empty');
     	}
+        //已选商品
+        $goods = 0;
+        foreach($_SESSION['car'] as $k=> $v)
+        {
+            if($v->select==1){
+                $goods+=$v->num;
+            }
+        }
     	//总价格
     	$pricecount = self::priceCount();
-        // dd($pricecount);
-    	return view('home.car.index',['data'=>$data,'pricecount'=>$pricecount]);
+    	return view('home.car.index',['data'=>$data,'pricecount'=>$pricecount,'goods'=>$goods]);
     }
     //加入购物车
     public function add(Request $request)
@@ -60,12 +113,15 @@ class CarController extends Controller
 
 	    	$data->num = 1;
 	    	$data->xiaoji = ($data->price * $data->num);
-			$_SESSION['car'][$id] = $data;
+            $_SESSION['car'][$id] = $data;
+			$_SESSION['car'][$id]->select = 0;
 			
 	    	
 	    }else{
 	    	$_SESSION['car'][$id]->num = $_SESSION['car'][$id]->num + 1;
 	    	$_SESSION['car'][$id]->xiaoji = ($_SESSION['car'][$id]->num*$_SESSION['car'][$id]->price);
+            $_SESSION['car'][$id]->select = 0;
+
 	    }
 	    //返回商品列表
 	    return back();

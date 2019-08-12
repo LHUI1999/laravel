@@ -80,11 +80,16 @@ Route::any('/home/index','Home\IndexController@index');
 	Route::get('/home/car/descnum','Home\CarController@descNum');
 	//删除商品
 	Route::get('/home/car/delete','Home\CarController@delete');
+	//选择商品
+	Route::get('/home/car/select','Home\CarController@select');
+	//选择所有商品
+	Route::get('/home/car/selectall','Home\CarController@selectall');
 
 	//结算
 	Route::get('/home/order/account','Home\OrderController@account');
 	Route::get('/home/order/index','Home\OrderController@index');
 	Route::post('/home/order/pay','Home\OrderController@pay');
+	Route::get('/home/order/addr','Home\OrderController@addr');
 
 	//个人中心
 	Route::get('/home/center','Home\CenterController@index');

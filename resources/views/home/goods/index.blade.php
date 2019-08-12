@@ -233,11 +233,11 @@
                             <a><span class="am-icon-heart am-icon-fw">收藏</span></a>
                             
                             </div>
-                            <li>
+                            <!-- <li>
                                 <div class="clearfix tb-btn tb-btn-buy theme-login">
                                     <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="/home/order/index?id={{$goods[0]->id}}">立即购买</a>
                                 </div>
-                            </li>
+                            </li> -->
                             <li>
                                 <div class="clearfix tb-btn tb-btn-basket theme-login">
                                     <a id="LikBasket" title="加入购物车" href="/home/car/add?id={{$goods[0]->id}}"><i></i>加入购物车</a>

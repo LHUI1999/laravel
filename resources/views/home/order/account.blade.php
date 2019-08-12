@@ -19,24 +19,21 @@
 						<ul>							
 							@foreach($address as $k=>$v)
 							<div class="per-border"></div>
+							<a href="/home/order/addr?id={{$v->id}}">
 							
-							<li   class="user-addresslist">
-								<input type="hidden" id="addr" name="address" value="{{$v->id}}">
-								<div class="address-left">
-									<div class="user DefaultAddr">
-
+							<li   class="user-addresslist ">
+								
+								<div class="address-left">									<div class="user DefaultAddr">
 										<span class="buy-address-detail">   
-                   <span class="buy-user">{{$v->uname}} </span>
-										<span class="buy-phone">{{$v->phone}}</span>
+                   							<span class="buy-user">{{$v->uname}} </span>
+											<span class="buy-phone">{{$v->phone}}</span>
 										</span>
 									</div>
 									<div class="default-address DefaultAddr">
 										<span class="buy-line-title buy-line-title-type">收货地址：</span>
 										<span class="buy--address-detail">
 								  		{{$v->addr}}
-										</span>
-
-										
+										</span>	
 									</div>
 									<ins class="deftip hidden">默认地址</ins>
 								</div>
@@ -44,18 +41,15 @@
 									<span class="am-icon-angle-right am-icon-lg"></span>
 								</div>
 								<div class="clear"></div>
-
 								<div class="new-addr-btn">
-									<input type="radio" name="addr" value="{{$v->id}}">
-									<span class="new-addr-bar">|</span>
-
 									<a href="#">编辑</a>
 									<span class="new-addr-bar">|</span>
 									<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
 								</div>
 
 							</li>
-							<!-- </a> -->
+							</a>
+
 							@endforeach
 
 						</ul>
@@ -103,17 +97,18 @@
 							</div>
 							<div class="clear"></div>
 								<div id="J_Bundle_s_1911116345_1_0" class="bundle  bundle-last">
+									@foreach($data as $k => $v)
 									<div class="bundle-main">
 										<ul class="item-content clearfix">
 											<div class="pay-phone">
 												<li class="td td-item">
 													<div class="item-pic">
 														<a href="#" class="J_MakePoint">
-															<img style="width:80px" src="/uploads/{{$data->goodspic->pic}}" class="itempic J_ItemImg"></a>
+															<img style="width:80px" src="/uploads/{{$v->pic->pic}}" class="itempic J_ItemImg"></a>
 													</div>
 													<div class="item-info">
 														<div class="item-basic-info">
-															<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$data->title}}</a>
+															<a href="#" target="_blank" title="$v->title" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v->title}}</a>
 														</div>
 													</div>
 												</li>
@@ -126,7 +121,7 @@
 												<li class="td td-price">
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
-															<em class="J_Price price-now">{{$data->price}}</em>
+															<em class="J_Price price-now">{{$v->price}}</em>
 														</div>
 													</div>
 												</li>
@@ -137,14 +132,14 @@
 													<div class="item-amount ">
 														<span class="phone-title">购买数量</span>
 														<div class="sl">
-															1
+															{{$v->num}}
 														</div>
 													</div>
 												</div>
 											</li>
 											<li class="td td-sum">
 												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number">{{$data->price}}</em>
+													<em tabindex="0" class="J_ItemSum number">{{$v->price*$v->num}}</em>
 												</div>
 											</li>
 											<li class="td td-oplist">
@@ -160,6 +155,8 @@
 										<div class="clear"></div>
 
 									</div>
+									@endforeach
+
 							
 							</div>
 							<div class="clear"></div>
@@ -185,7 +182,7 @@
 							<!--含运费小计 -->
 							<div class="buy-point-discharge ">
 								<p class="price g_price ">
-									合计（含运费） <span>¥</span><em class="pay-sum">244.00</em>
+									合计（含运费） <span>¥</span><em class="pay-sum">{{$pricecount}}</em>
 								</p>
 							</div>
 
@@ -195,10 +192,10 @@
 									<div class="box">
 										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
 											<span class="price g_price ">
-                                    <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">244.00</em>
+                                    <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">{{$pricecount}}</em>
 											</span>
 										</div>
-
+										@if($_SESSION['address'])
 										<div id="holyshit268" class="pay-address">
 
 											<p class="buy-footer-address">
@@ -214,11 +211,14 @@
 											<p class="buy-footer-address">
 												<span class="buy-line-title">收货人：</span>
 												<span class="buy-address-detail">   
-                                         <span class="buy-user">艾迪 </span>
-												<span class="buy-phone">15871145629</span>
+                                         <span class="buy-user">{{$_SESSION['address']->id}} </span>
+												<span class="buy-phone"></span>
 												</span>
 											</p>
 										</div>
+										@else 
+										11
+										@endif
 									</div>
 
 									<div id="holyshit269" class="submitOrder">
@@ -237,6 +237,21 @@
 				
 			</div>
 </form>
-		@include('home.layout.footer')
+
+@include('home.layout.footer')
+<script type="text/javascript">
+	var addr = document.getElementsByName('addr');
+	// console.log(addr);
+	for(var i=0;i<addr.length; i++)
+	{
+		// if(addr[i].checked==true){
+			
+		// }
+		addr[i].onchange=function(){
+			alert(addr.value());
+		}
+	}
+
+</script>
 		
 @endsection
