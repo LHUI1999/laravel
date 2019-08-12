@@ -1,15 +1,18 @@
 @extends('home.layout.index')
 
 @section('content')
-	
+<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+
 <!--文章 -->
 <div class="am-g am-g-fixed blog-g-fixed bloglist">
   <div class="am-u-md-9">
     <article class="blog-main">
-      <h2 class="am-article-title blog-title" style="font-weight: 700;">
+      <h2 class="am-article-title blog-title" style="font-weight: 700;font-size:25px;">
         ×张毛爷爷，疯狂购物节
       </h2>
-      <h4 class="am-article-meta blog-meta">{{ $pic[0]->created_at }}</h4>
+      <h4 class="am-article-meta blog-meta">2019-08-07 10:13:30</h4>
 
       <div class="am-g blog-content">
         <div class="am-u-sm-12">
@@ -97,5 +100,6 @@
   </div>
 
 </div>
+@include('home.layout.footer')
 
 @endsection

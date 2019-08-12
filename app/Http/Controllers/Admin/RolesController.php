@@ -49,10 +49,10 @@ class RolesController extends Controller
     {
         //获得搜索内容
         $search = $request->input('search','');
-
+        
         //获取数据
         $data = Roles::where('rname','like','%'.$search.'%')->paginate(1);
-
+        // dd($data);
         //显示便利
         return view('admin.roles.index',['data'=>$data,'requests'=>$request->input()]);
     }

@@ -248,7 +248,7 @@ class SafeController extends Controller
         Mail::send('home.email.code',['id'=>$users->id,'token'=>$users->token],function($m) use ($users){
             $m->to($users->email)->subject('qqq');
         });
-        return redirect('/home/safe/email',);
+        return redirect('/home/safe/email');
      
     }
 

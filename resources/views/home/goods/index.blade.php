@@ -100,7 +100,7 @@
                                         <a href="#"><img src="/uploads/{{$v->pic}}" mid="/uploads/{{$v->pic}}" big="/uploads/{{$v->pic}}"></a>
                                     </div>
                                 </li>
-                               <!--  <li>
+                               {{-- <!--  <li>
                                     <div class="tb-pic tb-s40">
                                         <a href="#"><img src="/h/images/02_small.jpg" mid="/h/images/02_mid.jpg" big="/h/images/02.jpg"></a>
                                     </div>
@@ -109,14 +109,15 @@
                                     <div class="tb-pic tb-s40">
                                         <a href="#"><img src="/h/images/03_small.jpg" mid="/h/images/03_mid.jpg" big="/h/images/03.jpg"></a>
                                     </div>
-                                </li> -->
+                                </li> --> --}}
                                 @endforeach
                             </ul>
                         </div>
-
+                        
+                        
                         <div class="clear"></div>
                     </div>
-
+                    
                     <div class="clearfixRight">
 
                         <!--规格属性-->
@@ -132,6 +133,21 @@
                                     <dd><em>¥</em><b class="sys_item_price">{{$goods[0]->price}}</b>  </dd>                                 
                                 </li>
                                 
+                                <div style="margin-left:610px;margin-top:17px;">
+                                    @if ($coll == 1)
+                                    <a href="/home/collection/delete?id={{$goods[0]->id}}">
+                                        <span @if($coll==1) style="color:red" @endif  id="kongxin"> ☆</span>   
+                                        <p style="font-size:15px;color:#888;margin-left:15px;margin-top:-21px;">收藏商品</p>  
+                                    </a>
+                                    @else
+                                    <a href="/home/collection/add?id={{ $goods[0]->id }}">
+                                        <span @if($coll==1) style="color:blue" @endif  id="kongxin"> ☆</span>   
+                                        <p style="font-size:15px;color:#888;margin-left:15px;margin-top:-21px;">收藏商品</p>                            
+                                    </a>
+                                    @endif
+                                    
+                                </div>
+
                                 <div class="clear"></div>
                             </div>
 
@@ -243,6 +259,8 @@
                                     <a id="LikBasket" title="加入购物车" href="/home/car/add?id={{$goods[0]->id}}"><i></i>加入购物车</a>
                                 </div>
                             </li>
+                            
+                            
                         </div>
 
 

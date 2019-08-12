@@ -18,6 +18,16 @@ class GoodsController extends Controller
     {
         //获取id
         $id=$request->id;
+
+        // 判断是否收藏
+        if(isset($_SESSION['collection'][$id])){
+            $coll=1;
+            
+        }else{
+            $coll=2;
+            
+        }
+        
         //获取id相对应商品的数据
         $goods=DB::table('goods')->where('id',$id)->get();
          //获得商品图片
@@ -30,7 +40,7 @@ class GoodsController extends Controller
          $look = Goods::where('cid',rand(9,16))->take(5)->get();
          // $look = Goods::where('cid',9)->take(5)->get();
          // dd($look);
-         return view('home.goods.index',['goods'=>$goods,'look'=>$look]);
+         return view('home.goods.index',['goods'=>$goods,'look'=>$look,'coll'=>$coll]);
  
     }
 

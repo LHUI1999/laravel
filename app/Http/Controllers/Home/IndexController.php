@@ -9,13 +9,15 @@ use App\Models\Cates;
 use App\Models\Goods;
 use App\Models\Goodspic;
 use App\Http\Controllers\Home\CarController;
+use App\Http\Controllers\Home\CollectionController;
+
 
 class IndexController extends Controller
 {
     public function __construct()
     {
         // 引入类文件
-        require 'E:/xampp/htdocs/laravel/public/pscws4/pscws4.class.php';
+        require 'D:/xampp/htdocs/laravel/public/pscws4/pscws4.class.php';
         // 实例化
         @$this->cws = new \PSCWS4;
         //设置字符集
@@ -88,8 +90,10 @@ class IndexController extends Controller
 
             // dump($_SESSION['car']);
             $carcount = CarController::countCar();
-
-            return view('home.index.index',['data'=>$data,'carcount'=>$carcount]);
+            
+            $collectioncount = CollectionController::countCollection();
+            // dd($collectioncount);
+            return view('home.index.index',['data'=>$data,'carcount'=>$carcount,'collectioncount'=>$collectioncount]);
 
         }
         
