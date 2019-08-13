@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('common_title','test title');
         View::share('common_cates_data',IndexController::getPidCatesData());
         View::share('carcount',CarController::countCar());
+
         View::share('collectioncount',CollectionController::countCollection());
      
     }
