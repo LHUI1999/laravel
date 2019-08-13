@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Goods;
 use DB;
 
+
 class CarController extends Controller
 {
      //统计总价格
@@ -72,8 +73,12 @@ class CarController extends Controller
 
 
 	//购物车列表页面
-    public function index()
+    public function index(Request $request)
     {
+        if(empty($_SESSION['selectall'])){
+        $_SESSION['selectall']=0;
+            
+        }
 
     	// $_SESSION['car']=null;
     	if(!empty($_SESSION['car'])){
@@ -107,6 +112,7 @@ class CarController extends Controller
     	//判断商品是否第一次加购
     	if(empty($_SESSION['car'][$id])){
 
+
     		// 获取对应商品
             $data = DB::table('goods')->where('id',$id)->first();
             $data->pic = DB::table('goods_pic')->select('pic')->where('gid',$data->id)->first();
@@ -115,6 +121,7 @@ class CarController extends Controller
 	    	$data->xiaoji = ($data->price * $data->num);
             $_SESSION['car'][$id] = $data;
 			$_SESSION['car'][$id]->select = 0;
+
 			
 	    	
 	    }else{

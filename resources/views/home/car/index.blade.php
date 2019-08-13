@@ -55,12 +55,14 @@
 
 										<div class="item-pic">
 
-											<a href="#" target="_blank" data-title="{{$v->title}}" class="J_MakePoint" data-point="tbcart.8.12">
+
+											<a href="/home/goods?id={{$v->id}}" target="_blank" data-title="{{$v->title}}" class="J_MakePoint" data-point="tbcart.8.12">
 												<img style="width:80px" src="/uploads/{{$v->pic->pic}}" class="itempic J_ItemImg"></a>
 										</div>
 										<div class="item-info">
 											<div class="item-basic-info">
-												<a href="#" target="_blank" title="{{$v->title}}" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v->title}}</a>
+												<a href="/home/goods?id={{$v->id}}" target="_blank" title="{{$v->title}}" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v->title}}</a>
+
 											</div>
 										</div>
 									</li>
@@ -68,6 +70,8 @@
 										<div class="item-props item-props-can">
 											
 											<i class="theme-login am-icon-sort-desc"></i>
+
+
 										</div>
 									</li>
 									<li class="td td-price">
@@ -93,10 +97,13 @@
 									
 									<li class="td td-op">
 										<div class="td-inner">
+
 											<a title="移入收藏夹" class="btn-fav" href="/home/collection/add?id={{ $v->id }}">
                   移入收藏夹</a>
+
 											<a href="/home/car/delete?id={{$v->id}}" data-point-url="#" class="delete">
-                  删除</a>
+												  删除
+											</a>
 										</div>
 									</li>
 								</ul>
@@ -110,17 +117,35 @@
 				<div class="float-bar-wrapper">
 					<div id="J_SelectAll2" class="select-all J_SelectAll">
 						<div class="cart-checkbox">
+
 							<a href="/home/car/selectall?select={{$_SESSION['selectall']}}">
 							<input @if($_SESSION['selectall']=='1') checked @endif onClick="quanxuan();" class="check-all check" id="selectAll" name="select-all" value="true" type="checkbox">
-							<label for="J_SelectAllCbx2"></label>
+							<label for="J_SelectAllCbx2">全选</label>
 							</a>
+
 						</div>
-						<span>全选</span>
+					
+						
+						<script type="text/javascript">
+							var btns=document.getElementsByTagName('button');
+							var btnq=btns[0];
+							var btnx=btns[1];
+							var inputs=document.getElementsByTagName('input');
+							btnq.onclick=function(){
+								for(var i=0;i<inputs.length;i++){
+									inputs[i].checked=true;
+								}
+							}
+							//全部取消
+							btnx.onclick=function(){
+								//遍历选项
+								for (var i = 0; i < inputs.length; i++) {
+									inputs[i].checked=false;
+								};
+							};
+						</script>
 					</div>
-					<div class="operations">
-						<a href="" hidefocus="true" class="deleteAll">删除</a>
-						<a href="#" hidefocus="true" class="J_BatchFav">移入收藏夹</a>
-					</div>
+					
 					<div class="float-bar-right">
 						<div class="amount-sum">
 							<span class="txt">已选商品</span>
@@ -141,60 +166,8 @@
 					</div>
 				@endif
 				</div>
-				<div class="theme-popover-mask"></div>
-				<div class="theme-popover">
-				<div class="theme-span"></div>
-				<div class="theme-poptit h-title">
-					<a href="javascript:;" title="关闭" class="close">×</a>
-				</div>
-				<div class="theme-popbod dform">
-					<form class="theme-signin" name="loginform" action="" method="post">
-
-						<div class="theme-signin-left">
-
-							<li class="theme-options">
-								<div class="cart-title">颜色：</div>
-								<ul>
-									<li class="sku-line selected">12#川南玛瑙<i></i></li>
-									<li class="sku-line">10#蜜橘色+17#樱花粉<i></i></li>
-								</ul>
-							</li>
-							<li class="theme-options">
-								<div class="cart-title">包装：</div>
-								<ul>
-									<li class="sku-line selected">包装：裸装<i></i></li>
-									<li class="sku-line">两支手袋装（送彩带）<i></i></li>
-								</ul>
-							</li>
-							<div class="theme-options">
-								<div class="cart-title number">数量</div>
-								<dd>
-									<input class="min am-btn am-btn-default" name="" type="button" value="-">
-									<input class="text_box" name="" type="text" value="1" style="width:30px;">
-									<input class="add am-btn am-btn-default" name="" type="button" value="+">
-									<span class="tb-hidden">库存<span class="stock">1000</span>件</span>
-								</dd>
-
-							</div>
-							<div class="clear"></div>
-							<div class="btn-op">
-								<div class="btn am-btn am-btn-warning">确认</div>
-								<div class="btn close am-btn am-btn-warning">取消</div>
-							</div>
-
-						</div>
-						<div class="theme-signin-right">
-							<div class="img-info">
-								<img src="/h/images/kouhong.jpg_80x80.jpg">
-							</div>
-							<div class="text-info">
-								<span class="J_Price price-now">¥39.00</span>
-								<span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
-							</div>
-						</div>
-
-					</form>
-				</div>
+				
+				
 			</div>
 		@include('home.layout.footer')
 		<script type="text/javascript">

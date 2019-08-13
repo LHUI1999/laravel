@@ -55,6 +55,7 @@
 								<label class='send'>请输入六位数支付密码：</label><br>
 								<input class="pass"  type="password" name="pass">
 							</div>
+							<input type="hidden" name="liuyan" value="{{$liuyan}}">
 						<button class='btn'>立即支付</button>
 							<span style="position: relative;top: 27px;">还没设置支付密码？<a style="color:red" href="/home/safe/paypass">立即设置</a></span>
 

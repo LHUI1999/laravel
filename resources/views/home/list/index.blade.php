@@ -137,7 +137,9 @@
 				
 				<li>
 					<div class="i-pic limit">
-					<a href="/home/goods?id={{ $v->id }}"><img src="/uploads/{{$v->goodspic->pic}}"></a>											
+					<a href="/home/goods?id={{ $v->id }}">
+						{{-- <img src="/uploads/{{$v->pic->pic}}"> --}}
+					</a>											
 						<p class="title fl">{{$v->title}}</p>
 						<p class="price fl">
 							<b>¥</b>

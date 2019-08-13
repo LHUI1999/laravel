@@ -16,7 +16,10 @@
 						<div class="control">
 						</div>
 						<div class="clear"></div>
-						<ul>							
+						<ul>
+						@if($address == '[]')
+							<span style="margin-left:50px">还没有收货地址？	<a href="/home/address" style="color:red">添加收货地址</a>	</span>	
+						@else						
 							@foreach($address as $k=>$v)
 							<div class="per-border"></div>
 							<a href="/home/order/addr?id={{$v->id}}">
@@ -51,6 +54,7 @@
 							</a>
 
 							@endforeach
+							@endif
 
 						</ul>
 
@@ -201,7 +205,7 @@
 											</p>
 										</div>
 										@else 
-										11
+										请先添加收货地址
 										@endif
 									</div>
 

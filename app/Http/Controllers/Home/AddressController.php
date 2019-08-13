@@ -12,6 +12,7 @@ class AddressController extends Controller
     // 收货地址
     public function index()
     {
+        dump($_SESSION['address']);
         // 获取id
         $id = $_SESSION['user']->id;
 
@@ -171,9 +172,13 @@ class AddressController extends Controller
 
         // 判断
         if($res){
+            if($id == $_SESSION['address']->id){
+                $_SESSION['address']=[];
+            }
             // 提交事务
             DB::commit();
-            echo "<script>alert('删除成功');location.href='/home/address'</script>";
+            // echo "<script>alert('删除成功');location.href='/home/address'</script>";
+            return back();
         }else{
             // 事务回滚
             DB::rollback();

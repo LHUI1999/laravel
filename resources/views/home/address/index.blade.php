@@ -93,17 +93,17 @@
                                 <div class="am-form-group">
                                     <label for="user-address" class="am-form-label">所在地</label>
                                     <div class="am-form-content address">
-                                        <select name="province" id="province" data-am-selected>
-                                            {{-- <option value="a">浙江省</option>
-                                            <option value="b" selected>湖北省</option> --}}
+                                        <select name="province" id="province" >
+                                             <!-- <option value="a">浙江省</option> -->
+                                            <!-- <option value="b" selected>湖北省</option>  -->
                                         </select>
-                                        <select name="country" id="country" data-am-selected>
-                                            {{-- <option value="a">温州市</option>
-                                            <option value="b" selected>武汉市</option> --}}
+                                        <select name="country" id="country" >
+                                             <!-- <option value="a">温州市</option> -->
+                                            <!-- <option value="b" selected>武汉市</option>  -->
                                         </select>
-                                        <select name="town" id="town" data-am-selected>
-                                            {{-- <option value="a">瑞安区</option>
-                                            <option value="b" selected>洪山区</option> --}}
+                                        <select name="town" id="town" >
+                                             <!-- <option value="a">瑞安区</option> -->
+                                            <!-- <option value="b" selected>洪山区</option>  -->
                                         </select>
                                     </div>
                                     
@@ -127,7 +127,7 @@
                                     <div class="am-u-sm-9 am-u-sm-push-3">
                                         <button style="margin-top:30px" type="submit" class="am-btn am-btn-danger">保存</button>
                                         <button style="margin-top:30px" type="reset" class="am-btn am-btn-danger">取消</button>
-                                        {{-- <a href="" class="am-close am-btn am-btn-danger" data-am-modal-close>取消</a> --}}
+                                        <!-- {{-- <a href="" class="am-close am-btn am-btn-danger" data-am-modal-close>取消</a> --}} -->
                                     </div>
                                 </div>
                             </form>

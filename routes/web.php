@@ -113,16 +113,23 @@ Route::any('/home/index','Home\IndexController@index');
 
 	 //个人信息
 
+
 	Route::resource('/home/geren','Home\GerenController');
 	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
 
 	//账单
 	Route::get('/home/bill','Home\BillController@index');
 
+
 	Route::resource('/home/geren','Home\GerenController');
 	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
 	//点击查看商品详情
 	Route::resource('/home/goods', 'Home\GoodsController');
+
+	//今日推荐
+	Route::resource('/home/tuijian', 'Home\TuijianController');
+	Route::resource('/home/tunhuo', 'Home\TunhuoController');
+	Route::resource('/home/langman', 'Home\LangmanController');
 
 
 	

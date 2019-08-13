@@ -224,7 +224,7 @@
 								<h4>开年福利篇</h4>
 							</div>
 							<div class="recommendationMain one">
-								<img src="/h/images/tj.png ">
+								<a href="/home/tuijian"><img src="/h/images/tj.png "></a>
 							</div>
 						</div>						
 						<div class="am-u-sm-4 am-u-lg-3 ">
@@ -233,7 +233,10 @@
 								<h4>让爱早回家</h4>
 							</div>
 							<div class="recommendationMain two">
-								<img src="/h/images/tj1.png ">
+								<a href="/home/tunhuo">
+									<img src="/h/images/tj1.png ">
+								</a>
+								
 							</div>
 						</div>
 						<div class="am-u-sm-4 am-u-lg-3 ">
@@ -242,71 +245,16 @@
 								<h4>甜甜蜜蜜</h4>
 							</div>
 							<div class="recommendationMain three ">
-								<img src="/h/images/tj2.png ">
+								<a href="/home/langman">
+									<img src="/h/images/tj2.png ">
+
+								</a>
 							</div>
 						</div>
 
 					</div>
 					<div class="clear "></div>
-					<!--热门活动 -->
-
-					<div class="am-container activity ">
-						<div class="shopTitle ">
-							<h4>活动</h4>
-							<h3>每期活动 优惠享不停 </h3>
-							<span class="more ">
-                               <a href="# ">全部活动<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
-                            </span>
-						</div>
 					
-					  <div class="am-g am-g-fixed ">
-						<div class="am-u-sm-3 ">
-							<div class="icon-sale one "></div>	
-								<h4>秒杀</h4>							
-							<div class="activityMain ">
-								<img src="/h/images/activity1.jpg ">
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>
-							</div>														
-						</div>
-						
-						<div class="am-u-sm-3 ">
-						  <div class="icon-sale two "></div>	
-							<h4>特惠</h4>
-							<div class="activityMain ">
-								<img src="/h/images/activity2.jpg ">
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>								
-							</div>							
-						</div>						
-						
-						<div class="am-u-sm-3 ">
-							<div class="icon-sale three "></div>
-							<h4>团购</h4>
-							<div class="activityMain ">
-								<img src="/h/images/activity3.jpg ">
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>
-							</div>							
-						</div>						
-
-						<div class="am-u-sm-3 last ">
-							<div class="icon-sale "></div>
-							<h4>超值</h4>
-							<div class="activityMain ">
-								<img src="/h/images/activity.jpg ">
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>
-							</div>													
-						</div>
-
-					  </div>
-                   </div>
-					<div class="clear "></div>
 
 					@foreach($common_cates_data  as $k => $v)
                 <div id="f1">

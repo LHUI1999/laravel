@@ -40,14 +40,17 @@ class OrderController extends Controller
     	$pricecount = CarController::priceCount();
         //收货地址
         $address = Address::where('uid',$_SESSION['user']->id)->get();
+
     	return view('home.order.account',['data'=>$data,'pricecount'=>$pricecount,'address'=>$address]);
     }
 
     public function pay(Request $request)
     {
+        // dd($request->all());
+        $liuyan = $request->liuyan;
         //设置单号
         $order = rand(100000000,999999999);
-        return view('home.order.pay',['order'=>$order]);
+        return view('home.order.pay',['order'=>$order,'liuyan'=>$liuyan]);
 
     }
 
@@ -73,6 +76,7 @@ class OrderController extends Controller
     //支付成功
     public function success(Request $request)
     {   
+        // dd($request->all());
         $pass = DB::table('users_pay')->where('uid',$_SESSION['user']->id)->first();
         if($request->pay == null){
              echo "<script>alert('请选择支付方式')</script>";
@@ -102,13 +106,35 @@ class OrderController extends Controller
         $order->uname = $_SESSION['address']->uname;
         $order->phone = $_SESSION['address']->phone;
         $order->pay = $request->pay;
+        $order->liuyan = $request->input('liuyan');
         if($order->save()){
+            //减少库存
+            foreach($_SESSION['car'] as $k=> $v)
+            {
+                if($v->select==1){
+                    $goods = Goods::find($v->id);
+                    // dump($goods);
+                    $goods->num = $goods->num-1;
+                    $goods->save();
+
+                     //订单详情
+                    $orderinfo = new Orderinfo;
+                    $orderinfo->oid = $order->id;
+                    $orderinfo->gid = $v->id;
+                    $orderinfo->num = $v->num;
+                    $orderinfo->save();
+
+                }
+            }
+           
             return redirect('/home/order/over');
         }
     }
     public function over()
     {
         //价格
+            
+
         $pricecount = CarController::priceCount();
         return view('home.order.success',['pricecount'=>$pricecount]);
     }
