@@ -28,11 +28,11 @@ class GoodsController extends Controller
             
         }
 
-        if(session('foot')==null){
-            session(['foot'=>$id]);
-        }else{
-            $request->session()->push('foot',$id);
-        }
+        // if(session('foot')==null){
+        //     session(['foot'=>$id]);
+        // }else{
+        //     $request->session()->push('foot',$id);
+        // }
         // dump(session('foot'));
         //获取id相对应商品的数据
         $goods=DB::table('goods')->where('id',$id)->get();

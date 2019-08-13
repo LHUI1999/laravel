@@ -14,7 +14,7 @@
 <!-- 验证错误结束 -->
 <div class="box span12" style="">
 	<div class="box-header" data-original-title="">
-		<h2><i class="halflings-icon white edit"></i><span class="break"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">商品添加</font></font></h2>
+		<h2><i class="halflings-icon white edit"></i><span class="break"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">商品修改</font></font></h2>
 		<div class="box-icon">
 			<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 			<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>

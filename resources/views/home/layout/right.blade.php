@@ -1,3 +1,7 @@
+<head>
+    <script type='text/javascript' src='https://webchat.7moor.com/javascripts/7moorInit.js?accessId=231515b0-b999-11e9-ba32-bfd32cf2bdfe&autoShow=false&language=ZHCN' async='async'>
+    </script>
+</head>
 <div class="tip">
             <div id="sidebar">
                 <div id="wrap">
@@ -73,8 +77,8 @@
 
                     <div class="quick_toggle ">
                         <li class="qtitem">
-                            <a href="# "><span class="kfzx "></span></a>
-                            <div class="mp_tooltip " style="left: -121px; visibility: hidden;">客服中心<i class="icon_arrow_right_black "></i></div>
+                            <a href="#"><span class="kfzx "></span></a>
+                            <div class="mp_tooltip " style="left: -121px; visibility: hidden;" onclick="qimoChatClick();">客服中心<i class="icon_arrow_right_black "></i></div>
                         </li>
                         <!--二维码 -->
                        

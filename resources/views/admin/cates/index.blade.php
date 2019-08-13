@@ -2,7 +2,7 @@
 @section('content')
 <div class="box span12">
 	<div class="box-header" data-original-title="">
-		<h2><i class="halflings-icon white user"></i><span class="break"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户列表</font></font></h2>
+		<h2><i class="halflings-icon white user"></i><span class="break"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分类列表</font></font></h2>
 		<div class="box-icon">
 			<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 			<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -12,7 +12,7 @@
 	<div class="box-content">
 		<form action="/admin/cates" method="get">
 			关键字
-			<input type="text" name="search" placeholder="用户名" >
+			<input type="text" name="search" placeholder="分类名称" >
 			<input type="submit" class="btn btn-danger" value="搜索">
 		</form>
 		<table class="table table-striped table-bordered ">

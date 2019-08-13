@@ -19,9 +19,7 @@
 		<!-- 城市三级连动 -->
 		<script type="text/javascript" src="/h/3/jquery.provincesCity.js"></script>
 		<script type="text/javascript" src="/h/3/provincesData.js"></script>
-<!-- 
-<<<<<<< HEAD
-======= -->
+
 		<!-- 首页 -->
 		
 		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
@@ -57,7 +55,8 @@
 		<link href="/h/css/cpstyle.css" rel="stylesheet" type="text/css">
 
 
-<!-- >>>>>>> origin/wangjing -->
+
+		
 	</head>
 
 	<body>
