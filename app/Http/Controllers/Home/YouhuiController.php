@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class TunhuoController extends Controller
-{
+class YouhuiController extends Controller
+{ 
     /**
      * Display a listing of the resource.
      *
@@ -15,21 +15,10 @@ class TunhuoController extends Controller
      */
     public function index()
     {
-     
         //
-        $cates=DB::table('cates')->get();
-        // dump($cates[0]->id);
-        $data=DB::table('goods')->where('cid',$cates[0]->id)->get();
+        $data=DB::table('youhuiquan')->get();
         // dump($data);
-        
-        foreach ($data as $k=>$v) {
-            
-                $pic=DB::table('goods_pic')->where('gid',$data[0]->id)->limit(3)->get();
-                $v->pic=$pic[0]->pic;
-    
-
-        }
-        return view('home.tunhuo.index',['data'=>$data]);
+        return view('home.youhui.index',['data'=>$data]);
     }
 
     /**

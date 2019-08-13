@@ -22,26 +22,40 @@
                         <img src="/h/images/tun5.jpg" style="width:900px;float:left;margin-left:323px;margin-top:72px;" alt="">
                         
                     </div>
-                    <div>
-                        @foreach ($data as $k=>$v )
-                            
-                       
-                        <div style="float:left;margin-left:331px;margin-top:69px;width:257px;height:344px;background:#A2C1DE;border:3px solid #FFFCF7;border-radius:18px;">
-                            <img src="/uploads/{{ $v->pic }}" alt="">
-                            <div style="width:196px;height:34px;float:left;margin-left:10px;margin-top:10px;">
-                                <span style="font-size:17px;float:left;margin-left:3px;margin-top:4px;color:#051B28;font-weight:bold">{{ $v->title }}</span>
-                                <span style="font-size:15px;float:left;margin-left:-66px;margin-top:33px;color:#FD2A32;">价格
-                                    <span style="font-size:20px;">￥{{ $v->price }}</span>
-                                </span>
-                                <a href="/home/goods?id={{ $v->id }}">
-                                <button style="width:64px;height:25px;color:#FFFCF7;background:#FD2A32;float:left;margin-left:152px;margin-top:8px;border:1px solid #C7003E;border-radius:5px;">购买</button>
+                    <div style="margin-top:50px;float:left;margin-left:303px;">
+                            <div class="s-content" style="">
+                                    @foreach ($data as $k=>$v )
+                                    @if($k<=2)
+                                    <div class="s-item-wrap" style="width:300px;height:425px;background:#AFC6DB;border:3px solid white;border-radius:18px;">
+                                        <div class="s-item">
+                                            <div class="s-pic">
+                                            <a href="/home/goods?id={{ $v->id }}" class="s-pic-link" style="">
+                                                <img  src="/uploads/{{ $v->pic }}" alt="" title="" class="s-pic-img s-guess-item-img">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="s-info">
+                                                <div class="s-title">
+                                                    <a href="#" title="" style="color:#888782;font-size:22px;float:left;margin-left:12px;">{{ $v->title }}</a>
+                                                </div>
+                                        </div>  
+                                        <div>
+                                            <div style="width:300px;height:42px;margin-top:46px;">
+                                                <span style="float:left;margin-left:10px;margin-top:10px;color:#FF0036;">价格：￥{{ $v->price }}元</span>
+                                            </div>
+                                            <div style="width:300px;height:42px;margin-top:1px;">
+                                                <a href="/home/goods?id={{ $v->id }}">
+                                                    <button style="width:250px;height:42px;background:#C90029;float:left;margin-left:25px;border:2px solid #EAC399;border-radius:15px;color:#ccc;">加入购物车</button>
 
-                                </a>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @endforeach
                             </div>
-                        </div>
-                        
-                        @endforeach
                     </div>
+                   
 
                 </div>
             </div>

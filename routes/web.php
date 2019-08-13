@@ -48,7 +48,8 @@ Route::group(['middleware'=>['login']],function(){
 
 	//后台商品管理
 	Route::resource('admin/goods','Admin\GoodsController');
- 
+	//后台优惠券
+	Route::resource('admin/youhui', 'Admin\YouhuiController');
 });
 
 //前台登录路由
@@ -105,6 +106,8 @@ Route::any('/home/index','Home\IndexController@index');
 	 //个人信息
 	Route::resource('/home/geren','Home\GerenController');
 	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
+	//优惠券
+	Route::resource('/home/youhui', 'Home\YouhuiController');
 	//点击查看商品详情
 	Route::resource('/home/goods', 'Home\GoodsController');
 	//今日推荐

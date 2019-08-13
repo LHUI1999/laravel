@@ -238,7 +238,7 @@
 							</div>
 							<div class="recommendationMain two">
 								<a href="/home/tunhuo">
-									<img src="/h/images/tj1.png ">
+									<img src="/h/images/anmuxi.jpg ">
 								</a>
 								
 							</div>
@@ -250,7 +250,7 @@
 							</div>
 							<div class="recommendationMain three ">
 								<a href="/home/langman">
-									<img src="/h/images/tj2.png ">
+									<img src="/h/images/chaoneng.jpg ">
 
 								</a>
 							</div>

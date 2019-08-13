@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Youhui;
 use Illuminate\Support\Facades\DB;
 
-class TunhuoController extends Controller
+class YouhuiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,21 +16,10 @@ class TunhuoController extends Controller
      */
     public function index()
     {
-     
         //
-        $cates=DB::table('cates')->get();
-        // dump($cates[0]->id);
-        $data=DB::table('goods')->where('cid',$cates[0]->id)->get();
+        $data=DB::table('youhuiquan')->get();
         // dump($data);
-        
-        foreach ($data as $k=>$v) {
-            
-                $pic=DB::table('goods_pic')->where('gid',$data[0]->id)->limit(3)->get();
-                $v->pic=$pic[0]->pic;
-    
-
-        }
-        return view('home.tunhuo.index',['data'=>$data]);
+        return view('admin.youhui.index',['data'=>$data]);
     }
 
     /**
@@ -40,6 +30,9 @@ class TunhuoController extends Controller
     public function create()
     {
         //
+
+        
+        return view('admin.youhui.create');
     }
 
     /**
@@ -51,6 +44,24 @@ class TunhuoController extends Controller
     public function store(Request $request)
     {
         //
+        // echo "aaa";
+        // dump($request->all());
+         //开启事务
+         DB::beginTransaction();
+        $data= new Youhui;
+        // dump($data);
+        $data->yname=$request->input('yname');
+        $data->dikou=$request->input('dikou');
+        $res=$data->save();
+        // dump($res);
+        if($res){
+            DB::commit();
+            return redirect('admin/youhui')->with('success','添加成功');
+
+        }else{
+            DB::rollBack();
+            return back('error','添加失败');
+        }
     }
 
     /**
@@ -96,5 +107,17 @@ class TunhuoController extends Controller
     public function destroy($id)
     {
         //
+         //开启事务
+         DB::beginTransaction();
+         //删除主信息
+         $res = Youhui::destroy($id);
+         if($res){
+             DB::commit();
+            return redirect('admin/youhui')->with('success','删除成功');
+        }else{
+            //事务回滚
+            DB::rollback();
+            return back()->with('error','删除失败');
+        }
     }
 }
