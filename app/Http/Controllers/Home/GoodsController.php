@@ -27,7 +27,13 @@ class GoodsController extends Controller
             $coll=2;
             
         }
-        
+
+        // if(session('foot')==null){
+        //     session(['foot'=>$id]);
+        // }else{
+        //     $request->session()->push('foot',$id);
+        // }
+        // dump(session('foot'));
         //获取id相对应商品的数据
         $goods=DB::table('goods')->where('id',$id)->get();
          //获得商品图片

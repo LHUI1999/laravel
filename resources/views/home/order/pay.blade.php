@@ -26,6 +26,14 @@
 		font-size:13px;
 		color:#73738D;
 	}
+	#btn{
+		width: 140px;
+		height: 40px;
+		background: #00C800;
+		color: white;
+		font-size: 17px;
+		margin-top: 20px;
+	}
 </style>
 <link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="/h/basic/css/demo.css" rel="stylesheet" type="text/css" />
@@ -58,6 +66,7 @@
 							<input type="hidden" name="liuyan" value="{{$liuyan}}">
 						<button class='btn'>立即支付</button>
 							<span style="position: relative;top: 27px;">还没设置支付密码？<a style="color:red" href="/home/safe/paypass">立即设置</a></span>
+						<button id='btn'>取消</button>
 
 						</div>
 					</div>

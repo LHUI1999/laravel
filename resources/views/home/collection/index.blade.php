@@ -8,23 +8,6 @@
     <link href="/h/css/colstyle.css" rel="stylesheet" type="text/css">
 
 
-<div class="nav-table">
-    <div class="long-title"><span class="all-goods">全部分类</span></div>
-    <div class="nav-cont">
-        <ul>
-            <li class="index"><a href="#">首页</a></li>
-            <li class="qc"><a href="#">闪购</a></li>
-            <li class="qc"><a href="#">限时抢</a></li>
-            <li class="qc"><a href="#">团购</a></li>
-            <li class="qc last"><a href="#">大包装</a></li>
-        </ul>
-        <div class="nav-extra">
-            <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-            <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-        </div>
-    </div>
-</div>
-<b class="line"></b>
 <div class="center">
     <div class="col-main">
         <div class="main-wrap">
@@ -61,7 +44,8 @@
                                 </div>
                                 <div class="s-info">
                                     <div class="s-title"><a href="#" title="">{{ $v->title }}</a></div>
-                                    <div class="s-price-box">
+                                    {{-- <div class="s-price-box"> --}}
+                                    <div class="">
                                         <span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">{{ $v->price }}</em></span>
                                         {{-- <span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">68.00</em></span> --}}
                                     </div>
@@ -101,7 +85,7 @@
     <aside class="menu">
         <ul>
             <li class="person active">
-                <a href="index.html">个人中心</a>
+                <a href="/home/center">个人中心</a>
             </li>
             <li class="person">
                 <a href="#">个人资料</a>

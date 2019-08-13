@@ -11,24 +11,6 @@
 
 
 
-<div class="nav-table">
-    <div class="long-title"><span class="all-goods">全部分类</span></div>
-    <div class="nav-cont">
-        <ul>
-            <li class="index"><a href="#">首页</a></li>
-            <li class="qc"><a href="#">闪购</a></li>
-            <li class="qc"><a href="#">限时抢</a></li>
-            <li class="qc"><a href="#">团购</a></li>
-            <li class="qc last"><a href="#">大包装</a></li>
-        </ul>
-        <div class="nav-extra">
-            <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-            <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-        </div>
-    </div>
-</div>
-<b class="line"></b>
-
 <div class="center">
     <div class="col-main">
         <div class="main-wrap">
@@ -93,6 +75,7 @@
                                 <div class="am-form-group">
                                     <label for="user-address" class="am-form-label">所在地</label>
                                     <div class="am-form-content address">
+<<<<<<< HEAD
                                         <select name="province" id="province" >
                                              <!-- <option value="a">浙江省</option> -->
                                             <!-- <option value="b" selected>湖北省</option>  -->
@@ -104,6 +87,19 @@
                                         <select name="town" id="town" >
                                              <!-- <option value="a">瑞安区</option> -->
                                             <!-- <option value="b" selected>洪山区</option>  -->
+=======
+                                        <select name="province" id="province">
+                                            {{-- <option value="a">浙江省</option>
+                                            <option value="b" selected>湖北省</option> --}}
+                                        </select>
+                                        <select name="country" id="country">
+                                            {{-- <option value="a">温州市</option>
+                                            <option value="b" selected>武汉市</option> --}}
+                                        </select>
+                                        <select name="town" id="town">
+                                            {{-- <option value="a">瑞安区</option>
+                                            <option value="b" selected>洪山区</option> --}}
+>>>>>>> origin/wangjing
                                         </select>
                                     </div>
                                     

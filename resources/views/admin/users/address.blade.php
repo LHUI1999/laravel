@@ -12,7 +12,7 @@
 				</div>
 			</div>
 			<div class="box-content">
-				<form action="/admin/users/address/{{ $_SESSION['user']->uid }}" method="get">
+				<form action="/admin/users/address/{{ $_SESSION['user']->id }}" method="get">
 					关键字
 					<input type="text" name="search" placeholder="收货人" value="{{ $requests['search'] or '' }}">
 					<input type="submit"class="btn btn-danger"  value="搜索">

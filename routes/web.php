@@ -187,6 +187,13 @@ Route::get('/home/collection','Home\CollectionController@index');
 Route::get('/home/collection/add','Home\CollectionController@add');
 Route::get('/home/collection/delete','Home\CollectionController@delete');
 
+// 足迹
+Route::get('/home/foot','Home\FootController@index');
+Route::get('/home/foot/delete','Home\FootController@delete');
+
+// 评价
+Route::get('/home/comment','Home\CommentController@index');
+
 
 
 
