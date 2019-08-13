@@ -75,7 +75,7 @@
                                 <div class="am-form-group">
                                     <label for="user-address" class="am-form-label">所在地</label>
                                     <div class="am-form-content address">
-<<<<<<< HEAD
+
                                         <select name="province" id="province" >
                                              <!-- <option value="a">浙江省</option> -->
                                             <!-- <option value="b" selected>湖北省</option>  -->
@@ -87,20 +87,8 @@
                                         <select name="town" id="town" >
                                              <!-- <option value="a">瑞安区</option> -->
                                             <!-- <option value="b" selected>洪山区</option>  -->
-=======
-                                        <select name="province" id="province">
-                                            {{-- <option value="a">浙江省</option>
-                                            <option value="b" selected>湖北省</option> --}}
                                         </select>
-                                        <select name="country" id="country">
-                                            {{-- <option value="a">温州市</option>
-                                            <option value="b" selected>武汉市</option> --}}
-                                        </select>
-                                        <select name="town" id="town">
-                                            {{-- <option value="a">瑞安区</option>
-                                            <option value="b" selected>洪山区</option> --}}
->>>>>>> origin/wangjing
-                                        </select>
+                                      
                                     </div>
                                     
                                 </div>
