@@ -1,21 +1,20 @@
 @extends('home.layout.index')
-
 @section('content')
 <div class="nav-table">
-            <div class="long-title"><span class="all-goods">全部分类</span></div>
-            <div class="nav-cont">
-                <ul>
-                    <li class="index"><a href="#">首页</a></li>
-                    <li class="qc"><a href="#">闪购</a></li>
-                    <li class="qc"><a href="#">限时抢</a></li>
-                    <li class="qc"><a href="#">团购</a></li>
-                    <li class="qc last"><a href="#">大包装</a></li>
-                </ul>
-                <div class="nav-extra">
-                    <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-                    <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-                </div>
-            </div>
+   <div class="long-title"><span class="all-goods">全部分类</span></div>
+   <div class="nav-cont">
+        <ul>
+            <li class="index"><a href="#">首页</a></li>
+            <li class="qc"><a href="#">闪购</a></li>
+            <li class="qc"><a href="#">限时抢</a></li>
+            <li class="qc"><a href="#">团购</a></li>
+            <li class="qc last"><a href="#">大包装</a></li>
+        </ul>
+        <div class="nav-extra">
+            <i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+            <i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+        </div>
+    </div>
 </div>
 <b class="line"></b>
 <div class="center">
@@ -28,41 +27,41 @@
                 <div class="am-cf am-padding">
                     <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">订单管理</strong> / <small>Order</small></div>
                 </div>
-                <hr/>
+                <hr>
 
-                <div class="am-tabs am-tabs-d2 am-margin" data-am-tabs>
+                <div class="am-tabs am-tabs-d2 am-margin" data-am-tabs="">
 
                     <ul class="am-avg-sm-5 am-tabs-nav am-nav am-nav-tabs">
-                        <li class="am-active"><a href="#tab1">所有订单</a></li>
-                        <li><a href="#tab2">待付款</a></li>
-                        <li><a href="#tab3">待发货</a></li>
-                        <li><a href="#tab4">待收货</a></li>
-                        <li><a href="#tab5">待评价</a></li>
+                        <li class=""><a href="#tab1">所有订单</a></li>
+                        <li class=""><a href="#tab2">待付款</a></li>
+                        <li class="am-active"><a href="#tab3">待发货</a></li>
+                        <li class=""><a href="#tab4">待收货</a></li>
+                        <li class=""><a href="#tab5">待评价</a></li>
                     </ul>
 
-                    <div class="am-tabs-bd">
-                        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+                    <div class="am-tabs-bd" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                        <div class="am-tab-panel am-fade" id="tab1">
                             <div class="order-top">
-                                <div class="th th-item" style="margin-left:-200px;">
-                                    <td class="td-inner">商品</td>
+                                <div class="th th-item">
+                                    商品
                                 </div>
-                                <div class="th th-price" style="position:relative;left:100px;">
-                                    <td class="td-inner">单价</td>
+                                <div class="th th-price">
+                                    单价
                                 </div>
-                                <div class="th th-number" style="position:relative;left:100px;">
-                                    <td class="td-inner">数量</td>
+                                <div class="th th-number">
+                                    数量
                                 </div>
-                                <div class="th th-operation" style="position:relative;left:100px;">
+                                <div class="th th-operation">
                                     商品操作
                                 </div>
-                                <div class="th th-amount" style="position:relative;left:50px;">
-                                    <td class="td-inner">合计</td>
+                                <div class="th th-amount">
+                                    合计
                                 </div>
                                 <div class="th th-status">
-                                    <td class="td-inner">交易状态</td>
+                                    交易状态
                                 </div>
                                 <div class="th th-change">
-                                    <td class="td-inner">交易操作</td>
+                                    交易操作
                                 </div>
                             </div>
 
@@ -90,18 +89,18 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
@@ -124,18 +123,18 @@
                                                                 <a href="#">
                                                                     <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
                                                                     <p class="info-little">颜色分类：李清照
-                                                                        <br/>尺码：均码</p>
+                                                                        <br>尺码：均码</p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
@@ -158,18 +157,18 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
@@ -227,18 +226,18 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
@@ -261,18 +260,18 @@
                                                                 <a href="#">
                                                                     <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
                                                                     <p class="info-little">颜色分类：李清照
-                                                                        <br/>尺码：均码</p>
+                                                                        <br>尺码：均码</p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
@@ -295,18 +294,18 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
@@ -337,7 +336,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>											
+                                    </div>                                          
                                     
                                     <!--待发货-->
                                     <div class="order-status2">
@@ -360,23 +359,23 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款</a>
                                                         </div>
                                                     </li>
@@ -394,23 +393,23 @@
                                                                 <a href="#">
                                                                     <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
                                                                     <p class="info-little">颜色分类：李清照
-                                                                        <br/>尺码：均码</p>
+                                                                        <br>尺码：均码</p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款</a>
                                                         </div>
                                                     </li>
@@ -428,23 +427,23 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款</a>
                                                         </div>
                                                     </li>
@@ -494,23 +493,23 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款/退货</a>
                                                         </div>
                                                     </li>
@@ -528,23 +527,23 @@
                                                                 <a href="#">
                                                                     <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
                                                                     <p class="info-little">颜色分类：李清照
-                                                                        <br/>尺码：均码</p>
+                                                                        <br>尺码：均码</p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款/退货</a>
                                                         </div>
                                                     </li>
@@ -585,32 +584,31 @@
                         <div class="am-tab-panel am-fade" id="tab2">
 
                             <div class="order-top">
-                                <div class="th th-item" style="margin-left:-200px;">
-                                    <td class="td-inner">商品</td>
+                                <div class="th th-item">
+                                    商品
                                 </div>
-                                <div class="th th-price" style="position:relative;left:100px;">
-                                    <td class="td-inner">单价</td>
+                                <div class="th th-price">
+                                    单价
                                 </div>
-                                <div class="th th-number" style="position:relative;left:100px;">
-                                    <td class="td-inner">数量</td>
+                                <div class="th th-number">
+                                    数量
                                 </div>
-                                <div class="th th-operation" style="position:relative;left:100px;">
-                                    <td class="td-inner">商品操作</td>
+                                <div class="th th-operation">
+                                    商品操作
                                 </div>
-                                <div class="th th-amount" style="position:relative;left:50px;">
-                                    <td class="td-inner">合计</td>
+                                <div class="th th-amount">
+                                    合计
                                 </div>
                                 <div class="th th-status">
-                                    <td class="td-inner">交易状态</td>
+                                    交易状态
                                 </div>
                                 <div class="th th-change">
-                                    <td class="td-inner">交易操作</td>
+                                    交易操作
                                 </div>
                             </div>
 
                             <div class="order-main">
                                 <div class="order-list">
-                                    
                                     <div class="order-status1">
                                         <div class="order-title">
                                             <div class="dd-num">订单编号：<a href="javascript:;">1601430</a></div>
@@ -619,7 +617,6 @@
                                         </div>
                                         <div class="order-content">
                                             <div class="order-left">
-                                                                            
                                                 <ul class="item-list">
                                                     <li class="td td-item">
                                                         <div class="item-pic">
@@ -632,18 +629,18 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
@@ -653,8 +650,74 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                               
-                                             
+
+                                                <ul class="item-list">
+                                                    <li class="td td-item">
+                                                        <div class="item-pic">
+                                                            <a href="#" class="J_MakePoint">
+                                                                <img src="images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-info">
+                                                            <div class="item-basic-info">
+                                                                <a href="#">
+                                                                    <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
+                                                                    <p class="info-little">颜色分类：李清照
+                                                                        <br>尺码：均码</p>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-price">
+                                                        <div class="item-price">
+                                                            333.00
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-number">
+                                                        <div class="item-number">
+                                                            <span>×</span>2
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-operation">
+                                                        <div class="item-operation">
+
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
+                                                <ul class="item-list">
+                                                    <li class="td td-item">
+                                                        <div class="item-pic">
+                                                            <a href="#" class="J_MakePoint">
+                                                                <img src="images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-info">
+                                                            <div class="item-basic-info">
+                                                                <a href="#">
+                                                                    <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
+                                                                    <p class="info-little">颜色：12#川南玛瑙
+                                                                        <br>包装：裸装 </p>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-price">
+                                                        <div class="item-price">
+                                                            333.00
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-number">
+                                                        <div class="item-number">
+                                                            <span>×</span>2
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-operation">
+                                                        <div class="item-operation">
+
+                                                        </div>
+                                                    </li>
+                                                </ul>
                                             </div>
                                             <div class="order-right">
                                                 <li class="td td-amount">
@@ -681,39 +744,37 @@
 
                                         </div>
                                     </div>
-                                   
                                 </div>
 
                             </div>
                         </div>
-                        <div class="am-tab-panel am-fade" id="tab3">
+                        <div class="am-tab-panel am-fade am-active am-in" id="tab3">
                             <div class="order-top">
-                                <div class="th th-item" style="margin-left:-200px;">
-                                    <td class="td-inner">商品</td>
+                                <div class="th th-item">
+                                    商品
                                 </div>
-                                <div class="th th-price" style="position:relative;left:100px;">
-                                    <td class="td-inner">单价</td>
+                                <div class="th th-price">
+                                    单价
                                 </div>
-                                <div class="th th-number" style="position:relative;left:100px;">
-                                    <td class="td-inner">数量</td>
+                                <div class="th th-number">
+                                    数量
                                 </div>
-                                <div class="th th-operation" style="position:relative;left:100px;">
-                                    <td class="td-inner">商品操作</td>
+                                <div class="th th-operation">
+                                    商品操作
                                 </div>
-                                <div class="th th-amount" style="position:relative;left:50px;">
-                                    <td class="td-inner">合计</td>
+                                <div class="th th-amount">
+                                    合计
                                 </div>
                                 <div class="th th-status">
-                                    <td class="td-inner">交易状态</td>
+                                    交易状态
                                 </div>
                                 <div class="th th-change">
-                                    <td class="td-inner">交易操作</td>
+                                    交易操作
                                 </div>
                             </div>
 
                             <div class="order-main">
                                 <div class="order-list">
-                                         
                                     <div class="order-status2">
                                         <div class="order-title">
                                             <div class="dd-num">订单编号：<a href="javascript:;">1601430</a></div>
@@ -722,7 +783,6 @@
                                         </div>
                                         <div class="order-content">
                                             <div class="order-left">
-                                               
                                                 <ul class="item-list">
                                                     <li class="td td-item">
                                                         <div class="item-pic">
@@ -735,29 +795,95 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款</a>
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                
-                                                
+
+                                                <ul class="item-list">
+                                                    <li class="td td-item">
+                                                        <div class="item-pic">
+                                                            <a href="#" class="J_MakePoint">
+                                                                <img src="images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-info">
+                                                            <div class="item-basic-info">
+                                                                <a href="#">
+                                                                    <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
+                                                                    <p class="info-little">颜色分类：李清照
+                                                                        <br>尺码：均码</p>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-price">
+                                                        <div class="item-price">
+                                                            333.00
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-number">
+                                                        <div class="item-number">
+                                                            <span>×</span>2
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-operation">
+                                                        <div class="item-operation">
+                                                            <a href="refund.html">退款</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
+                                                <ul class="item-list">
+                                                    <li class="td td-item">
+                                                        <div class="item-pic">
+                                                            <a href="#" class="J_MakePoint">
+                                                                <img src="images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+                                                            </a>
+                                                        </div>
+                                                        <div class="item-info">
+                                                            <div class="item-basic-info">
+                                                                <a href="#">
+                                                                    <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
+                                                                    <p class="info-little">颜色：12#川南玛瑙
+                                                                        <br>包装：裸装 </p>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-price">
+                                                        <div class="item-price">
+                                                            333.00
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-number">
+                                                        <div class="item-number">
+                                                            <span>×</span>2
+                                                        </div>
+                                                    </li>
+                                                    <li class="td td-operation">
+                                                        <div class="item-operation">
+                                                            <a href="refund.html">退款</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
                                             </div>
                                             <div class="order-right">
                                                 <li class="td td-amount">
@@ -781,32 +907,31 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
                                 </div>
                             </div>
                         </div>
                         <div class="am-tab-panel am-fade" id="tab4">
                             <div class="order-top">
-                                <div class="th th-item" style="margin-left:-200px;">
-                                    <td class="td-inner">商品</td>
+                                <div class="th th-item">
+                                    商品
                                 </div>
-                                <div class="th th-price" style="position:relative;left:100px;">
-                                    <td class="td-inner">单价</td>
+                                <div class="th th-price">
+                                    单价
                                 </div>
-                                <div class="th th-number" style="position:relative;left:100px;">
-                                    <td class="td-inner">数量</td>
+                                <div class="th th-number">
+                                    数量
                                 </div>
-                                <div class="th th-operation" style="position:relative;left:100px;">
-                                    <td class="td-inner">商品操作</td>
+                                <div class="th th-operation">
+                                    商品操作
                                 </div>
-                                <div class="th th-amount" style="position:relative;left:50px;">
-                                    <td class="td-inner">合计</td>
+                                <div class="th th-amount">
+                                    合计
                                 </div>
                                 <div class="th th-status">
-                                    <td class="td-inner">交易状态</td>
+                                    交易状态
                                 </div>
                                 <div class="th th-change">
-                                    <td class="td-inner">交易操作</td>
+                                    交易操作
                                 </div>
                             </div>
 
@@ -832,23 +957,23 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款/退货</a>
                                                         </div>
                                                     </li>
@@ -866,23 +991,23 @@
                                                                 <a href="#">
                                                                     <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
                                                                     <p class="info-little">颜色分类：李清照
-                                                                        <br/>尺码：均码</p>
+                                                                        <br>尺码：均码</p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款/退货</a>
                                                         </div>
                                                     </li>
@@ -919,32 +1044,32 @@
 
                         <div class="am-tab-panel am-fade" id="tab5">
                             <div class="order-top">
-                                <div class="th th-item" style="margin-left:-200px;">
-                                    <td class="td-inner">商品</td>
+                                <div class="th th-item">
+                                    商品
                                 </div>
-                                <div class="th th-price" style="position:relative;left:100px;">
-                                    <td class="td-inner">单价</td>
+                                <div class="th th-price">
+                                    单价
                                 </div>
-                                <div class="th th-number" style="position:relative;left:100px;">
-                                    <td class="td-inner">数量</td>
+                                <div class="th th-number">
+                                    数量
                                 </div>
-                                <div class="th th-operation" style="position:relative;left:100px;">
-                                    <td class="td-inner">商品操作</td>
+                                <div class="th th-operation">
+                                    商品操作
                                 </div>
-                                <div class="th th-amount" style="position:relative;left:50px;">
-                                    <td class="td-inner">合计</td>
+                                <div class="th th-amount">
+                                    合计
                                 </div>
                                 <div class="th th-status">
-                                    <td class="td-inner">交易状态</td>
+                                    交易状态
                                 </div>
                                 <div class="th th-change">
-                                    <td class="td-inner">交易操作</td>
+                                    交易操作
                                 </div>
                             </div>
 
                             <div class="order-main">
                                 <div class="order-list">
-                                    <!--不同状态的订单	-->
+                                    <!--不同状态的订单 -->
                                 <div class="order-status4">
                                         <div class="order-title">
                                             <div class="dd-num">订单编号：<a href="javascript:;">1601430</a></div>
@@ -965,23 +1090,23 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款/退货</a>
                                                         </div>
                                                     </li>
@@ -1035,23 +1160,23 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款/退货</a>
                                                         </div>
                                                     </li>
@@ -1069,23 +1194,23 @@
                                                                 <a href="#">
                                                                     <p>礼盒袜子女秋冬 纯棉袜加厚 韩国可爱 </p>
                                                                     <p class="info-little">颜色分类：李清照
-                                                                        <br/>尺码：均码</p>
+                                                                        <br>尺码：均码</p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款/退货</a>
                                                         </div>
                                                     </li>
@@ -1103,23 +1228,23 @@
                                                                 <a href="#">
                                                                     <p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
                                                                     <p class="info-little">颜色：12#川南玛瑙
-                                                                        <br/>包装：裸装 </p>
+                                                                        <br>包装：裸装 </p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
-                                                        <div class="item-price" style="margin-left:-200px;">
+                                                        <div class="item-price">
                                                             333.00
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
-                                                        <div class="item-number" style="margin-left:-200px;">
+                                                        <div class="item-number">
                                                             <span>×</span>2
                                                         </div>
                                                     </li>
                                                     <li class="td td-operation">
-                                                        <div class="item-operation" style="margin-left:-200px;">
+                                                        <div class="item-operation">
                                                             <a href="refund.html">退款/退货</a>
                                                         </div>
                                                     </li>
@@ -1164,25 +1289,48 @@
                 </div>
             </div>
         </div>
-        
+        <!--底部-->
+        <div class="footer">
+            <div class="footer-hd">
+                <p>
+                    <a href="#">恒望科技</a>
+                    <b>|</b>
+                    <a href="#">商城首页</a>
+                    <b>|</b>
+                    <a href="#">支付宝</a>
+                    <b>|</b>
+                    <a href="#">物流</a>
+                </p>
+            </div>
+            <div class="footer-bd">
+                <p>
+                    <a href="#">关于恒望</a>
+                    <a href="#">合作伙伴</a>
+                    <a href="#">联系我们</a>
+                    <a href="#">网站地图</a>
+                    <em>© 2015-2025 Hengwang.com 版权所有</em>
+                </p>
+            </div>
+
+        </div>
     </div>
     <aside class="menu">
         <ul>
             <li class="person">
-                <a href="/home/center">个人中心</a>
+                <a href="index.html">个人中心</a>
             </li>
             <li class="person">
                 <a href="#">个人资料</a>
                 <ul>
-                    <li> <a href="/home/geren">个人信息</a></li>
-                    <li> <a href="/home/safe">安全设置</a></li>
-                    <li> <a href="/home/address">收货地址</a></li>
+                    <li> <a href="information.html">个人信息</a></li>
+                    <li> <a href="safety.html">安全设置</a></li>
+                    <li> <a href="address.html">收货地址</a></li>
                 </ul>
             </li>
             <li class="person">
                 <a href="#">我的交易</a>
                 <ul>
-                    <li class="active"><a href="/home/order">订单管理</a></li>
+                    <li class="active"><a href="order.html">订单管理</a></li>
                     <li> <a href="change.html">退款售后</a></li>
                 </ul>
             </li>
@@ -1209,5 +1357,4 @@
 
     </aside>
 </div>
-
 @endsection

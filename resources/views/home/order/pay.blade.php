@@ -40,9 +40,12 @@
 		<link href="/h/css/cartstyle.css" rel="stylesheet" type="text/css" />
 		<link href="/h/css/jsstyle.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="/h/js/address.js"></script>
-		<!-- <span id='dui'>√</span> -->
-		<span id="success">订单提交成功，请尽快付款！订单号：{{$order}}</span><br>
+		<img style="width:70px;height:70px;margin-top: 40px" src="/h/images/u=2516763473,2309103725&fm=26&gp=0.jpg">
+		<div style="margin-top: -42px;margin-left: 100px">
+			<span id="success">订单提交成功，请尽快付款！订单号：{{$order}}</span><br>
 		<span id="pay" > 请您在24小时内完成支付，否则订单会被自动取消</span>
+		</div>
+		
 <!--支付方式-->
 		<form action="/home/order/success" method="post">
 			{{csrf_field()}}
@@ -66,7 +69,7 @@
 							<input type="hidden" name="liuyan" value="{{$liuyan}}">
 						<button class='btn'>立即支付</button>
 							<span style="position: relative;top: 27px;">还没设置支付密码？<a style="color:red" href="/home/safe/paypass">立即设置</a></span>
-						<button id='btn'>取消</button>
+						<a href="/home/order/cancel?order={{$order}}"><button id='btn' type="button">取消</button></a>
 
 						</div>
 					</div>
