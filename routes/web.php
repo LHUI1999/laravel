@@ -92,6 +92,7 @@ Route::any('/home/index','Home\IndexController@index');
 	Route::get('/home/order/addr','Home\OrderController@addr');
 	Route::post('/home/order/success','Home\OrderController@success');
 	Route::get('/home/order/over','Home\OrderController@over');
+	Route::get('/home/order/cancel','Home\OrderController@cancel');
 
 	//个人中心
 	Route::get('/home/center','Home\CenterController@index');

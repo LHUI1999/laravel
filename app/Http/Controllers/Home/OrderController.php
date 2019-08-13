@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Home\CarController;
-
 use App\Models\Goods;
 use App\Models\Address;
 use App\Models\Orders;
-
 use App\Models\Orderinfo;
-use Illuminate\Support\Facades\DB;
+use DB;
 use Hash;
 
 
@@ -29,13 +27,11 @@ class OrderController extends Controller
 
     	}else{
     		$data = [];
-    		// return view('home.car.empty');
     	}
         if(empty($_SESSION['address'])){
             $_SESSION['address'] = DB::table('address')->where('uid',$_SESSION['user']->id)->first();
             
         }
-
     	//总价格
     	$pricecount = CarController::priceCount();
         //收货地址
@@ -43,37 +39,25 @@ class OrderController extends Controller
 
     	return view('home.order.account',['data'=>$data,'pricecount'=>$pricecount,'address'=>$address]);
     }
-
+    //订单支付页
     public function pay(Request $request)
     {
-        // dd($request->all());
+        //留言
         $liuyan = $request->liuyan;
         //设置单号
         $order = rand(100000000,999999999);
         return view('home.order.pay',['order'=>$order,'liuyan'=>$liuyan]);
-
     }
-
-    public function index(Request $request)
-    {
-        //商品信息
-        $data = Goods::where('id',$request->id)->first();
-        //收货地址
-        $address = Address::where('uid',$_SESSION['user']->id)->get();
-        
-        return view('home.order.account',['data'=>$data,'address'=>$address]);
-    }
-
+    //选择地址
     public function addr(Request $request)
-    {
+    {   
+        //查到地址
         $address = Address::where('id',$request->id)->first();
-        // dd($address);
-        // $_SESSION['address']=Address::where('id',$request->id)->first();
+        //将地址写入session
         $_SESSION['address']=DB::table('address')->where('id',$request->id)->first();
-        // dd($_SESSION['address']);
         return back();
     }   
-    //支付成功
+    //订单生成
     public function success(Request $request)
     {   
         // dd($request->all());
@@ -97,6 +81,7 @@ class OrderController extends Controller
                 $goods+=$v->num;
             }
         }
+
         $order = new Orders;
         $order->order = $request->input('order');
         $order->uid = $_SESSION['user']->id;
@@ -107,6 +92,7 @@ class OrderController extends Controller
         $order->phone = $_SESSION['address']->phone;
         $order->pay = $request->pay;
         $order->liuyan = $request->input('liuyan');
+        $order->status = 0;
         if($order->save()){
             //减少库存
             foreach($_SESSION['car'] as $k=> $v)
@@ -116,27 +102,66 @@ class OrderController extends Controller
                     // dump($goods);
                     $goods->num = $goods->num-1;
                     $goods->save();
-
                      //订单详情
                     $orderinfo = new Orderinfo;
                     $orderinfo->oid = $order->id;
                     $orderinfo->gid = $v->id;
                     $orderinfo->num = $v->num;
                     $orderinfo->save();
-
                 }
             }
-           
             return redirect('/home/order/over');
         }
     }
+    //订单完成
     public function over()
     {
         //价格
-            
-
         $pricecount = CarController::priceCount();
         return view('home.order.success',['pricecount'=>$pricecount]);
+    }
+    //待付款
+    public function cancel(Request $request)
+    {
+         //已选商品
+        $goods = 0;
+        foreach($_SESSION['car'] as $k=> $v)
+        {
+            if($v->select==1){
+                $goods+=$v->num;
+            }
+        }
+        //价格
+        $pricecount = CarController::priceCount();
+
+        $order = new Orders;
+        $order->order = $request->input('order');
+        $order->uid = $_SESSION['user']->id;
+        $order->price = $pricecount;
+        $order->num = $goods;
+        $order->addr = $_SESSION['address']->addr;
+        $order->uname = $_SESSION['address']->uname;
+        $order->phone = $_SESSION['address']->phone;
+        $order->pay = null;
+        $order->liuyan = $request->input('liuyan');
+        $order->status = 1;
+        if($order->save()){
+            //订单详情
+            $orderinfo = new Orderinfo;
+            $orderinfo->oid = $order->id;
+            $orderinfo->gid = $v->id;
+            $orderinfo->num = $v->num;
+            $orderinfo->save();
+            return redirect('/home/car/index');
+        }
+
+    }
+
+     public function index(Request $request)
+    {
+        $order = Orders::where('uid',$_SESSION['user']->id)->get();
+        // dd($order);
+        return view('home.order.index',['order'=>$order]);
     }
 
 }
