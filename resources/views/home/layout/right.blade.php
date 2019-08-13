@@ -60,7 +60,7 @@
 
 
                     <div id="brand " class="item ">
-                        <a href="#">
+                        <a href="/home/collection">
                             <span class="wdsc "><img src="/h/images/wdsc.png "></span>
                         </a>
                         <div class="mp_tooltip " style="left: -121px; visibility: hidden;">
