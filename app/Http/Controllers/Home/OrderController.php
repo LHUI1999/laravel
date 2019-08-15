@@ -44,9 +44,11 @@ class OrderController extends Controller
     {
         //留言
         $liuyan = $request->liuyan;
+         $pay = DB::table('users_pay')->where('uid',$_SESSION['user']->id)->first();
         //设置单号
+
         $order = rand(100000000,999999999);
-        return view('home.order.pay',['order'=>$order,'liuyan'=>$liuyan]);
+        return view('home.order.pay',['order'=>$order,'liuyan'=>$liuyan,'pay'=>$pay]);
     }
     //选择地址
     public function addr(Request $request)
@@ -146,22 +148,90 @@ class OrderController extends Controller
         $order->liuyan = $request->input('liuyan');
         $order->status = 1;
         if($order->save()){
-            //订单详情
-            $orderinfo = new Orderinfo;
-            $orderinfo->oid = $order->id;
-            $orderinfo->gid = $v->id;
-            $orderinfo->num = $v->num;
-            $orderinfo->save();
-            return redirect('/home/car/index');
+            foreach($_SESSION['car'] as $k=> $v)
+            {
+                if($v->select==1){
+                    //订单详情
+                    $orderinfo = new Orderinfo;
+                    $orderinfo->oid = $order->id;
+                    $orderinfo->gid = $v->id;
+                    $orderinfo->num = $v->num;
+                    $orderinfo->save();
+                }
+            }
+                    return redirect('/home/car/index');
+
         }
 
     }
-
+    //订单管理
      public function index(Request $request)
     {
-        $order = Orders::where('uid',$_SESSION['user']->id)->get();
-        // dd($order);
+        //订单
+        $order = DB::table('orders')->where('uid',$_SESSION['user']->id)->get();
+        foreach($order as $k=>$v){
+            //订单详情
+            $order[$k]->orderinfo = DB::table('order_info')->where('oid',$v->id)->get();
+            foreach($order[$k]->orderinfo as $kk=>$vv){
+                //订单商品图片
+                $order[$k]->orderinfo[$kk]->pic = DB::table('goods_pic')->select('pic')->where('gid',$vv->gid)->first();
+                //订单商品信息
+                $order[$k]->orderinfo[$kk]->goods = DB::table('goods')->select('title','price')->where('id',$vv->gid)->first();
+                
+            }
+
+        }
         return view('home.order.index',['order'=>$order]);
+    }
+    //删除订单
+    public function delorder(Request $request)
+    {
+        // dump($request->all());
+        $order = Orders::where('id',$request->oid)->delete();
+        $orderinfo = Orderinfo::where('oid',$request->oid)->delete();
+        if($order && $orderinfo){
+            return back();
+        }
+    }
+    //一键支付
+    public function onepay(Request $request)
+    {
+        $pay = DB::table('users_pay')->where('uid',$_SESSION['user']->id)->first();
+        // dump($pay);
+        return view('home.order.onepay',['order'=>$request->order,'pay'=>$pay]);
+    }
+    //执行一键支付
+    public function onesuccess(Request $request)
+    {
+        //是否选择支付方式
+        if($request->pay == null){
+             echo "<script>alert('请选择支付方式')</script>";
+            return back();
+        }
+        //支付密码是否正确
+        $pass = DB::table('users_pay')->where('uid',$_SESSION['user']->id)->first();
+        if(!Hash::check($request->pass,$pass->pay)){
+            echo "<script>alert('支付密码不正确')</script>";
+            return back();
+        }
+        //修改订单状态
+        $order = Orders::where('order',$request->order)->first();
+        $order->status = 0;
+        if($order->save()){
+            echo "<script>alert('支付成功')</script>";
+            return redirect('/home/order');
+        }
+    }
+    //确认收货
+    public function takeorder(Request $request) 
+    {
+        //修改订单状态
+        $order = Orders::where('id',$request->oid)->first();
+        $order->status = 3;
+        if($order->save()){
+            echo "<script>alert('收货成功')</script>";
+            return redirect('/home/order');
+        }
     }
 
 }

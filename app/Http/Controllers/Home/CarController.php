@@ -83,18 +83,20 @@ class CarController extends Controller
     	// $_SESSION['car']=null;
     	if(!empty($_SESSION['car'])){
     		$data = $_SESSION['car'];
+            $goods = 0;
+            foreach($_SESSION['car'] as $k=> $v)
+            {
+                if($v->select==1){
+                    $goods+=$v->num;
+                }
+            }
            
     	}else{
     		$data = [];
+            $goods = 0;
     	}
         //已选商品
-        $goods = 0;
-        foreach($_SESSION['car'] as $k=> $v)
-        {
-            if($v->select==1){
-                $goods+=$v->num;
-            }
-        }
+        
     	//总价格
     	$pricecount = self::priceCount();
     	return view('home.car.index',['data'=>$data,'pricecount'=>$pricecount,'goods'=>$goods]);

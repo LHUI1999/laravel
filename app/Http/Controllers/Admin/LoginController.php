@@ -14,20 +14,23 @@ class LoginController extends Controller
     {
     	return view('admin.login.login');
     }
-    public function dologin(Request $request){
+    public function dologin(Request $request)
+    {
+        // dd($request->all());
     	//获取信息
     	$uname = $request ->input('uname','');
     	$upass = $request ->input('upass','');
     	$userinfo = DB::table('admin_users')->where('uname',$uname)->first();
+        dump($userinfo);
     	if(!$userinfo){
     		echo "<script>alert('用户名或密码错误')</script>";
-    		exit;
+    		return back();
     	}
 
     	//验证密码正确性
     	if(!Hash::check($upass,$userinfo->upass)){
     		echo "<script>alert('用户名或密码错误')</script>";
-    		exit;
+    		return back();
     	}
 
     	//登陆成功

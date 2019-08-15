@@ -85,6 +85,9 @@
 										<i class="halflings-icon white trash"></i> 
 									</button>
 								</form>
+								<a class="btn btn-info" href="/admin/goods/comment/{{$v->id}}">
+									查看评论
+								</a>
 								
 							</td>
 						</tr>

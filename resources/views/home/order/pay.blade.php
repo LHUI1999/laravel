@@ -45,7 +45,7 @@
 			<span id="success">订单提交成功，请尽快付款！订单号：{{$order}}</span><br>
 		<span id="pay" > 请您在24小时内完成支付，否则订单会被自动取消</span>
 		</div>
-		
+		@if($pay !== null)
 <!--支付方式-->
 		<form action="/home/order/success" method="post">
 			{{csrf_field()}}
@@ -74,5 +74,10 @@
 						</div>
 					</div>
 		</form>
+		@else
+		<div style="margin-top:30px">
+			<span style="font-size:20px">检测到您还未设置支付密码，<a style="color:red;font-size: 23px"  href="/home/safe/paypass">设置支付密码</a>，完成支付</span>
+		</div>
+		@endif
 					
 @endsection
