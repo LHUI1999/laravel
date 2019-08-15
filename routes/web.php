@@ -118,8 +118,7 @@ Route::any('/home/index','Home\IndexController@index');
 	Route::resource('/home/geren','Home\GerenController');
 	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
 
-	//账单
-	Route::get('/home/bill','Home\BillController@index');
+	
 
 
 	Route::resource('/home/geren','Home\GerenController');
@@ -196,6 +195,13 @@ Route::get('/home/foot/delete','Home\FootController@delete');
 Route::get('/home/comment/list','Home\CommentController@list');
 Route::get('/home/comment','Home\CommentController@index');
 
+//账单
+Route::get('/home/bill','Home\BillController@index');
+
+
+// 账单明细
+// Route::get('/home/billlist','Home\BilllistController@billlist');
+// Route::get('/home/billlist/destroy','Home\BilllistController@destroy');
 
 
 

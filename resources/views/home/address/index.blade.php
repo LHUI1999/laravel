@@ -108,7 +108,7 @@
 
 
                                 <div class="am-form-group">
-                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                    <div class="am-u-sm-9 am-u-sm-push-3" style="margin-top:10px;">
                                         <button style="margin-top:30px" type="submit" class="am-btn am-btn-danger">保存</button>
                                         <button style="margin-top:30px" type="reset" class="am-btn am-btn-danger">取消</button>
                                         <!-- {{-- <a href="" class="am-close am-btn am-btn-danger" data-am-modal-close>取消</a> --}} -->
