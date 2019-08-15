@@ -18,14 +18,35 @@ class GoodsController extends Controller
     {
         //获取id
         $id=$request->id;
+
+        // 判断是否收藏
+        if(isset($_SESSION['collection'][$id])){
+            $coll=1;
+            
+        }else{
+            $coll=2;
+            
+        }
+
+        // if(session('foot')==null){
+        //     session(['foot'=>$id]);
+        // }else{
+        //     $request->session()->push('foot',$id);
+        // }
+        // dump(session('foot'));
         //获取id相对应商品的数据
         $goods=DB::table('goods')->where('id',$id)->get();
          //获得商品图片
-         $goodspic = DB::table('goods_pic')->where('gid',$id)->get();
+         $goods->pic = DB::table('goods_pic')->where('gid',$id)->get();
          //获得商品详情图片
-         $goodsinfopic = DB::table('goods_infopic')->where('gid',$id)->get();
-        // dump($goodsinfopic);
-         return view('home.goods.index',['goods'=>$goods,'goodspic'=>$goodspic,'goodsinfopic'=>$goodsinfopic]);
+         $goods->infopic = DB::table('goods_infopic')->where('gid',$id)->get();
+        
+        //看了又看
+         // dump(rand(9,16));
+         $look = Goods::where('cid',rand(9,16))->take(5)->get();
+         // $look = Goods::where('cid',9)->take(5)->get();
+         // dd($look);
+         return view('home.goods.index',['goods'=>$goods,'look'=>$look,'coll'=>$coll]);
  
     }
 

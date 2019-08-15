@@ -1,17 +1,15 @@
 @extends('home.layout.index')
 @section('content')
-<link href="/h/css/systyle.css" rel="stylesheet" type="text/css">
+
+		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/h/css/systyle.css" rel="stylesheet" type="text/css">
+
 
 <div class="nav-table">
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
 					   <div class="nav-cont">
-							<ul>
-								<li class="index"><a href="#">首页</a></li>
-                                <li class="qc"><a href="#">闪购</a></li>
-                                <li class="qc"><a href="#">限时抢</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
-                                <li class="qc last"><a href="#">大包装</a></li>
-							</ul>
+							
 						    <div class="nav-extra">
 						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
 						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
@@ -30,18 +28,17 @@
 								<div class="m-userinfo">
 									<div class="m-baseinfo">
 										<a href="information.html">
-											<img src="/h/images/getAvatar.do.jpg">
+											<img src="/uploads/{{$_SESSION['user']->profile}}">
 										</a>
-										<em class="s-name">(小叮当)<span class="vip1"></span></em>
-										<div class="s-prestige am-btn am-round">
-											会员福利</div>
+										<em style="margin-left: 30px" class="s-name">{{$_SESSION['user']->uname}}</em>
+										
 									</div>
 									<div class="m-right">
 										<div class="m-new">
-											<a href="news.html"><i class="am-icon-bell-o"></i>消息</a>
+											<a href="/home/news"><i class="am-icon-bell-o"></i>消息</a>
 										</div>
 										<div class="m-address">
-											<a href="address.html" class="i-trigger">我的收货地址</a>
+											<a href="/home/address" class="i-trigger">我的收货地址</a>
 										</div>
 									</div>
 								</div>
@@ -66,18 +63,18 @@
 										</a>
 									</p>
 									<p class="m-bill">
-										<a href="bill.html">
+										<a href="/home/bill">
 											<i><img src="/h/images/wallet.png"></i>
-											<span class="m-title">钱包</span>
+											<span class="m-title">账单</span>
 											<em class="m-num">2</em>
 										</a>
 									</p>
-									<p class="m-big">
+									<!-- <p class="m-big">
 										<a href="#">
 											<i><img src="/h/images/day-to.png"></i>
 											<span class="m-title">签到有礼</span>
 										</a>
-									</p>
+									</p> -->
 									<p class="m-big">
 										<a href="#">
 											<i><img src="/h/images/72h.png"></i>
@@ -423,14 +420,14 @@
 					<li class="person">
 						<a href="#">我的交易</a>
 						<ul>
-							<li><a href="order.html">订单管理</a></li>
+							<li><a href="/home/order">订单管理</a></li>
 							<li> <a href="change.html">退款售后</a></li>
 						</ul>
 					</li>
 					<li class="person">
 						<a href="#">我的资产</a>
 						<ul>
-							<li> <a href="/home/youhui">优惠券 </a></li>
+							<li> <a href="">优惠券 </a></li>
 							<li> <a href="bonus.html">红包</a></li>
 							<li> <a href="bill.html">账单明细</a></li>
 						</ul>
@@ -439,9 +436,9 @@
 					<li class="person">
 						<a href="#">我的小窝</a>
 						<ul>
-							<li> <a href="collection.html">收藏</a></li>
-							<li> <a href="foot.html">足迹</a></li>
-							<li> <a href="comment.html">评价</a></li>
+							<li> <a href="/home/collection">收藏</a></li>
+							<li> <a href="/home/foot">足迹</a></li>
+							<li> <a href="/home/comment">评价</a></li>
 							<li> <a href="news.html">消息</a></li>
 						</ul>
 					</li>
@@ -456,4 +453,6 @@
 			<li><a href="home/shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>	
 			<li class="active"><a href="index.html"><i class="am-icon-user"></i>我的</a></li>					
 		</div>
-@endsection
+		@include('home.layout.footer')
+
+		@endsection

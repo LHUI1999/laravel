@@ -100,7 +100,7 @@
 							<div class="clear"></div>
                         </div>
 							<div class="search-content">
-								<div class="sort">
+								<div class="sort" style="width:1180px">
 									<li class="first"><a title="综合">综合排序</a></li>
 									<li><a title="销量">销量排序</a></li>
 									<li><a title="价格">价格优先</a></li>
@@ -108,6 +108,30 @@
 								</div>
 								<div class="clear"></div>
 
+<!-- <<<<<<< HEAD -->
+								<!-- <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+									@foreach($data as $k => $v)
+									
+									<li>
+										<div class="i-pic limit">
+
+											<img src="/uploads/{{$v->goodspic->pic}}">											
+											<p class="title fl">{{$v->title}}</p>
+											<p class="price fl">
+												<b>¥</b>
+												<strong>{{$v->price}}</strong>
+											</p>
+											<p class="number fl">
+												销量<span>1110</span>
+											</p>
+										</div>
+									</li>
+									@endforeach
+								
+								</ul>
+							</div> -->
+							
+<!-- ======= -->
 			<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
 				@foreach($data as $k => $v)
 				
@@ -177,6 +201,7 @@
 								</li>
 
 							</div>
+<!-- >>>>>>> origin/songxin -->
 							<div class="clear"></div>
 							<!--分页 -->
 							<ul class="am-pagination am-pagination-right">
@@ -364,4 +389,6 @@
 		</script>
 		<script type="text/javascript" src="/h/basic/js/quick_links.js"></script>
 		<div class="theme-popover-mask"></div>
+		@include('home.layout.footer')
+		
 @endsection

@@ -9,6 +9,8 @@ use App\Models\Cates;
 use App\Models\Goods;
 use App\Models\Goodspic;
 use App\Http\Controllers\Home\CarController;
+use App\Http\Controllers\Home\CollectionController;
+
 
 class IndexController extends Controller
 {
@@ -39,7 +41,6 @@ class IndexController extends Controller
             }
             
         }
-        // dd($arr);
     }
 
 
@@ -48,24 +49,22 @@ class IndexController extends Controller
         //获取一级分类
         $data = Cates::where('pid',$pid)->get();
         foreach($data as $k => $v){
-            // $erji = Cates::where('pid',$v->id)->get();
-            // $v->sub = $erji;
             $v->sub = self::getPidCatesData($v->id);
 
         }
+        // dd($data);
         return $data;
     }
-
     //前台首页
     public function index(Request $request)
     {
+       // dump($_SESSION['car']);
 
-        //购物车商品数量
-        $count = CarController::countCar();
         //分词写入数据库
         // $this->dataWord();
         //接受搜索参数
         $search = $request->input('search','');
+
         //中文分词start
         if(!empty($search)){
             $gid = DB::table('view_goods_word')->select('gid')->where('word',$search)->get();
@@ -75,9 +74,26 @@ class IndexController extends Controller
                 $gids[] = $v->gid;
             }
             $data2 = Goods::whereIn('id',$gids)->get();
-             return view('home.list.index',['data'=>$data2,'countcar'=>$count]);
+
+
+            
+             return view('home.list.index',['data'=>$data2]);
+
         }else{
-            return view('home.index.index');
+            //商品分类
+           
+            $data = Cates::where('pid',0)->get();
+            foreach($data as $k => $v){
+                $data[$k]['name'] = Goods::where('cid',$v->id)->take(8)->get();
+            }
+            // $_SESSION['car'] = null;
+
+            // dump($_SESSION['car']);
+            $carcount = CarController::countCar();
+            
+            $collectioncount = CollectionController::countCollection();
+            // dd($collectioncount);
+            return view('home.index.index',['data'=>$data,'carcount'=>$carcount,'collectioncount'=>$collectioncount]);
 
         }
         

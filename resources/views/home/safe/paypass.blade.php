@@ -1,5 +1,13 @@
 @extends('home.layout.index')
 @section('content')
+<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/h/css/stepstyle.css" rel="stylesheet" type="text/css">
+
+		<script type="text/javascript" src="/h/js/jquery-1.7.2.min.js"></script>
+		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 
 <div class="center">
@@ -81,9 +89,9 @@
 					<li class="person">
 						<a href="#">个人资料</a>
 						<ul>
-							<li> <a href="information.html">个人信息</a></li>
-							<li> <a href="safety.html">安全设置</a></li>
-							<li> <a href="address.html">收货地址</a></li>
+							<li> <a href="/home/geren">个人信息</a></li>
+							<li> <a href="/home/safe">安全设置</a></li>
+							<li> <a href="/home/address">收货地址</a></li>
 						</ul>
 					</li>
 					<li class="person">
@@ -120,14 +128,6 @@
 		<script type="text/javascript">
                   function sendMobileCode(obj){
 
-                    // //获取用户验证码
-                    //   let phone = $('#phone').val();
-                    //   //验证格式
-                    //   let phone_preg = /^1{1}[3-9]{1}[\d]{9}$/;
-                    //   if(!phone_preg.test(phone)){
-                    //     alert('手机号格式不正确');
-                    //     return false;
-                    //   }
 
                   
                     $('#sendMobileCode').attr('disabled',true);
@@ -164,4 +164,6 @@
                     }
                   }
                 </script>
+		@include('home.layout.footer')
+
 @endsection

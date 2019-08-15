@@ -8,16 +8,13 @@
 
 		<title>Orange lala</title>
 		<!-- 购物车 -->
-		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="/h/basic/css/demo.css" rel="stylesheet" type="text/css" />
-		<link href="/h/css/optstyle.css" rel="stylesheet" type="text/css" />
-		<link href="/h/css/jsstyle.css" rel="stylesheet" type="text/css" />
+		<!--  -->
 
 		<!-- 结算 -->
-		<script type="text/javascript" src="/h/js/jquery.js"></script>
+		<!-- <script type="text/javascript" src="/h/js/jquery.js"></script>
 		<script type="text/javascript" src="/h/js/address.js"></script>
 
-		<script type="text/javascript" src="http://lib.h-ui.net/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="http://lib.h-ui.net/jquery/1.9.1/jquery.min.js"></script> -->
 
 		<!-- 城市三级连动 -->
 		<script type="text/javascript" src="/h/3/jquery.provincesCity.js"></script>
@@ -50,9 +47,16 @@
 		<!-- 收货地址 -->
 		<link href="/h/css/addstyle.css" rel="stylesheet" type="text/css">
 		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-	
-		
 
+		<!-- 订单管理 -->		
+		<link href="/h/css/orstyle.css" rel="stylesheet" type="text/css">
+
+		<!-- 优惠券 -->
+		<link href="/h/css/cpstyle.css" rel="stylesheet" type="text/css">
+
+
+
+		
 	</head>
 
 	<body>
@@ -82,10 +86,10 @@
 					<div class="menu-hd MyShangcheng"><a href="/home/center" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 				</div>
 				<div class="topMessage mini-cart">
-					<div class="menu-hd"><a id="mc-menu-hd" href="/home/car/index" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+					<div class="menu-hd"><a id="mc-menu-hd" href="/home/car/index" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">{{$carcount}}</strong></a></div>
 				</div>
 				<div class="topMessage favorite">
-					<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
+					<div class="menu-hd"><a href="/home/collection" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span><strong id="J_MiniCartNum" class="h"></strong></a></div>
 			</ul>
 			</div>
 
@@ -126,43 +130,18 @@
 				@section('content')
 				@show
 
-				<div class="footer" style="margin-left: auto;">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有</em>
-						</p>
-					</div>
-				</div>
+				
 
 			</div>
+
+			
 
 			<!--操作页面-->
 
 			<div class="theme-popover-mask"></div>
 
 			
-		<!--引导 -->
-		<div class="navCir">
-			<li><a href="home.html"><i class="am-icon-home "></i>首页</a></li>
-			<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
-			<li class="active"><a href="shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>	
-			<li><a href="person/index.html"><i class="am-icon-user"></i>我的</a></li>					
-		</div>
+		
 	</body>
 
 </html>

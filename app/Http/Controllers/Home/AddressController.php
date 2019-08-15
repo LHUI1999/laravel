@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Address;
-use App\Http\Requests\AddressStore;
 
 class AddressController extends Controller
 {
     // 收货地址
     public function index()
     {
+        dump($_SESSION['address']);
         // 获取id
         $id = $_SESSION['user']->id;
 
@@ -24,10 +24,33 @@ class AddressController extends Controller
     }
 
     // 添加地址
-    public function add(AddressStore $request)
+    public function add(Request $request)
     {
         // 开启事务
         DB::beginTransaction();
+
+        if(empty($request->input('uname'))){
+            echo "<script>alert('用户名不能为空');location.href='/home/address'</script>";
+            exit;
+        }
+
+        if(empty($request->input('phone'))){
+            echo "<script>alert('手机号不能为空');location.href='/home/address'</script>";
+            exit;
+        }else{
+            $page = '/^1{1}[3-9]{1}[\d]{9}$/';
+            preg_match_all ( $page, $request->input('phone'),$res);
+            if(empty($res[0])){
+                echo "<script>alert('手机号格式不正确');location.href='/home/address'</script>";
+                exit;
+            }
+            
+        }
+        
+        if(empty($request->input('addr'))){
+            echo "<script>alert('地址不能为空');location.href='/home/address'</script>";
+            exit;
+        }
         
         // 获取uid
         $uid = $_SESSION['user']->id;
@@ -50,22 +73,6 @@ class AddressController extends Controller
         $data['addr'] = $province.$country.$town.$addr;
         $data['uname'] = $uname;
         $data['phone'] = $phone;
-        // dd($data['uname']);
-        
-        if(empty($data['uname'])){
-            echo "<script>alert('用户名不能为空');location.href='/home/address'</script>";
-            exit;
-        }
-
-        if(empty($data['phone'])){
-            echo "<script>alert('手机号不能为空');location.href='/home/address'</script>";
-            exit;
-        }
-
-        if(empty($data['addr'])){
-            echo "<script>alert('地址不能为空');location.href='/home/address'</script>";
-            exit;
-        }
 
         // 将数据压入表中
         $res = DB::table('address')->insert($data);
@@ -74,11 +81,13 @@ class AddressController extends Controller
         if($res){
             // 提交事务
             DB::commit();
-            return redirect('home/address')->with('success','添加成功');
+
+            return redirect('home/address');
+
         }else{
             // 回滚事务
             DB::rollback();
-            return back()->with('error','添加失败');
+            return back();
         }
         
     }
@@ -94,9 +103,35 @@ class AddressController extends Controller
     }
 
     // 执行修改操作
-    public function update(AddressStore $request,$id)
+    public function update(Request $request,$id)
     {
+
+        // dd($id);
         $address = Address::find($id);
+        // dd($address->id);
+        if(empty($request->input('uname'))){
+            echo "<script>alert('用户名不能为空');location.href='/home/address/".$address->id."/edit'</script>";
+            exit;
+        }
+
+        if(empty($request->input('phone'))){
+            echo "<script>alert('手机号不能为空');location.href='/home/address/".$address->id."/edit'</script>";
+            exit;
+        }else{
+            $page = '/^1{1}[3-9]{1}[\d]{9}$/';
+            preg_match_all ( $page, $request->input('phone'),$res);
+            if(empty($res[0])){
+                echo "<script>alert('手机号格式不正确');location.href='/home/address/".$address->id."/edit'</script>";
+                exit;
+            }
+            
+        }
+
+        if(empty($request->input('addr'))){
+            echo "<script>alert('地址不能为空');location.href='/home/address/".$address->id."/edit'</script>";
+            exit;
+        }
+
         $address->uname = $request->input('uname');
         $address->phone = $request->input('phone');
         $address->province = $request->input('province');
@@ -115,11 +150,13 @@ class AddressController extends Controller
         if($res){
             // 提交事务
             DB::commit();
-            return redirect('home/address')->with('success','修改成功');
+
+            return redirect('home/address');
+
         }else{
             // 事务回滚
             DB::rollback();
-            return back()->with('error','修改失败');
+            return back();
         }
     }
 
@@ -135,13 +172,17 @@ class AddressController extends Controller
 
         // 判断
         if($res){
+            if($id == $_SESSION['address']->id){
+                $_SESSION['address']=[];
+            }
             // 提交事务
             DB::commit();
-            return redirect('home/address')->with('success','删除成功');
+            // echo "<script>alert('删除成功');location.href='/home/address'</script>";
+            return back();
         }else{
             // 事务回滚
             DB::rollback();
-            return back()->with('error','删除失败');
+            return back();
         }
     }
     

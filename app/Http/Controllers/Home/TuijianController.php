@@ -25,7 +25,7 @@ class TuijianController extends Controller
         $aa->pic = $aapic[0]->pic;
 
 
-        // 好物推荐
+        // 好物推荐vc
         $cates=DB::table('cates')->get();
 
         $data=DB::table('goods')->where('cid',$cates[2]->id)->get();

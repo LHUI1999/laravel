@@ -81,10 +81,19 @@ Route::any('/home/index','Home\IndexController@index');
 	Route::get('/home/car/descnum','Home\CarController@descNum');
 	//删除商品
 	Route::get('/home/car/delete','Home\CarController@delete');
+	//选择商品
+	Route::get('/home/car/select','Home\CarController@select');
+	//选择所有商品
+	Route::get('/home/car/selectall','Home\CarController@selectall');
 
 	//结算
 	Route::get('/home/order/account','Home\OrderController@account');
+	Route::get('/home/order/index','Home\OrderController@index');
 	Route::post('/home/order/pay','Home\OrderController@pay');
+	Route::get('/home/order/addr','Home\OrderController@addr');
+	Route::post('/home/order/success','Home\OrderController@success');
+	Route::get('/home/order/over','Home\OrderController@over');
+	Route::get('/home/order/cancel','Home\OrderController@cancel');
 
 	//个人中心
 	Route::get('/home/center','Home\CenterController@index');
@@ -102,18 +111,32 @@ Route::any('/home/index','Home\IndexController@index');
 	//邮箱换绑
 	Route::get('/home/safe/email','Home\SafeController@email');
 	Route::post('/home/safe/changeemail','Home\SafeController@changeemail');
+	Route::post('/home/safe/sendemail','Home\SafeController@sendemail');
 
 	 //个人信息
+
+
+	Route::resource('/home/geren','Home\GerenController');
+	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
+
+	//账单
+	Route::get('/home/bill','Home\BillController@index');
+
+
 	Route::resource('/home/geren','Home\GerenController');
 	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
 	//优惠券
-	Route::resource('/home/youhui', 'Home\YouhuiController');
+	Route::get('/home/youhui/index', 'Home\YouhuiController@index');
+	Route::get('/home/youhui/add', 'Home\YouhuiController@add');
+	
 	//点击查看商品详情
 	Route::resource('/home/goods', 'Home\GoodsController');
+
 	//今日推荐
 	Route::resource('/home/tuijian', 'Home\TuijianController');
 	Route::resource('/home/tunhuo', 'Home\TunhuoController');
 	Route::resource('/home/langman', 'Home\LangmanController');
+
 
 	
 
@@ -151,6 +174,31 @@ Route::get('/home/address/destroy/{id}','Home\AddressController@destroy');
 // 修改收货地址
 Route::get('/home/address/{id}/edit','Home\AddressController@edit');
 Route::get('/home/address/update/{id}','Home\AddressController@update');
+
+// 订单管理
+Route::get('/home/order','Home\OrderController@index');
+
+
+// 新闻
+Route::get('/home/news/new1','Home\NewsController@new1');
+Route::get('/home/news/new2','Home\NewsController@new2');
+Route::get('/home/news/new3','Home\NewsController@new3');
+Route::get('/home/news/new4','Home\NewsController@new4');
+Route::get('/home/news/new5','Home\NewsController@new5');
+
+// 收藏
+Route::get('/home/collection','Home\CollectionController@index');
+Route::get('/home/collection/add','Home\CollectionController@add');
+Route::get('/home/collection/delete','Home\CollectionController@delete');
+
+// 足迹
+Route::get('/home/foot','Home\FootController@index');
+Route::get('/home/foot/delete','Home\FootController@delete');
+
+// 评价
+Route::get('/home/comment','Home\CommentController@index');
+
+
 
 
 

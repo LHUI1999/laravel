@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Userspay;
 use App\Models\Users;
 use Hash;
+use Mail;
 
 class SafeController extends Controller
 {
@@ -226,41 +227,46 @@ class SafeController extends Controller
     //邮箱换绑
     public function email()
     {
-        // dd($_SESSION['user']->email);
         return view('home.safe.email');
     }
 
     //发送邮箱验证码
     public function sendemail(Request $request)
     {
-        // console.log('aaa');
-        //接收手机号
+
+
+        $users = $_SESSION['user'];
+        $users->email = $request->input('email');
+        $_SESSION['email'] =  $request->input('email');
+
+        // //接收手机号
         $email = $request->input('email');
         $code = rand(1234,4321);
-        $k = $phone.'_code';
-        session([$k=>$code]);
-        //发送邮件
-        Mail::send('home.email.email',['id'=>$users->id,'token'=>$users->token],function($m) use ($users){
-            $m->to($email)->subject($code);
+        $k = $email.'_code';
+        $_SESSION[$k]=$code;
+        // //发送邮件
+        Mail::send('home.email.code',['id'=>$users->id,'token'=>$users->token],function($m) use ($users){
+            $m->to($users->email)->subject('qqq');
         });
-
-       
+        return redirect('/home/safe/email');
+     
     }
+
     public function changeemail(Request $request)
     {
-        dump($request->all());
-        //
         //验证手机验证码
         $email = $request->input('email');
         $code = $request->input('code',0);
         //获取发送到手机的验证码
         $k = $email.'_code';
-        $email_code = session($k);
+        // dd($email);
+        $email_code = $_SESSION[$k];
+        // dd($email_code);
 
-        // if($code != $email_code){
-        //     echo "<script>alert('验证码错误');location.href='/home/register'</script>";
-        //     exit;
-        // }
+        if($code != $email_code){
+            echo "<script>alert('验证码错误');location.href='/home/safe/email'</script>";
+            exit;
+        }
         
         $users = Users::find($_SESSION['user']->id);
         $users->email = $request->input('email','');
