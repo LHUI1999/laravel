@@ -405,7 +405,7 @@
 			<aside class="menu">
 				<ul>
 					<li class="person active">
-						<a href="index.html">个人中心</a>
+						<a href="/home/center">个人中心</a>
 					</li>
 					<li class="person">
 						<a href="#">个人资料</a>
@@ -429,7 +429,7 @@
 						<ul>
 							<li> <a href="/home/coupon">优惠券 </a></li>
 							<li> <a href="bonus.html">红包</a></li>
-							<li> <a href="bill.html">账单明细</a></li>
+							<li> <a href="/home/bill">账单明细</a></li>
 						</ul>
 					</li>
 

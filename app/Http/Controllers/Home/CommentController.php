@@ -84,4 +84,12 @@ class CommentController extends Controller
 
     	
     }
+
+    // 发表评论页面
+    public function list()
+    {
+        // 获取表中的数据
+    
+        return view('home.comment.list');
+    }
 }

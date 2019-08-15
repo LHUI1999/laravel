@@ -154,7 +154,7 @@
 							</div>
 							<div class="member-logout">
 								<a class="am-btn-warning btn" href="/home/center">个人中心</a>
-								<a class="am-btn-warning btn" href="/home/collecct">收藏</a>
+								<a class="am-btn-warning btn" href="/home/collection">收藏</a>
 							</div>
 							@else
 							<div class="m-baseinfo">

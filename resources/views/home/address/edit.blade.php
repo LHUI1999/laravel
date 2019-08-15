@@ -65,9 +65,9 @@
                                 <div class="am-form-group">
                                     <label for="user-address" class="am-form-label">所在地</label>
                                     <div class="am-form-content address">
-                                        <select name="province" id="province" data-am-selected></select>
-                                        <select name="country" id="country" data-am-selected></select>
-                                        <select name="town" id="town" data-am-selected></select>
+                                        <select name="province" id="province"></select>
+                                        <select name="country" id="country"></select>
+                                        <select name="town" id="town"></select>
                                     </div>
                                     
                                 </div>
