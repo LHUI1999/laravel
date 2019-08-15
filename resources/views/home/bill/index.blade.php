@@ -58,7 +58,7 @@
 									</span> --}}
 								</h3>
 
-								<div ng-class="shoppingChart" class="catatory-details  fn-hide shopping">
+								<div ng-class="shoppingChart" class="catatory-details  fn-hide shopping" style="height:100%">
 									<div class="catatory-chart fn-left fn-hide">
 										<div class="title">类型</div>
 										<ul>
@@ -76,7 +76,7 @@
 											@foreach($d as $e=>$f)
 											<li class="ng-scope  delete-false">
 												<div class="  ng-scope">
-													<a href="#" class="text fn-left " title="羊毛毡底鞋垫">
+													<a href="#" class="text fn-left " title="{{$f->goods->title}}">
 													<span class="emoji-span ng-binding">{{ $f->goods->title }}</span>
 													<span class="amount fn-right ng-binding">{{ $f->goods->price }}&nbsp;x&nbsp;{{ $f->num }}</span>
 													</a>
@@ -91,8 +91,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="block-expense block  fn-left">
-								<div class="slide-button right"></div>
+							<div class=" ">
+								<!-- <div class="slide-button right"></div> -->
 							</div>
 							<div class="clear"></div>
 

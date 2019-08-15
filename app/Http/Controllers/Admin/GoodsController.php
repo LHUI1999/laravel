@@ -9,6 +9,10 @@ use App\Models\Goodspic;
 use App\Models\Goodsinfopic;
 use App\Http\Requests\GoodsStore;
 use App\Http\Requests\GoodsUpdate;
+use App\Models\Users;
+use App\Models\Orders;
+use App\Models\Orderinfo;
+use App\Models\Commentpic;
 
 use DB;
 use Storage;
@@ -293,5 +297,51 @@ class GoodsController extends Controller
             return back()->with('error','删除失败');
         }
         
+    }
+
+    // 商品评论
+    public function comment($id)
+    {
+        $data = DB::table('comment')->where('gid',$id)->paginate(2);
+        foreach($data as $k=>$v){
+            $v->user = Users::select('uname')->where('id',$v->uid)->first();
+            $v->cmpic = Commentpic::select('cmpic')->where('cmid',$v->id)->get();
+        }
+        return view('admin.goods.comment',['data'=>$data]);
+    }
+
+    //待发货
+
+    public function sendorder()
+    {
+        $data = DB::table('orders')->where('status',0)->get();
+        return view('admin.goods.sendorder',['data'=>$data]);
+    }
+
+    //订单详情
+    public function orderinfo(Request $request)
+    {
+        $data = Orderinfo::where('oid',$request->id)->get();
+        foreach($data as $k=>$v)
+        {
+            //商品详情
+            $data[$k]['goods']=Goods::select('title','price')->where('id',$v->gid)->first();
+            //商品图片
+            $data[$k]['goodspic']=Goodspic::select('pic')->where('gid',$v->gid)->first();
+        }
+
+        return view('admin.goods.orderinfo',['data'=>$data]);
+    }
+    //已发货
+    public function send(Request $request)
+    {
+        // 更改订单状态
+        $send = Orders::find($request->id);
+        $send->status = 2;
+        if($send->save())
+        {
+            echo "<script>alert('发货成功');location.href='/admin/goods/sendorder'</script>";
+        }
+
     }
 }

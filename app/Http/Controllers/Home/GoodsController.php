@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Goods;
+use App\Models\Users;
+use App\Models\Usersinfo;
+use App\Models\Comment;
+use App\Models\Commentpic;
 
 class GoodsController extends Controller
 {
@@ -16,6 +20,7 @@ class GoodsController extends Controller
      */
     public function index(Request $request)
     {
+        dump($request->all());
         //获取id
         $id=$request->id;
 
@@ -28,12 +33,6 @@ class GoodsController extends Controller
             
         }
 
-        // if(session('foot')==null){
-        //     session(['foot'=>$id]);
-        // }else{
-        //     $request->session()->push('foot',$id);
-        // }
-        // dump(session('foot'));
         //获取id相对应商品的数据
         $goods=DB::table('goods')->where('id',$id)->get();
          //获得商品图片
@@ -42,11 +41,45 @@ class GoodsController extends Controller
          $goods->infopic = DB::table('goods_infopic')->where('gid',$id)->get();
         
         //看了又看
-         // dump(rand(9,16));
          $look = Goods::where('cid',rand(9,16))->take(5)->get();
-         // $look = Goods::where('cid',9)->take(5)->get();
-         // dd($look);
-         return view('home.goods.index',['goods'=>$goods,'look'=>$look,'coll'=>$coll]);
+
+         //评价
+         $comment = DB::table('comment')->where('gid',$request->id)->paginate(2);
+         foreach($comment as $k=>$v){
+             $v->user = Users::select('uname')->where('id',$v->uid)->first();
+             $v->upic = Usersinfo::select('profile')->where('uid',$v->uid)->first();
+             $v->cmpic = Commentpic::select('cmpic')->where('cmid',$v->id)->get();
+             
+
+         }
+         //评价条数
+         $commentcount = Comment::where('gid',$request->id)->count();
+         
+         dump($comment);
+         //好评条数
+         $level3= 0;
+         foreach($comment as $k=>$v){
+            if($v->level==3){
+                $level3 +=1;
+            }
+         }
+         //中评
+         $level2= 0;
+         foreach($comment as $k=>$v){
+            if($v->level==2){
+                $level2 +=1;
+            }
+         }
+
+         //差评
+         $level1= 0;
+         foreach($comment as $k=>$v){
+            if($v->level==1){
+                $level1 +=1;
+            }
+         }
+         
+         return view('home.goods.index',['goods'=>$goods,'look'=>$look,'coll'=>$coll,'comment'=>$comment,'commentcount'=>$commentcount,'level1'=>$level1,'level2'=>$level2,'level3'=>$level3,'id'=>$id]);
  
     }
 

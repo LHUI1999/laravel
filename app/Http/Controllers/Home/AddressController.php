@@ -12,7 +12,6 @@ class AddressController extends Controller
     // 收货地址
     public function index()
     {
-        // dump($_SESSION['address']);
         // 获取id
         $id = $_SESSION['user']->id;
 

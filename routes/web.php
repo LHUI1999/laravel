@@ -47,8 +47,18 @@ Route::group(['middleware'=>['login']],function(){
 	Route::resource('admin/roles','Admin\RolesController');
 
 	//后台商品管理
+	//待发货
+	Route::get('admin/goods/sendorder','Admin\GoodsController@sendorder');
+	//订单详情
+	Route::get('admin/goods/orderinfo','Admin\GoodsController@orderinfo');
+	//已发货
+	Route::get('admin/goods/send','Admin\GoodsController@send');
+
+
 	Route::resource('admin/goods','Admin\GoodsController');
- 
+	Route::get('admin/goods/comment/{id}','Admin\GoodsController@comment');
+	
+	
 });
 
 //前台登录路由
@@ -87,15 +97,36 @@ Route::any('/home/index','Home\IndexController@index');
 
 	//结算
 	Route::get('/home/order/account','Home\OrderController@account');
-	Route::get('/home/order/index','Home\OrderController@index');
+	//订单结算
 	Route::post('/home/order/pay','Home\OrderController@pay');
+	//选择地址
 	Route::get('/home/order/addr','Home\OrderController@addr');
+	//提交订单
 	Route::post('/home/order/success','Home\OrderController@success');
+	//生成订单
 	Route::get('/home/order/over','Home\OrderController@over');
+	//q取消订单
 	Route::get('/home/order/cancel','Home\OrderController@cancel');
+	//订单管理
+	Route::get('/home/order/index','Home\OrderController@index');
+	//删除订单
+	Route::get('/home/order/delorder','Home\OrderController@delorder');
+	//一键支付
+	Route::get('/home/order/onepay','Home\OrderController@onepay');
+	//执行一键支付
+	Route::post('/home/order/onesuccess','Home\OrderController@onesuccess');
+	//确认收货
+	Route::get('/home/order/takeorder','Home\OrderController@takeorder');
+
+	//评论
+	Route::get('/home/comment','Home\CommentController@index');
+	//添加评论
+	Route::post('/home/comment/store','Home\CommentController@store');
+
 
 	//个人中心
 	Route::get('/home/center','Home\CenterController@index');
+
 	//安全设置
 	Route::get('/home/safe','Home\SafeController@index');
 	//登陆密码
@@ -113,8 +144,6 @@ Route::any('/home/index','Home\IndexController@index');
 	Route::post('/home/safe/sendemail','Home\SafeController@sendemail');
 
 	 //个人信息
-
-
 	Route::resource('/home/geren','Home\GerenController');
 	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
 

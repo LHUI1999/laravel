@@ -7,14 +7,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<title>Orange lala</title>
-		<!-- 购物车 -->
-		<!--  -->
-
-		<!-- 结算 -->
-		<!-- <script type="text/javascript" src="/h/js/jquery.js"></script>
-		<script type="text/javascript" src="/h/js/address.js"></script>
-
-		<script type="text/javascript" src="http://lib.h-ui.net/jquery/1.9.1/jquery.min.js"></script> -->
 
 		<!-- 城市三级连动 -->
 		<script type="text/javascript" src="/h/3/jquery.provincesCity.js"></script>
@@ -30,33 +22,25 @@
 		<link href="/h/css/hmstyle.css" rel="stylesheet" type="text/css" />
 		<script src="/h/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+		<style type="text/css">
+    #page_page li{
+        list-style-type: none;
+        margin:0;
+        padding: 0;
+    }
+    #page_page li{
+        position: relative;
+        float: left;
+        padding: 6px 12px;
+        line-height: 1.42857143;
+        color: #337ab7;
+        text-decoration: none;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
 
-
-		<!-- 个人中心 -->
-		<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="/h/css/personal.css" rel="stylesheet" type="text/css">
-		<title>个人资料</title>
-
-
-		<!-- //安全设置 -->
-		<link href="/h/css/infstyle.css" rel="stylesheet" type="text/css">
-
-		<!-- 手机验证 -->
-		<link href="/h/css/stepstyle.css" rel="stylesheet" type="text/css">
-
-		<!-- 收货地址 -->
-		<link href="/h/css/addstyle.css" rel="stylesheet" type="text/css">
-		<script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
-		<!-- 订单管理 -->		
-		<link href="/h/css/orstyle.css" rel="stylesheet" type="text/css">
-
-		<!-- 优惠券 -->
-		<link href="/h/css/cpstyle.css" rel="stylesheet" type="text/css">
-
-
-
-		
+   
+</style>	
 	</head>
 
 	<body>
