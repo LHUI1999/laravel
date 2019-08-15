@@ -199,10 +199,6 @@ Route::get('/home/comment','Home\CommentController@index');
 Route::get('/home/bill','Home\BillController@index');
 
 
-// 账单明细
-// Route::get('/home/billlist','Home\BilllistController@billlist');
-// Route::get('/home/billlist/destroy','Home\BilllistController@destroy');
-
 
 
 
