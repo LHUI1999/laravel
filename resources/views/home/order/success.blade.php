@@ -13,7 +13,7 @@
    <h2>您已成功付款</h2>
    <div class="successInfo">
      <ul>
-       <li>付款金额<em>¥{{$pricecount}}</em></li>
+       <li>付款金额<em>¥{{ $pricecount}}</em></li>
        <div class="user-info">
          <p>收货人：{{$_SESSION['address']->uname}}</p>
          <p>联系电话：{{$_SESSION['address']->phone}}</p>

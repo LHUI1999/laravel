@@ -56,14 +56,16 @@ class RegisterController extends Controller
             $uid = $users->id;
             $userinfo = new Usersinfo;
             $userinfo->uid = $uid;
+            $users->cishu = 0;
 
             $userinfo->profile = '20190726/a1wthG6a6oepzqa3SWp5FqTSXXz5pvCLNR6ILP4T.jpeg';
             if($userinfo->save()){
                 //发送邮件
                 Mail::send('home.email.email',['id'=>$users->id,'token'=>$users->token],function($m) use ($users){
                     $m->to($users->email)->subject('your reminder');
-                });
+                }); 
             }
+            
             echo '添加成功';
         }else{
             echo "添加失败";
@@ -125,6 +127,8 @@ class RegisterController extends Controller
             return view('errors.404');
         }
         $user->status = 1;
+        $user->cishu = 0;
+
         $user->token = str_random(30);
         if($user->save()){
             return view('home.register.changestatus');
@@ -153,6 +157,7 @@ class RegisterController extends Controller
         $users->uname = $request->input('phone','');
         $users->token = str_random(30);
         $users->upass = Hash::make($request->input('upass',''));
+        $users->cishu = 0;
         $users->status = 1;
         if($users->save()){
             // dd('a');

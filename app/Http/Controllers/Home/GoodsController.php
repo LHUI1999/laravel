@@ -20,7 +20,6 @@ class GoodsController extends Controller
      */
     public function index(Request $request)
     {
-        dump($request->all());
         //获取id
         $id=$request->id;
 
@@ -32,7 +31,6 @@ class GoodsController extends Controller
             $coll=2;
             
         }
-
         //获取id相对应商品的数据
         $goods=DB::table('goods')->where('id',$id)->get();
          //获得商品图片
@@ -45,17 +43,15 @@ class GoodsController extends Controller
 
          //评价
          $comment = DB::table('comment')->where('gid',$request->id)->paginate(2);
+         //销量
+         $order = DB::table('order_info')->where('gid',$request->id)->count();
          foreach($comment as $k=>$v){
              $v->user = Users::select('uname')->where('id',$v->uid)->first();
              $v->upic = Usersinfo::select('profile')->where('uid',$v->uid)->first();
              $v->cmpic = Commentpic::select('cmpic')->where('cmid',$v->id)->get();
-             
-
          }
          //评价条数
          $commentcount = Comment::where('gid',$request->id)->count();
-         
-         dump($comment);
          //好评条数
          $level3= 0;
          foreach($comment as $k=>$v){
@@ -78,85 +74,15 @@ class GoodsController extends Controller
                 $level1 +=1;
             }
          }
+         //猜你喜欢
+         $like = DB::table('goods')->where('cid',$goods[0]->cid)->take(12)->get();
+         foreach($like as $k=>$v)
+         {
+            $like[$k]->pic = DB::table('goods_pic')->select('pic')->where('gid',$v->id)->first();
+         }
          
-         return view('home.goods.index',['goods'=>$goods,'look'=>$look,'coll'=>$coll,'comment'=>$comment,'commentcount'=>$commentcount,'level1'=>$level1,'level2'=>$level2,'level3'=>$level3,'id'=>$id]);
+         return view('home.goods.index',['goods'=>$goods,'look'=>$look,'coll'=>$coll,'comment'=>$comment,'commentcount'=>$commentcount,'level1'=>$level1,'level2'=>$level2,'level3'=>$level3,'id'=>$id,'order'=>$order,'like'=>$like]);
  
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        echo "1";
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-        echo "11";
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-        echo "111";
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-        echo "1111";
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-        echo "11111";
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        echo "111111";
-
-    }
 }

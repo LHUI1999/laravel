@@ -34,8 +34,8 @@
                             @endif
 
                             <div class="login_btnbox ">
-                                <a href="# " class="login_order ">我的订单</a>
-                                <a href="# " class="login_favorite ">我的收藏</a>
+                                <a href="/home/order " class="login_order ">我的订单</a>
+                                <a href="/home/collection " class="login_favorite ">我的收藏</a>
                             </div>
                             <i class="icon_arrow_white "></i>
                         </div>

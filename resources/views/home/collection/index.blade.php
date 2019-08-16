@@ -22,8 +22,7 @@
                 <div class="you-like">
                     <div class="s-bar">
                         我的收藏
-                        {{-- <a class="am-badge am-badge-danger am-round">降价</a>
-                        <a class="am-badge am-badge-danger am-round">下架</a> --}}
+                        
                     </div>
                     @if(!$data)	
 					<div style="width:500px;height:100px;margin-left:350px;margin-top:50px;">
@@ -84,44 +83,40 @@
 
     <aside class="menu">
         <ul>
-            <li class="person active">
-                <a href="/home/center">个人中心</a>
-            </li>
-            <li class="person">
-                <a href="#">个人资料</a>
-                <ul>
+           <li class="person active">
+                        <a href="/home/center">个人中心</a>
+                    </li>
+                    <li class="person">
+                        <a href="#">个人资料</a>
+                        <ul>
 
-                    <li> <a href="/home/geren">个人信息</a></li>
-                    <li> <a href="/home/safe">安全设置</a></li>
-                    <li> <a href="/home/address">收货地址</a></li>
+                            <li> <a href="/home/geren">个人信息</a></li>
+                            <li> <a href="/home/safe">安全设置</a></li>
+                            <li> <a href="/home/address">收货地址</a></li>
 
-                </ul>
-            </li>
-            <li class="person">
-                <a href="#">我的交易</a>
-                <ul>
-                    <li><a href="/home/order">订单管理</a></li>
-                    <li> <a href="change.html">退款售后</a></li>
-                </ul>
-            </li>
-            <li class="person">
-                <a href="#">我的资产</a>
-                <ul>
-                    <li> <a href="/home/coupon">优惠券 </a></li>
-                    <li> <a href="bonus.html">红包</a></li>
-                    <li> <a href="bill.html">账单明细</a></li>
-                </ul>
-            </li>
+                        </ul>
+                    </li>
+                    <li class="person">
+                        <a href="#">我的交易</a>
+                        <ul>
+                            <li><a href="/home/order">订单管理</a></li>
+                            <li> <a href="change.html">退款售后</a></li>
+                        </ul>
+                    </li>
+                    <li class="person">
+                        <a href="#">我的资产</a>
+                        <ul>
+                            <li> <a href="/home/bill">账单明细</a></li>
+                        </ul>
+                    </li>
 
-            <li class="person">
-                <a href="#">我的小窝</a>
-                <ul>
-                    <li> <a href="/home/collection">收藏</a></li>
-                    <li> <a href="foot.html">足迹</a></li>
-                    <li> <a href="comment.html">评价</a></li>
-                    <li> <a href="news.html">消息</a></li>
-                </ul>
-            </li>
+                    <li class="person">
+                        <a href="#">我的小窝</a>
+                        <ul>
+                            <li> <a href="/home/collection">收藏</a></li>
+                            <li> <a href="/home/comment">评价</a></li>
+                        </ul>
+                    </li>
 
         </ul>
 

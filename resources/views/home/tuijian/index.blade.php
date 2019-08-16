@@ -13,26 +13,37 @@
             </div>
          
             <div>
-                <div style='width:1500px;height:4428px;background:#E6E2D9;'>
+                <div style='width:1515px;height:4428px;background:#E6E2D9;'>
                     <div>
                         <div style='background:#EEEBE2;width:908px;height:300px;float:left;margin-left:304px;margin-top:50px;border-radius:18px;border:3px solid #B88E66;'>
                             <div>
-                                    
-                                
-                                <div style='background:#C21821;width:342px;height:70px;float:left;margin-left:104px;margin-top:58px;border:5px solid #FECFA5;border-radius:18px;'>
-                                    <span style='font-size:45px;float:left;margin-left:82px;margin-top:-4px;color:#EBFEF4;'>绿色食品</span>
-                                    <span style="float:left;margin-left:60px;margin-top:39px;color:#797873;font-size:32px;">{{ $aa->title }}</span>
-                                    <span style="float:left;margin-left:-72px;margin-top:99px;color:#C90903;font-size:38px;">￥{{ $aa->price }}</span>
-                                    <a href="/home/goods?id={{ $aa->id }}">
-                                            <button style="float:left;margin-left:178px;margin-top:30px;width:150px;height:30px;background:#C21821;border:2px solid #FECFA5;border-radius:9px;">购买</button>
+                            
+                                <div style="background:#ccc;width:352px;height:210px;float:left;margin-left:95px;margin-top:41px;border-radius:18px;">
 
-
-                                    </a>
+                                    <img src="/uploads/{{ $aa->pic }}" style="float:left;margin-left:0px;margin-top:0px;width:352px;height:210px;border-radius:18px;" alt="">
                                 </div>
-                                <div>
-
-                                    <img src="/uploads/{{ $aa->pic }}" style="float:left;margin-left:31px;margin-top:24px;width:399px;height:233px;border-radius:18px;" alt="">
+                                 <div style="background:#F0EAD3;width:405px;height:47px;float:left;margin-left:22px;margin-top:138px;">
+                                    <div>
+                                        <span style="font-size:18px;color:#B88E66;float:left;margin-left:15px;margin-top:12px;">名称:</span>
+                                        <span style="float:left;margin-left:15px;margin-top:12px;font-size:18px;color:#B88E66;">{{ $aa->title }}</span>
+                                    </div>
                                 </div>
+                                <div style="background:#EEEBE2;border:2px solid #EEEBE2;border-radius:18px;width:75px;height:48px;float:left;margin-left:-336px;margin-top:224px;">
+                                        <div>
+                                            <span style="color:#B88E66;font-size:18px;float:left;margin-left:-54px;margin-top:-27px;">价格:</span>
+                                            <span style="float:left;margin-left:2px;margin-top:-26px;font-size:18px;color:#B8645E;">￥{{ $aa->price }}</span>
+                                        
+                                        </div>
+
+                                </div>
+                                <div style="background:#EEEBE2;width:185px;height:50px;float:left;margin-left:-244px;margin-top:193px;">
+                                        <div>
+                                            <a href="/home/goods?id={{ $aa->id }}">
+                                                <button style="background:#C21821;font-size:18px;border-radius:18px;width:127px;height:35px;float:left;color:white;border:2px solid #E04B4B">点击购买</button>
+                                            
+                                            </a>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                         {{-- 产品说明 --}}
@@ -57,6 +68,7 @@
                         <div style="margin-top:50px;float:left;margin-left:303px;">
                                 <div class="s-content" style="">
                                         @foreach ($data as $k=>$v )
+                                        @if($k<=2)
                                         <div class="s-item-wrap" style="width:300px;height:425px;background:#E6E2D9;border:3px solid #BD9367;border-radius:18px;">
                                             <div class="s-item">
                                                 <div class="s-pic">
@@ -79,6 +91,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                         @endforeach
                                 </div>
                         </div>

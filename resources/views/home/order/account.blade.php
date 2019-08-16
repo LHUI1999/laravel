@@ -44,11 +44,6 @@
 									<span class="am-icon-angle-right am-icon-lg"></span>
 								</div>
 								<div class="clear"></div>
-								<div class="new-addr-btn">
-									<a href="#">编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
-								</div>
 
 							</li>
 							</a>
@@ -72,22 +67,24 @@
 							<div class="cart-table-th">
 								<div class="wp">
 
-									<div class="th th-item">
-										<div class="td-inner">商品信息</div>
+									<div style="float:left;margin-left:-96px;" class="th th-item">
+										<div  class="td-inner">商品信息</div>
 									</div>
-									<div class="th th-price">
+									<div style="float:left;margin-left:-34px;" class="th th-price">
 										<div class="td-inner">单价</div>
 									</div>
-									<div class="th th-amount">
+									<div style="float:left;margin-left:-27px;" class="th th-amount">
 										<div class="td-inner">数量</div>
 									</div>
-									<div class="th th-sum">
+								
+									<div style="float:left;margin-left:-38px;" class="th th-sum">
 										<div class="td-inner">金额</div>
 									</div>
-									<div class="th th-oplist">
+									
+									<div style="float:left;margin-left:54px;" class="th th-oplist">
 										<div class="td-inner">配送方式</div>
 									</div>
-
+									
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -109,9 +106,9 @@
 												</li>
 
 												<li class="td td-price">
-													<div class="item-price price-promo-promo">
+													<div style="float:left;margin-left:-86px;" class="item-price price-promo-promo">
 														<div class="price-content">
-															<em class="J_Price price-now">{{$v->price}}</em>
+															<em class="jine">{{$v->price}}</em>
 														</div>
 													</div>
 												</li>
@@ -121,21 +118,30 @@
 												<div class="amount-wrapper ">
 													<div class="item-amount ">
 														<span class="phone-title">购买数量</span>
-														<div class="sl">
+														<div style="float:left;margin-left:-66px;" class="sl">
 															{{$v->num}}
 														</div>
 													</div>
 												</div>
 											</li>
-											<li class="td td-sum">
-												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number">{{$v->price*$v->num}}</em>
+											
+												
+ 											
+											 <li class="td td-sum">
+												
+											</li>
+									
+											<li   class="td td-sum">
+												<div style="float:left;margin-left:-248px;"  class="td-inner">
+													<em tabindex="0" class="total" >{{$v->price*$v->num}}</em>
 												</div>
 											</li>
+										
+											
 											<li class="td td-oplist">
 												<div class="td-inner">
 													<span class="phone-title">配送方式</span>
-													<div class="pay-logis">
+													<div style="float:right;margin-right:-219px;margin-top:-41px;" class="pay-logis">
 														包邮
 													</div>
 												</div>
@@ -143,13 +149,15 @@
 
 										</ul>
 										<div class="clear"></div>
-
+										
 									</div>
 									@endforeach
-
+								
+								
 							
 							</div>
 							<div class="clear"></div>
+						
 							<div class="pay-total">
 						<!--留言-->
 							<div class="order-extra">
@@ -164,10 +172,9 @@
 								</div>
 
 							</div>
-							<!--优惠券 -->
-							<div class="buy-agio">
-							</div>
+						
 							<div class="clear"></div>
+							
 							</div>
 							<!--含运费小计 -->
 							<div class="buy-point-discharge ">
@@ -228,17 +235,17 @@
 
 @include('home.layout.footer')
 <script type="text/javascript">
-	var addr = document.getElementsByName('addr');
+	// var addr = document.getElementsByName('addr');
 	// console.log(addr);
-	for(var i=0;i<addr.length; i++)
-	{
-		// if(addr[i].checked==true){
+	// for(var i=0;i<addr.length; i++)
+	// {
+	// 	// if(addr[i].checked==true){
 			
-		// }
-		addr[i].onchange=function(){
-			alert(addr.value());
-		}
-	}
+	// 	// }
+	// 	addr[i].onchange=function(){
+	// 		alert(addr.value());
+	// 	}
+	// }
 
 </script>
 		

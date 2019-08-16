@@ -9,12 +9,6 @@
 
 <div class="nav-table">
 	<div class="long-title"><span class="all-goods">全部分类</span></div>
-	<div class="nav-cont">	
-		<div class="nav-extra">
-			<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-			<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-		</div>
-	</div>
 </div>
 <b class="line"></b>
 <div class="center">
@@ -160,42 +154,40 @@
 
 	<aside class="menu">
 		<ul>
-			<li class="person">
-				<a href="index.html">个人中心</a>
-			</li>
-			<li class="person">
-				<a href="#">个人资料</a>
-				<ul>
-					<li> <a href="information.html">个人信息</a></li>
-					<li> <a href="safety.html">安全设置</a></li>
-					<li> <a href="address.html">收货地址</a></li>
-				</ul>
-			</li>
-			<li class="person">
-				<a href="#">我的交易</a>
-				<ul>
-					<li><a href="order.html">订单管理</a></li>
-					<li> <a href="change.html">退款售后</a></li>
-				</ul>
-			</li>
-			<li class="person">
-				<a href="#">我的资产</a>
-				<ul>
-					<li> <a href="coupon.html">优惠券 </a></li>
-					<li> <a href="bonus.html">红包</a></li>
-					<li class="active"> <a href="bill.html">账单明细</a></li>
-				</ul>
-			</li>
+			<li class="person active">
+						<a href="/home/center">个人中心</a>
+					</li>
+					<li class="person">
+						<a href="#">个人资料</a>
+						<ul>
 
-			<li class="person">
-				<a href="#">我的小窝</a>
-				<ul>
-					<li> <a href="collection.html">收藏</a></li>
-					<li> <a href="foot.html">足迹</a></li>
-					<li> <a href="comment.html">评价</a></li>
-					<li> <a href="news.html">消息</a></li>
-				</ul>
-			</li>
+							<li> <a href="/home/geren">个人信息</a></li>
+							<li> <a href="/home/safe">安全设置</a></li>
+							<li> <a href="/home/address">收货地址</a></li>
+
+						</ul>
+					</li>
+					<li class="person">
+						<a href="#">我的交易</a>
+						<ul>
+							<li><a href="/home/order">订单管理</a></li>
+							<li> <a href="change.html">退款售后</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="#">我的资产</a>
+						<ul>
+							<li> <a href="/home/bill">账单明细</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<a href="#">我的小窝</a>
+						<ul>
+							<li> <a href="/home/collection">收藏</a></li>
+							<li> <a href="/home/comment">评价</a></li>
+						</ul>
+					</li>
 
 		</ul>
 

@@ -26,13 +26,6 @@
 				<div class="slideall">
 
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
-					   <div class="nav-cont">
-							
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
-						</div>
 		        				
 						<!--侧边导航 -->
 						<div id="nav" class="navfull">
@@ -149,7 +142,7 @@
 								</a>
 								<em>
 									Hi,<span class="s-name">{{$_SESSION['user']->uname}}</span>
-									<a href="#"><p>点击更多优惠活动</p></a>									
+																	
 								</em>
 							</div>
 							<div class="member-logout">
@@ -234,7 +227,7 @@
 							</div>
 							<div class="recommendationMain two">
 								<a href="/home/tunhuo">
-									<img src="/h/images/tj1.png ">
+									<img src="/h/images/anmuxi.jpg ">
 								</a>
 								
 							</div>
@@ -246,7 +239,7 @@
 							</div>
 							<div class="recommendationMain three ">
 								<a href="/home/langman">
-									<img src="/h/images/tj2.png ">
+									<img src="/h/images/chaoneng.jpg ">
 
 								</a>
 							</div>

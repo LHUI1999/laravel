@@ -11,7 +11,10 @@ use App\Models\Orders;
 use App\Models\Orderinfo;
 use DB;
 use Hash;
-
+use App\Models\Usersquan;
+use App\Models\Users_quan;
+use App\Models\Refund;
+use App\Models\Refundpic;
 
 class OrderController extends Controller
 {
@@ -32,7 +35,8 @@ class OrderController extends Controller
             $_SESSION['address'] = DB::table('address')->where('uid',$_SESSION['user']->id)->first();
             
         }
-    	//总价格
+      
+        
     	$pricecount = CarController::priceCount();
         //收货地址
         $address = Address::where('uid',$_SESSION['user']->id)->get();
@@ -73,7 +77,9 @@ class OrderController extends Controller
             return redirect('/home/order/account');
         }
         //价格
+      
         $pricecount = CarController::priceCount();
+        // dd($pricecount);
         //数量
          //已选商品
         $goods = 0;
@@ -95,6 +101,7 @@ class OrderController extends Controller
         $order->pay = $request->pay;
         $order->liuyan = $request->input('liuyan');
         $order->status = 0;
+      
         if($order->save()){
             //减少库存
             foreach($_SESSION['car'] as $k=> $v)
@@ -119,49 +126,50 @@ class OrderController extends Controller
     public function over()
     {
         //价格
+      
         $pricecount = CarController::priceCount();
         return view('home.order.success',['pricecount'=>$pricecount]);
     }
     //待付款
     public function cancel(Request $request)
-    {
-         //已选商品
-        $goods = 0;
-        foreach($_SESSION['car'] as $k=> $v)
         {
-            if($v->select==1){
-                $goods+=$v->num;
-            }
-        }
-        //价格
-        $pricecount = CarController::priceCount();
-
-        $order = new Orders;
-        $order->order = $request->input('order');
-        $order->uid = $_SESSION['user']->id;
-        $order->price = $pricecount;
-        $order->num = $goods;
-        $order->addr = $_SESSION['address']->addr;
-        $order->uname = $_SESSION['address']->uname;
-        $order->phone = $_SESSION['address']->phone;
-        $order->pay = null;
-        $order->liuyan = $request->input('liuyan');
-        $order->status = 1;
-        if($order->save()){
+             //已选商品
+            $goods = 0;
             foreach($_SESSION['car'] as $k=> $v)
             {
                 if($v->select==1){
-                    //订单详情
-                    $orderinfo = new Orderinfo;
-                    $orderinfo->oid = $order->id;
-                    $orderinfo->gid = $v->id;
-                    $orderinfo->num = $v->num;
-                    $orderinfo->save();
+                    $goods+=$v->num;
                 }
             }
-                    return redirect('/home/car/index');
+            //价格
+            $pricecount = CarController::priceCount();
 
-        }
+            $order = new Orders;
+            $order->order = $request->input('order');
+            $order->uid = $_SESSION['user']->id;
+            $order->price = $pricecount;
+            $order->num = $goods;
+            $order->addr = $_SESSION['address']->addr;
+            $order->uname = $_SESSION['address']->uname;
+            $order->phone = $_SESSION['address']->phone;
+            $order->pay = null;
+            $order->liuyan = $request->input('liuyan');
+            $order->status = 1;
+            if($order->save()){
+                foreach($_SESSION['car'] as $k=> $v)
+                {
+                    if($v->select==1){
+                        //订单详情
+                        $orderinfo = new Orderinfo;
+                        $orderinfo->oid = $order->id;
+                        $orderinfo->gid = $v->id;
+                        $orderinfo->num = $v->num;
+                        $orderinfo->save();
+                    }
+                }
+                        return redirect('/home/car/index');
+
+            }
 
     }
     //订单管理
@@ -177,10 +185,13 @@ class OrderController extends Controller
                 $order[$k]->orderinfo[$kk]->pic = DB::table('goods_pic')->select('pic')->where('gid',$vv->gid)->first();
                 //订单商品信息
                 $order[$k]->orderinfo[$kk]->goods = DB::table('goods')->select('title','price')->where('id',$vv->gid)->first();
+                //退款
+                $order[$k]->orderinfo[$kk]->refund = DB::table('refund')->where('gid',$vv->gid)->where('oid',$v->id)->first();
                 
             }
 
         }
+        dump($order);
         return view('home.order.index',['order'=>$order]);
     }
     //删除订单
@@ -190,6 +201,17 @@ class OrderController extends Controller
         $order = Orders::where('id',$request->oid)->delete();
         $orderinfo = Orderinfo::where('oid',$request->oid)->delete();
         if($order && $orderinfo){
+            return back();
+        }
+    }
+
+    //取消订单
+    public function quxiaoorder(Request $request)
+    {
+        // dump($request->all());
+        $order = Orders::find($request->oid);
+        $order->status = 6;;
+        if($order ->save()){
             return back();
         }
     }
@@ -233,5 +255,75 @@ class OrderController extends Controller
             return redirect('/home/order');
         }
     }
+    //订单详情
+    public function orderinfo(Request $request)
+    {
+        $order = DB::table('orders')->where('id',$request->oid)->first();
+        $orderinfo = DB::table('order_info')->select('gid','num')->where('oid',$request->oid)->get();
+        foreach($orderinfo as $k=>$v){
+            $orderinfo[$k]->goods = DB::table('goods')->select('title','price')->where('id',$v->gid)->first();
+            $orderinfo[$k]->goodspic = DB::table('goods_pic')->select('pic')->where('gid',$v->gid)->first();
+        }
+        dump($orderinfo);
+        return view('home.order.orderinfo',['order'=>$order,'orderinfo'=>$orderinfo]);
+    }
+    //退款退货
+    public function refund(Request $request)
+    {
+        dump($request->all());
+        $order = DB::table('order_info')->where('oid',$request->oid)->where('gid',$request->gid)->first();
+        $order->goods=DB::table('goods')->select('title','price')->where('id',$order->gid)->first();
+        $order->goodspic=DB::table('goods_pic')->select('pic')->where('gid',$order->gid)->first();
+        $order->order=DB::table('orders')->select('order')->where('id',$order->oid)->first();
+        dump($order);
+        return view('home.order.refund',['order'=>$order]);
+    }
+    //执行退换货
+    public function refundstore(Request $request)
+    {
+        // dump($request->all());
+        $refund = new Refund;
+        $refund->gid = $request->gid;
+        $refund->oid = $request->oid;
+        $refund->type = $request->type;
+        $refund->reason = $request->reason;
+        $refund->price = $request->price;
+        $refund->explain = $request->explain;
+        $refund->status = 0;
+        if($refund->save()){
+            if($request->pic){
+                //存储图片
+                $pic = [];
+                //获取商品图片
+                foreach($request->pic as $k=>$v){
+                        $pic[$k]=$v->store(date('Ymd'));
+                }
+                
+                //存储图片
+                foreach($pic as $a=>$b)
+                {
+                    $refundpic = new Refundpic;
+                    $refundpic->rid = $refund->id;
+                    $refundpic->pic = $b;
+                    if($refundpic->save()){
+                       return view('home.order.refundshang');
+                    }    
+                }
+            }else{
+                
+                 return view('home.order.refundshang');
+            }
+            $order = Orders::find($request->oid);
+            dump($order);
+            $order->status = 5;
+            $order->save();
+        }
+    }
+
+    public function refundshang(Request $reqeust)
+    {
+        return view('home.order.refundshang');
+    }
+
 
 }

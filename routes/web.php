@@ -54,11 +54,13 @@ Route::group(['middleware'=>['login']],function(){
 	//已发货
 	Route::get('admin/goods/send','Admin\GoodsController@send');
 
-
+	//后台商品管理
 	Route::resource('admin/goods','Admin\GoodsController');
+	//后台商品评价
 	Route::get('admin/goods/comment/{id}','Admin\GoodsController@comment');
 	
 	
+
 });
 
 //前台登录路由
@@ -71,13 +73,10 @@ Route::post('home/register/phonestore','Home\RegisterController@phonestore');
 //前台注册
 Route::resource('home/register','Home\RegisterController');
 
-
 //前台首页
 Route::any('/home/index','Home\IndexController@index');
-
-
-
-//商品列表页面
+	
+	//商品列表页面
 	Route::get('home/list','Home\ListController@index');
 
 	//加入购物车
@@ -111,18 +110,28 @@ Route::any('/home/index','Home\IndexController@index');
 	Route::get('/home/order/index','Home\OrderController@index');
 	//删除订单
 	Route::get('/home/order/delorder','Home\OrderController@delorder');
+	//取消订单
+	Route::get('/home/order/quxiaoorder','Home\OrderController@quxiaoorder');
 	//一键支付
 	Route::get('/home/order/onepay','Home\OrderController@onepay');
 	//执行一键支付
 	Route::post('/home/order/onesuccess','Home\OrderController@onesuccess');
 	//确认收货
 	Route::get('/home/order/takeorder','Home\OrderController@takeorder');
+	//订单详情
+	Route::get('/home/order/orderinfo','Home\OrderController@orderinfo');
+	//退款退货
+	Route::get('/home/order/refund','Home\OrderController@refund');
+	//执行退款退货
+	Route::post('/home/order/refundstore','Home\OrderController@refundstore');
+	//退款退货
+	Route::get('/home/order/refundshang','Home\OrderController@refundshang');
+
 
 	//评论
 	Route::get('/home/comment','Home\CommentController@index');
 	//添加评论
 	Route::post('/home/comment/store','Home\CommentController@store');
-
 
 	//个人中心
 	Route::get('/home/center','Home\CenterController@index');
@@ -146,12 +155,9 @@ Route::any('/home/index','Home\IndexController@index');
 	 //个人信息
 	Route::resource('/home/geren','Home\GerenController');
 	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
-
-	
-
-
 	Route::resource('/home/geren','Home\GerenController');
 	Route::PUT('/home/geren/edit/{id}','Home\GerenController@edit');
+	
 	//点击查看商品详情
 	Route::resource('/home/goods', 'Home\GoodsController');
 
@@ -201,8 +207,6 @@ Route::get('/home/address/update/{id}','Home\AddressController@update');
 // 订单管理
 Route::get('/home/order','Home\OrderController@index');
 
-// 优惠券
-Route::get('/home/coupon','Home\CouponController@index');
 
 // 新闻
 Route::get('/home/news/new1','Home\NewsController@new1');
