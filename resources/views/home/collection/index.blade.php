@@ -42,7 +42,7 @@
                                     </a>
                                 </div>
                                 <div class="s-info">
-                                    <div class="s-title"><a href="#" title="">{{ $v->title }}</a></div>
+                                    <div class="s-title"><a href="/home/goods?id={{$v->id}}" title="">{{ $v->title }}</a></div>
                                     {{-- <div class="s-price-box"> --}}
                                     <div class="">
                                         <span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">{{ $v->price }}</em></span>
@@ -83,6 +83,7 @@
 
     <aside class="menu">
         <ul>
+
            <li class="person active">
                         <a href="/home/center">个人中心</a>
                     </li>
@@ -100,7 +101,7 @@
                         <a href="#">我的交易</a>
                         <ul>
                             <li><a href="/home/order">订单管理</a></li>
-                            <li> <a href="change.html">退款售后</a></li>
+                            <li> <a href="/home/order/change">退款售后</a></li>
                         </ul>
                     </li>
                     <li class="person">
@@ -117,6 +118,7 @@
                             <li> <a href="/home/comment">评价</a></li>
                         </ul>
                     </li>
+
 
         </ul>
 

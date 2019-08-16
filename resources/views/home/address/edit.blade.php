@@ -9,11 +9,14 @@
         <script src="/h/AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
         <script src="/h/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
+<<<<<<< HEAD
 <div class="nav-table">
     <div class="long-title"><span class="all-goods">全部分类</span></div>
     
 </div>
 <b class="line"></b>
+=======
+>>>>>>> origin/wangjing
 
 <div class="center">
     <div class="col-main">

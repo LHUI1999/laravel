@@ -793,7 +793,7 @@
                         <a href="#">我的小窝</a>
                         <ul>
                             <li> <a href="/home/collection">收藏</a></li>
-                            <li> <a href="/home/comment">评价</a></li>
+                            <li> <a href="/home/comment/comment">评价</a></li>
                         </ul>
                     </li>
 

@@ -62,6 +62,7 @@ Route::group(['middleware'=>['login']],function(){
 
 });
 
+
 //前台登录路由
 Route::get('/home/login','Home\LoginController@index');
 Route::post('/home/login/dologin','Home\LoginController@dologin');
@@ -72,10 +73,13 @@ Route::post('home/register/phonestore','Home\RegisterController@phonestore');
 //前台注册
 Route::resource('home/register','Home\RegisterController');
 
+
 //前台首页
 Route::any('/home/index','Home\IndexController@index');
-	
-	//商品列表页面
+
+
+//商品列表页面
+
 	Route::get('home/list','Home\ListController@index');
 
 	//加入购物车
@@ -262,8 +266,25 @@ Route::get('/home/comment/comment','Home\CommentController@comment');
 Route::get('/home/bill','Home\BillController@index');
 
 
-
-
+// 未登录不能访问的页面
+Route::group(['middleware' => 'check.login'], function() {
+	//个人中心
+	Route::get('/home/center','Home\CenterController@index');
+	//结算
+	Route::get('/home/order/account','Home\OrderController@account');
+	// 收藏
+	Route::get('/home/collection','Home\CollectionController@index');
+	// 新闻
+	Route::get('/home/news/new1','Home\NewsController@new1');
+	Route::get('/home/news/new2','Home\NewsController@new2');
+	Route::get('/home/news/new3','Home\NewsController@new3');
+	Route::get('/home/news/new4','Home\NewsController@new4');
+	Route::get('/home/news/new5','Home\NewsController@new5');
+	// 订单管理
+	Route::get('/home/order','Home\OrderController@index');
+	//账单
+	Route::get('/home/bill','Home\BillController@index');
+});
 
 
 

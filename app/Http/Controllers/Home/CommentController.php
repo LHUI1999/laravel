@@ -101,7 +101,7 @@ class CommentController extends Controller
 			$v->gpic = Goodspic::select('pic')->where('gid',$v->gid)->first();
             $v->cmpic = Commentpic::select('cmpic')->where('cmid',$v->id)->get();
 		}
-		
+		// dd($data);
         return view('home.comment.comment',['data'=>$data]);
     }
 }

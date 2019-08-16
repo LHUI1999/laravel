@@ -13,7 +13,6 @@
 		<script type="text/javascript" src="/h/3/provincesData.js"></script>
 
 		<!-- 首页 -->
-		
 		<link href="/h/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="/h/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
 
@@ -53,6 +52,7 @@
 					<div class="menu-hd">
 						<img style="width:35px;height:35px;border-radius: 50%;" src="/uploads/{{$_SESSION['user']->profile}}">
 						{{ $_SESSION['user']->uname }}
+						<a href="/home/login" style="margin-left:10px;">退出登录</a>
 					</div>
 					@else
 					<div class="menu-hd">
@@ -60,6 +60,7 @@
 						<a href="/home/register" target="_top">免费注册</a>
 					</div>
 					@endif
+
 				</div>
 			</ul>
 			<ul class="message-r">
