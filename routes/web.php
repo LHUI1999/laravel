@@ -126,6 +126,10 @@ Route::any('/home/index','Home\IndexController@index');
 	Route::post('/home/order/refundstore','Home\OrderController@refundstore');
 	//退款退货
 	Route::get('/home/order/refundshang','Home\OrderController@refundshang');
+	//退款售后
+	Route::get('/home/order/change','Home\OrderController@change');
+	//钱款去向
+	Route::get('/home/order/record','Home\OrderController@record');
 
 
 	//评论
@@ -194,6 +198,30 @@ Route::any('/home/index','Home\IndexController@index');
 // 后台收货地址
 Route::get('admin/users/address/{id}','Admin\UserController@address');
 
+//后台订单管理
+//待发货
+Route::get('admin/order/sendorder','Admin\OrderController@sendorder');
+//订单详情
+Route::get('admin/order/orderinfo','Admin\OrderController@orderinfo');
+//已发货
+Route::get('admin/order/send','Admin\OrderController@send');
+
+// 待付款
+Route::get('admin/order/payorder','Admin\OrderController@payorder');
+// 订单详情
+Route::get('admin/order/payinfo','Admin\OrderController@payinfo');
+
+// 待收货
+Route::get('admin/order/overorder','Admin\OrderController@overorder');
+// 查看详情
+Route::get('admin/order/overinfo','Admin\OrderController@overinfo');
+
+// 待评价
+Route::get('admin/order/commentorder','Admin\OrderController@commentorder');
+// 查看详情
+Route::get('admin/order/commentinfo','Admin\OrderController@commentinfo');
+
+
 // 收货地址
 Route::get('/home/address','Home\AddressController@index');
 // 添加收货地址
@@ -225,16 +253,11 @@ Route::get('/home/foot','Home\FootController@index');
 Route::get('/home/foot/delete','Home\FootController@delete');
 
 // 评价
-Route::get('/home/comment/list','Home\CommentController@list');
-Route::get('/home/comment','Home\CommentController@index');
+Route::get('/home/comment/comment','Home\CommentController@comment');
 
 //账单
 Route::get('/home/bill','Home\BillController@index');
 
-
-// 账单明细
-// Route::get('/home/billlist','Home\BilllistController@billlist');
-// Route::get('/home/billlist/destroy','Home\BilllistController@destroy');
 
 
 

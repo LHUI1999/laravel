@@ -148,6 +148,7 @@
     <aside class="menu">
         <ul>
             <li class="person active">
+
                         <a href="/home/center">个人中心</a>
                     </li>
                     <li class="person">
@@ -181,6 +182,7 @@
                             <li> <a href="/home/comment">评价</a></li>
                         </ul>
                     </li>
+
 
         </ul>
 

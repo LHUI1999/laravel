@@ -123,8 +123,17 @@
 								<ul>
 									<li><a class="submenu" href="/admin/goods"><i class="icon-usergroup"></i><span class="hidden-tablet">商品列表</span></a></li>
 									<li><a class="submenu" href="/admin/goods/create"><i class="icon-useradd"></i><span class="hidden-tablet">商品添加</span></a></li>
-									<li><a class="submenu" href="/admin/goods/sendorder"><i class="icon-useradd"></i><span class="hidden-tablet">待发货</span></a></li>
 
+								</ul>	
+							</li>
+							<li>
+								<a class="dropmenu" href="#"><i class="icon-tasks"></i><span class="hidden-tablet"> 订单管理</span></a>
+								<ul>
+									<li><a class="submenu" href="/admin/order/sendorder"><i class="icon-useradd"></i><span class="hidden-tablet">待发货</span></a></li>
+									<li><a class="submenu" href="/admin/order/payorder"><i class="icon-useradd"></i><span class="hidden-tablet">待付款</span></a></li>
+									<li><a class="submenu" href="/admin/order/overorder"><i class="icon-useradd"></i><span class="hidden-tablet">待收货</span></a></li>
+									<li><a class="submenu" href="/admin/order/commentorder"><i class="icon-useradd"></i><span class="hidden-tablet">待评价</span></a></li>
+									<li><a class="submenu" href="/admin/order/commentorder"><i class="icon-useradd"></i><span class="hidden-tablet">售后</span></a></li>
 								</ul>	
 							</li>
 

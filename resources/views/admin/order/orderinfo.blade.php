@@ -3,7 +3,7 @@
 <div class="row-fluid sortable ui-sortable">		
 		<div class="box span12">
 			<div class="box-header" data-original-title="">
-				<h2><i class="halflings-icon white user"></i><span class="break"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">商品列表</font></font></h2>
+				<h2><i class="halflings-icon white user"></i><span class="break"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">代发货详情</font></font></h2>
 				<div class="box-icon">
 					<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 					<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -11,11 +11,11 @@
 				</div>
 			</div>
 			<div class="box-content">
-				<form action="/admin/goods" method="get">
+				{{-- <form action="/admin/order" method="get">
 					关键字
 					<input type="text" name="search" placeholder="用户名" value="{{ $requests['search'] or '' }}">
 					<input type="submit"class="btn btn-danger"  value="搜索">
-				</form>
+				</form> --}}
 				<table class="table table-striped table-bordered " >
 				  <thead>
 					  <tr role="row">

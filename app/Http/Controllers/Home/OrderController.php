@@ -189,9 +189,24 @@ class OrderController extends Controller
                 $order[$k]->orderinfo[$kk]->refund = DB::table('refund')->where('gid',$vv->gid)->where('oid',$v->id)->first();
                 
             }
+            $num=0;
+           
+                foreach($v->orderinfo as $kk=>$vv){
+                    if($vv->status==1 || $vv->status==2)
+                    {
+                        $num+=1;
+                    }
+                }
+            
+            if($num==$v->num){
+                $reorder = Orders::find($v->id);
+                $reorder->status=5;
+                $reorder->save();
+            }
 
         }
         dump($order);
+
         return view('home.order.index',['order'=>$order]);
     }
     //删除订单
@@ -259,7 +274,7 @@ class OrderController extends Controller
     public function orderinfo(Request $request)
     {
         $order = DB::table('orders')->where('id',$request->oid)->first();
-        $orderinfo = DB::table('order_info')->select('gid','num')->where('oid',$request->oid)->get();
+        $orderinfo = DB::table('order_info')->select('gid','num','status')->where('oid',$request->oid)->get();
         foreach($orderinfo as $k=>$v){
             $orderinfo[$k]->goods = DB::table('goods')->select('title','price')->where('id',$v->gid)->first();
             $orderinfo[$k]->goodspic = DB::table('goods_pic')->select('pic')->where('gid',$v->gid)->first();
@@ -289,7 +304,8 @@ class OrderController extends Controller
         $refund->reason = $request->reason;
         $refund->price = $request->price;
         $refund->explain = $request->explain;
-        $refund->status = 0;
+        $refund->reorder = rand(100000000,999999999);
+        $refund->uid = $_SESSION['user']->id;
         if($refund->save()){
             if($request->pic){
                 //存储图片
@@ -313,16 +329,40 @@ class OrderController extends Controller
                 
                  return view('home.order.refundshang');
             }
-            $order = Orders::find($request->oid);
+            $order = Orderinfo::where(['oid'=>$request->oid,'gid'=>$refund->gid])->first();
             dump($order);
-            $order->status = 5;
+            $order->status = 1;
             $order->save();
         }
+        dump($refund);
     }
 
     public function refundshang(Request $reqeust)
     {
         return view('home.order.refundshang');
+    }
+    //退款售后
+    public function change(Request $request)
+    {
+        $refund = DB::table('refund')->where('uid',$_SESSION['user']->id)->get();
+        foreach($refund as $k=>$v){
+            $refund[$k]->goods = DB::table('goods')->select('title',)->where('id',$v->gid)->first();
+            $refund[$k]->goodspic = DB::table('goods_pic')->select('pic')->where('gid',$v->gid)->first();
+            $refund[$k]->orderinfo = DB::table('order_info')->select('status')->where('gid',$v->gid)->where('oid',$v->oid)->first();
+        }
+        return view('home.order.change',['refund'=>$refund]);
+    }
+    //钱款去向
+    public function record(Request $request)
+    {
+        $refund = DB::table('refund')->where('id',$request->id)->first();
+        $refund->goods = DB::table('goods')->select('title',)->where('id',$refund->gid)->first();
+        $refund->goodspic = DB::table('goods_pic')->select('pic')->where('gid',$refund->gid)->first();
+        $refund->orderinfo = DB::table('order_info')->select('status')->where('gid',$refund->gid)->where('oid',$refund->oid)->first();
+        $refund->order = DB::table('orders')->select('pay')->where('id',$refund->oid)->first();
+        dump($refund);
+
+        return view('home.order.record',['refund'=>$refund]);
     }
 
 

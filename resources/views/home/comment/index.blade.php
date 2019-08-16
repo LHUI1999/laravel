@@ -26,6 +26,7 @@
                             {{csrf_field()}}
                             <div class="comment-main">
                                 @foreach($order as $k=>$v)
+                                @if($v->status!=1)
                                 <div class="comment-list">
                                     <div class="item-pic">
                                         <a href="#" class="J_MakePoint">
@@ -61,6 +62,7 @@
                                         <li><i class="op3 active"><input type="radio" name="level[{{$v->gid}}][]" value='1'></i>差评</li>
                                     </div>
                                 </div>
+                                @endif
                                 
                                 @endforeach
                                 
@@ -113,6 +115,7 @@
 
             <aside class="menu">
                 <ul>
+
                     <li class="person active">
                         <a href="/home/center">个人中心</a>
                     </li>
@@ -148,7 +151,10 @@
                         </ul>
                     </li>
 
-                </ul>
+
+						
+
+				</ul>
 
             </aside>
         </div>

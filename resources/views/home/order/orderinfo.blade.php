@@ -223,23 +223,68 @@
 													</div>
 												</li>
 												@if($order->status==0)
+												@if($v->status==1)
 												<li class="td td-operation">
 													<div class="item-operation">
-														退款
+														退款中
 													</div>
 												</li>
+												@elseif($v->status==2)
+												<li class="td td-operation">
+													<div class="item-operation">
+														退款完成
+													</div>
+												</li>
+												@else
+
+												<li class="td td-operation">
+													<a href="/home/order/refund?oid={{$order->id}}&gid={{$v->gid}}"><div class="item-operation">
+														退款/退货
+													</div></a>
+												</li>
+												@endif
 												@elseif($order->status=='2')
+												@if($v->status==1)
+												<li class="td td-operation">
+													<div class="item-operation">
+														退款中
+													</div>
+												</li>
+												@elseif($v->status==2)
+												<li class="td td-operation">
+													<div class="item-operation">
+														退款完成
+													</div>
+												</li>
+												@else
+
 												<li class="td td-operation">
 													<a href="/home/order/refund?oid={{$order->id}}&gid={{$v->gid}}"><div class="item-operation">
 														退款/退货
 													</div></a>
 												</li>
+												@endif
 												@elseif($order->status=='3')
+												@if($v->status==1)
+												<li class="td td-operation">
+													<div class="item-operation">
+														退款中
+													</div>
+												</li>
+												@elseif($v->status==2)
+												<li class="td td-operation">
+													<div class="item-operation">
+														退款完成
+													</div>
+												</li>
+												@else
+
 												<li class="td td-operation">
 													<a href="/home/order/refund?oid={{$order->id}}&gid={{$v->gid}}"><div class="item-operation">
 														退款/退货
 													</div></a>
 												</li>
+												@endif
 												@endif
 												
 											</ul>

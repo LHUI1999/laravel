@@ -104,18 +104,19 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            @if($v->status=='0')
+                                                            @if($vv->status==0)
                                                                 <div class="item-operation">
                                                                     <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款</a>
                                                                 </div>
-                                                            @elseif($v->status==5)
+                                                            @elseif($vv->status==1)
                                                             <div class="item-operation">
                                                                     退款中
                                                                 </div>
-                                                            @elseif($v->status==1)
+                                                            @elseif($vv->status==2)
                                                             <div class="item-operation">
-                                                                    
+                                                                    退款完成
                                                                 </div>
+                                                               
                                                             @else
                                                             <div class="item-operation">
                                                                     <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款/退货</a>
@@ -428,12 +429,29 @@
                                                             {{$vv->num}}
                                                         </div>
                                                     </li>
+                                                    
                                                     <li class="td td-operation">
-                                                        
                                                         <div class="item-operation">
-                                                            <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款</a>
+                                                            @if($vv->status==0)
+                                                                <div class="item-operation">
+                                                                    <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款</a>
+                                                                </div>
+                                                            @elseif($vv->status==1)
+                                                            <div class="item-operation">
+                                                                    退款中
+                                                                </div>
+                                                            @elseif($vv->status==2)
+                                                            <div class="item-operation">
+                                                                    退款完成
+                                                                </div>
+                                                               
+                                                            @else
+                                                            <div class="item-operation">
+                                                                    <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款/退货</a>
+                                                                </div>
+                                                            @endif
+                                                            
                                                         </div>
-                                                        
                                                     </li>
                                                 </ul>
                                                 @endforeach
@@ -533,7 +551,25 @@
                                                     </li>
                                                     <li class="td td-operation">
                                                         <div class="item-operation">
-                                                            <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款/退货</a>
+                                                            @if($vv->status==0)
+                                                                <div class="item-operation">
+                                                                    <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款</a>
+                                                                </div>
+                                                            @elseif($vv->status==1)
+                                                            <div class="item-operation">
+                                                                    退款中
+                                                                </div>
+                                                            @elseif($vv->status==2)
+                                                            <div class="item-operation">
+                                                                    退款完成
+                                                                </div>
+                                                               
+                                                            @else
+                                                            <div class="item-operation">
+                                                                    <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款/退货</a>
+                                                                </div>
+                                                            @endif
+                                                            
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -635,10 +671,28 @@
                                                             </div>
                                                         </li>
                                                         <li class="td td-operation">
+                                                        <div class="item-operation">
+                                                            @if($vv->status==0)
+                                                                <div class="item-operation">
+                                                                    <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款</a>
+                                                                </div>
+                                                            @elseif($vv->status==1)
                                                             <div class="item-operation">
-                                                                <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款/退货</a>
-                                                            </div>
-                                                        </li>
+                                                                    退款中
+                                                                </div>
+                                                            @elseif($vv->status==2)
+                                                            <div class="item-operation">
+                                                                    退款完成
+                                                                </div>
+                                                               
+                                                            @else
+                                                            <div class="item-operation">
+                                                                    <a href="/home/order/refund?oid={{$v->id}}&gid={{$vv->gid}}">退款/退货</a>
+                                                                </div>
+                                                            @endif
+                                                            
+                                                        </div>
+                                                    </li>
                                                     </ul>
                                                     @endforeach
 
