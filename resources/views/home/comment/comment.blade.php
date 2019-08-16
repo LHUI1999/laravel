@@ -23,7 +23,13 @@
 							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">评价管理</strong> / <small>Manage&nbsp;Comment</small></div>
 						</div>
 						<hr/>
-
+						@if($data)
+						<div style="width:500px;height:100px;margin-left:350px;margin-top:50px;">
+							<h2 class="am-article-title blog-title" style="font-weight: 700;font-size:25px;">
+								您还没有评论呦！！！
+							</h2>
+						</div>
+						@else
 						<div class="am-tabs am-tabs-d2 am-margin" data-am-tabs>
 
 							{{-- <ul class="am-avg-sm-2 am-tabs-nav am-nav am-nav-tabs">
@@ -33,12 +39,14 @@
 							</ul> --}}
 
 							<div class="am-tabs-bd">
+									
 								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
-
+										
 									<div class="comment-main">
+											
 										<div class="comment-list">
+											
 											<ul class="item-list">
-
 												
 												<div class="comment-top">
 													<div class="th th-price">
@@ -98,13 +106,15 @@
 													</div>
                                                 </li>
                                                 @endforeach
-
+												
 											</ul>
-
+											
 										</div>
+										
 									</div>
-
+									
 								</div>
+								
 								{{-- <div class="am-tab-panel am-fade" id="tab2">
 									
 									<div class="comment-main">
@@ -159,7 +169,7 @@
 								</div> --}}
 							</div>
 						</div>
-
+						@endif
 					</div>
 
 				</div>
@@ -174,11 +184,11 @@
 					<li class="person">
 						<a href="#">个人资料</a>
 						<ul>
-
+		
 							<li> <a href="/home/geren">个人信息</a></li>
 							<li> <a href="/home/safe">安全设置</a></li>
 							<li> <a href="/home/address">收货地址</a></li>
-
+		
 						</ul>
 					</li>
 					<li class="person">
@@ -191,22 +201,18 @@
 					<li class="person">
 						<a href="#">我的资产</a>
 						<ul>
-							<li> <a href="/home/coupon">优惠券 </a></li>
-							<li> <a href="bonus.html">红包</a></li>
 							<li> <a href="/home/bill">账单明细</a></li>
 						</ul>
 					</li>
-
+		
 					<li class="person">
 						<a href="#">我的小窝</a>
 						<ul>
 							<li> <a href="/home/collection">收藏</a></li>
-							<li> <a href="/home/foot">足迹</a></li>
 							<li> <a href="/home/comment/comment">评价</a></li>
-							<li> <a href="news.html">消息</a></li>
 						</ul>
 					</li>
-
+		
 				</ul>
 
 			</aside>

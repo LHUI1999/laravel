@@ -172,11 +172,11 @@
 					<li class="person">
 						<a href="#">个人资料</a>
 						<ul>
-
+	
 							<li> <a href="/home/geren">个人信息</a></li>
 							<li> <a href="/home/safe">安全设置</a></li>
 							<li> <a href="/home/address">收货地址</a></li>
-
+	
 						</ul>
 					</li>
 					<li class="person">
@@ -189,22 +189,18 @@
 					<li class="person">
 						<a href="#">我的资产</a>
 						<ul>
-							<li> <a href="/home/coupon">优惠券 </a></li>
-							<li> <a href="bonus.html">红包</a></li>
 							<li> <a href="/home/bill">账单明细</a></li>
 						</ul>
 					</li>
-
+	
 					<li class="person">
 						<a href="#">我的小窝</a>
 						<ul>
 							<li> <a href="/home/collection">收藏</a></li>
-							<li> <a href="/home/foot">足迹</a></li>
-							<li> <a href="/home/comment">评价</a></li>
-							<li> <a href="news.html">消息</a></li>
+							<li> <a href="/home/comment/comment">评价</a></li>
 						</ul>
 					</li>
-
+	
 				</ul>
 
 			</aside>
