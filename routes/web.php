@@ -53,7 +53,6 @@ Route::group(['middleware'=>['login']],function(){
 	Route::get('admin/goods/orderinfo','Admin\GoodsController@orderinfo');
 	//已发货
 	Route::get('admin/goods/send','Admin\GoodsController@send');
-
 	//后台商品管理
 	Route::resource('admin/goods','Admin\GoodsController');
 	//后台商品评价
@@ -220,6 +219,10 @@ Route::get('admin/order/overinfo','Admin\OrderController@overinfo');
 Route::get('admin/order/commentorder','Admin\OrderController@commentorder');
 // 查看详情
 Route::get('admin/order/commentinfo','Admin\OrderController@commentinfo');
+// 售后
+Route::get('admin/order/refund','Admin\OrderController@refund');
+// 处理退款
+Route::get('admin/order/refundstore','Admin\OrderController@refundstore');
 
 
 // 收货地址

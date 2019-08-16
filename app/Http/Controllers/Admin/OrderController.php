@@ -8,6 +8,7 @@ use App\Models\Goods;
 use App\Models\Goodspic;
 use App\Models\Orderinfo;
 use App\Models\Orders;
+use App\Models\Refund;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -101,7 +102,7 @@ class OrderController extends Controller
     public function commentorder(Request $request)
     {
         $search=$request->input('search','');
-        $data = DB::table('orders')->where('order','like','%'.$search.'%')->where('status',3)->paginate(1);
+        $data = DB::table('orders')->where('order','like','%'.$search.'%')->where('status',3)->paginate(5);
 
         return view('admin.order.commentorder',['data'=>$data,'requests'=>$request->input()]);
     }
@@ -118,6 +119,32 @@ class OrderController extends Controller
         }
       
         return view('admin.order.commentinfo',['data'=>$data]);
+    }
+
+    public function refund(Request $request)
+    {
+        $search=$request->input('search','');
+        $refund = DB::table('refund')->paginate(1);
+        foreach($refund as $k=>$v){
+            $refund[$k]->user = DB::table('users')->select('uname')->where('id',$v->uid)->first();
+            $refund[$k]->goods = DB::table('goods')->select('title')->where('id',$v->gid)->first();
+            $refund[$k]->orders = DB::table('orders')->select('order')->where('id',$v->oid)->first();
+             $refund[$k]->orderinfo = DB::table('order_info')->select('status')->where('oid',$v->oid)->first();
+            $refund[$k]->pic = DB::table('refund_pic')->select('pic')->where('rid',$v->id)->first();
+        }
+        return view('admin.order.refund',['refund'=>$refund,'requests'=>$request->input()]);
+    }
+    //处理退款订单
+    public function refundstore(Request $request)
+    {
+        //查找退款订单
+        $refund = Refund::find($request->id);
+        //修改商品状态
+        $order = Orderinfo::where('oid',$refund->oid)->where('gid',$refund->gid)->first();
+        $order->status = 2;
+        if($order->save()){
+            return back();
+        }
     }
 
     

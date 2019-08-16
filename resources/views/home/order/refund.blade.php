@@ -108,11 +108,11 @@
 									<label for="refund-reason" class="am-form-label">退款原因</label>
 									<div class="am-form-content">
 										<select data-am-selected="" name='reason' style="display: none;">
-											<option value="a" selected="">请选择退款原因</option>
-											<option value="b">不想要了</option>
-											<option value="c">买错了</option>
-											<option value="d">没收到货</option>											
-											<option value="e">与说明不符</option>
+											
+											<option value="a">不想要了</option>
+											<option value="b">买错了</option>
+											<option value="c">没收到货</option>											
+											<option value="d">与说明不符</option>
 										</select>
 										
 									</div>

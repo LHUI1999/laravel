@@ -133,7 +133,7 @@
 									<li><a class="submenu" href="/admin/order/payorder"><i class="icon-useradd"></i><span class="hidden-tablet">待付款</span></a></li>
 									<li><a class="submenu" href="/admin/order/overorder"><i class="icon-useradd"></i><span class="hidden-tablet">待收货</span></a></li>
 									<li><a class="submenu" href="/admin/order/commentorder"><i class="icon-useradd"></i><span class="hidden-tablet">待评价</span></a></li>
-									<li><a class="submenu" href="/admin/order/commentorder"><i class="icon-useradd"></i><span class="hidden-tablet">售后</span></a></li>
+									<li><a class="submenu" href="/admin/order/refund"><i class="icon-useradd"></i><span class="hidden-tablet">售后</span></a></li>
 								</ul>	
 							</li>
 
@@ -163,17 +163,6 @@
 
 								</ul>	
 							</li>
-
-
-							<li>
-									<a class="dropmenu" href="#"><i class="icon-tasks"></i><span class="hidden-tablet"> 优惠券管理</span></a>
-									<ul>
-										<li><a class="submenu" href="/admin/youhui"><i class="icon-usergroup"></i><span class="hidden-tablet">优惠券列表</span></a></li>
-										<li><a class="submenu" href="/admin/youhui/create"><i class="icon-useradd"></i><span class="hidden-tablet">优惠券添加</span></a></li>
-	
-									</ul>	
-								</li>
-	
 						</ul>
 					</div>
 				</div>
