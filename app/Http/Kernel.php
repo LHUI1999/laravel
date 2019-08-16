@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'login'=> \App\Http\Middleware\loginMiddleware::class,
         'homelogin'=> \App\Http\Middleware\HomeLoginMiddleware::class,
         'allow'=> \App\Http\Middleware\AllowMiddleware::class,
+        'check.login' => \App\Http\Middleware\CheckLogin::class,
     ];
 }

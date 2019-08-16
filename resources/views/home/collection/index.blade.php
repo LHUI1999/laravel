@@ -43,7 +43,7 @@
                                     </a>
                                 </div>
                                 <div class="s-info">
-                                    <div class="s-title"><a href="#" title="">{{ $v->title }}</a></div>
+                                    <div class="s-title"><a href="/home/goods?id={{$v->id}}" title="">{{ $v->title }}</a></div>
                                     {{-- <div class="s-price-box"> --}}
                                     <div class="">
                                         <span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">{{ $v->price }}</em></span>
