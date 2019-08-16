@@ -12,18 +12,13 @@ class NewsController extends Controller
     public function new1()
     {
         // 获取goods表中的数据
-        $cates = DB::table('cates')
-            ->join('goods','goods.cid','=','cates.id')
-            ->select('cates.*','goods.*')
+        $cates = DB::table('goods')
+            ->join('cates','goods.cid','=','cates.id')
+            ->join('goods_pic','goods.id','=','goods_pic.gid')
+            ->select('goods.id','goods_pic.pic')
             ->get();
-
-        // 获取goods_pic中的图片
-        $pic = DB::table('goods_pic')
-            ->join('goods','goods.id','=','goods_pic.gid')  
-            ->get();
-        // dd($pic);
-        
-        return view('home.news.new1',['cates'=>$cates,'pic'=>$pic]);
+   
+        return view('home.news.new1',['cates'=>$cates]);
     }
 
     public function new2()

@@ -24,13 +24,13 @@
           <strong class="blog-tit"><p>一张毛爷爷<span>丨</span>水果</p></strong>
           <div class="Row">
           	<li>
-                <a href="#"><img src="/uploads/{{ $pic[0]->pic }}"/></a>
+                <a href="/home/goods?id={{ $cates[0]->id }}"><img src="/uploads/{{ $cates[0]->pic }}"/></a>
             </li>
           	<li>
-                <a href="#"><img src="/uploads/{{ $pic[1]->pic }}"/></a>
+                <a href="/home/goods?id={{ $cates[1]->id }}"><img src="/uploads/{{ $cates[1]->pic }}"/></a>
             </li>
           	<li>
-                <a href="#"><img src="/uploads/{{ $pic[2]->pic }}"/></a>
+                <a href="/home/goods?id={{ $cates[2]->id }}"><img src="/uploads/{{ $cates[2]->pic }}"/></a>
             </li>
           </div>
           <p>水果是对我们身体很有益的一类食物。水果营养，指水果所带有的物质营养和文化营养。普通水果含有丰富的维生素、膳食纤维等物质营养，而创意文化水果还带有文化营养。</p>
@@ -39,13 +39,13 @@
          <strong class="blog-tit"><p>两张毛爷爷<span>丨</span>蔬菜</p></strong>
           <div class="Row">
           	<li>
-                <a href="#"><img src="/uploads/{{ $pic[3]->pic }}"/></a>
+                <a href="/home/goods?id={{ $cates[3]->id }}"><img src="/uploads/{{ $cates[3]->pic }}"/></a>
             </li>
           	<li>
-                <a href="#"><img src="/uploads/{{ $pic[4]->pic }}"/></a>
+                <a href="/home/goods?id={{ $cates[4]->id }}"><img src="/uploads/{{ $cates[4]->pic }}"/></a>
             </li>
           	<li>
-                <a href="#"><img src="/uploads/{{ $pic[5]->pic }}"/></a>
+                <a href="/home/goods?id={{ $cates[5]->id }}"><img src="/uploads/{{ $cates[5]->pic }}"/></a>
             </li>
           </div>
           
@@ -55,13 +55,13 @@
          <strong class="blog-tit"><p>三张毛爷爷<span>丨</span>饮品</p></strong>
           <div class="Row">
           	<li>
-                <a href="#"><img src="/uploads/{{ $pic[6]->pic }}"/></a>
+                <a href="/home/goods?id={{ $cates[6]->id }}"><img src="/uploads/{{ $cates[6]->pic }}"/></a>
             </li>
           	<li>
-                <a href="#"><img src="/uploads/{{ $pic[7]->pic }}"/></a>
+                <a href="/home/goods?id={{ $cates[7]->id }}"><img src="/uploads/{{ $cates[7]->pic }}"/></a>
             </li>
           	<li>
-                <a href="#"><img src="/uploads/{{ $pic[8]->pic }}"/></a>
+                <a href="/home/goods?id={{ $cates[8]->id }}"><img src="/uploads/{{ $cates[8]->pic }}"/></a>
             </li>
           </div>          
           

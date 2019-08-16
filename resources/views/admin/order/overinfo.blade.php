@@ -3,7 +3,7 @@
 <div class="row-fluid sortable ui-sortable">		
 		<div class="box span12">
 			<div class="box-header" data-original-title="">
-				<h2><i class="halflings-icon white user"></i><span class="break"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">商品列表</font></font></h2>
+				<h2><i class="halflings-icon white user"></i><span class="break"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">代收货详情</font></font></h2>
 				<div class="box-icon">
 					<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 					<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -11,11 +11,11 @@
 				</div>
 			</div>
 			<div class="box-content">
-				<form action="/admin/goods" method="get">
+				{{-- <form action="/admin/order" method="get">
 					关键字
 					<input type="text" name="search" placeholder="用户名" value="{{ $requests['search'] or '' }}">
 					<input type="submit"class="btn btn-danger"  value="搜索">
-				</form>
+				</form> --}}
 				<table class="table table-striped table-bordered " >
 				  <thead>
 					  <tr role="row">
@@ -23,25 +23,20 @@
 					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">id</font></font>
 					  	</th>
 					  	<th class="sorting_asc"  tabindex="0"  rowspan="1" colspan="1"   style="width: 182px;">
-					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订单号</font></font>
-					  	</th>
-					  	<th class="sorting_asc"  tabindex="0"  rowspan="1" colspan="1"   style="width: 182px;">
-					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支付金额</font></font>
+					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">商品标题</font></font>
 					  	</th>
 					  	
 					  	
 					  	<th class="sorting"  tabindex="0"  rowspan="1" colspan="1"  style="width: 154px;">
-					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">留言</font></font>
+					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">商品图片</font></font>
 					  	</th>
 					  	<th class="sorting"  tabindex="0"  rowspan="1" colspan="1"  style="width: 154px;">
-					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地址</font></font>
+					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">商品单价</font></font>
 					  	</th>
 					  	<th class="sorting"  tabindex="0"  rowspan="1" colspan="1"  style="width: 154px;">
-					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手机号</font></font>
+					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">购买数量</font></font>
 					  	</th>
-					  	<th class="sorting"  tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 306px;">
-					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">操作</font></font>
-					  	</th>
+					  	
 					  </tr>
 				  </thead>   
 				  
@@ -53,34 +48,22 @@
 								<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->id}}</font></font>
 							</td>
 							<td class="  sorting_1">
-								<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->order}}</font></font>
-							</td>
-							<td class="  sorting_1">
-								<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->price}}</font></font>
+								<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->goods->title}}</font></font>
 							</td>
 							<td class="center ">
-								<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->liuyan}}</font></font>
+								<img style="width:50px" src="/uploads/{{$v->goodspic->pic}}">
 							</td>
 							<td class="center ">
-								<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->addr}}</font></font>
+								<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->goods->price}}</font></font>
 							</td>
 							
 							<td class="center ">
-								<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->phone}}</font></font>
+								<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->num}}</font></font>
 							</td>
-							<td class="center ">
-								<a class="btn btn-info" href="/admin/goods/orderinfo?id={{$v->id}}">
-									查看详情
-								</a>
-								<a class="btn btn-success" href="/admin/goods/send?id={{$v->id}}">
-									已发货
-								</a>
-								<!--  -->
-								
-								
-							</td>
+							
 						</tr>
 						@endforeach
+						
 						
 						
 					</tbody>

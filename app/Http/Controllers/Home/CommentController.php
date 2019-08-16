@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Orders;
 use App\Models\Comment;
 use App\Models\Commentpic;
+use App\Models\Goods;
+use App\Models\Goodspic;
+use App\Models\Users;
 use DB;
 use Storage;
 
@@ -85,11 +88,20 @@ class CommentController extends Controller
     	
     }
 
-    // 发表评论页面
-    public function list()
+    // 评论
+    public function comment()
     {
-        // 获取表中的数据
-    
-        return view('home.comment.list');
+		// 获取用户id
+		$id = $_SESSION['user']->id;
+		
+		// 获取表中的数据
+		$data = DB::table('comment')->where('uid',$id)->get();
+        foreach($data as $k=>$v){
+			$v->goods = Goods::select('id','title')->where('id',$v->gid)->first();
+			$v->gpic = Goodspic::select('pic')->where('gid',$v->gid)->first();
+            $v->cmpic = Commentpic::select('cmpic')->where('cmid',$v->id)->get();
+		}
+		
+        return view('home.comment.comment',['data'=>$data]);
     }
 }

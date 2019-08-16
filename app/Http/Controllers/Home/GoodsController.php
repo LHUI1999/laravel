@@ -20,7 +20,7 @@ class GoodsController extends Controller
      */
     public function index(Request $request)
     {
-        dump($request->all());
+        // dump($request->all());
         //获取id
         $id=$request->id;
 
@@ -55,7 +55,7 @@ class GoodsController extends Controller
          //评价条数
          $commentcount = Comment::where('gid',$request->id)->count();
          
-         dump($comment);
+        //  dump($comment);
          //好评条数
          $level3= 0;
          foreach($comment as $k=>$v){
