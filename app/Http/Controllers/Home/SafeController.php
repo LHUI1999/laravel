@@ -11,29 +11,47 @@ use Mail;
 
 class SafeController extends Controller
 {
-    //是否设置支付密码
+    /**
+     * 是否设置支付密码
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 	public static function ispay()
 	{
 		$pay = Userspay::where('uid',$_SESSION['user']->id)->first();
     	return $pay;
 	}
-    //安全设置首恶
+    /**
+     * 安全设置首页
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-
     	return view('home.safe.index',['pay'=>self::ispay()]);
     }
 
-    //修改密码
+    /**
+     * 修改密码
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function password(){
     	return view('home.safe.password');
     }
-    //执行修改密码
+    /**
+     * 执行修改密码
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function passedit(Request $request,$id)
     {	
     	//用户信息
     	$userpass = Users::where('id',$id)->first();
-
     	//判断原密码是否正确
     	if(!Hash::check($request->input('oldpass'),$userpass->upass) ){
     		echo "<script>alert('原密码错误');location.href='/home/password'</script>";
@@ -44,10 +62,12 @@ class SafeController extends Controller
     			echo "<script>alert('两次密码不一致');location.href='/home/password'</script>";
     			exit;
     		}
+            //判断密码长度
     		if(strlen($request->input('newpass')) < 6){
 				echo "<script>alert('密码长度最少为6位');location.href='/home/password'</script>";
     			exit;
     		}
+            //执行修改
     		$user = Users::where('id',$id)->first();
     		$user->upass = Hash::make($request->input('newpass'));
     		if($user->save()){
@@ -57,14 +77,24 @@ class SafeController extends Controller
 
     }
 
-    //修改支付密码
+    /**
+     * 修改支付密码
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function paypass()
     {
     	return view('home.safe.paypass');
     }
 
 
-    //执行手机号注册
+    /**
+     * 执行手机号注册
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function  paystore(Request $request){
     	//判断密码是否为六位
     	if(strlen($request->input('num'))!=6){
@@ -76,20 +106,16 @@ class SafeController extends Controller
     		echo "<script>alert('两次密码不一致');location.href='/home/safe/paypass'</script>";
     		exit;
     	}
-        // dump($request->all());
         //验证手机验证码
         $phone = $_SESSION['user']->phone;
         $code = $request->input('code',0);
         //获取发送到手机的验证码
         $k = $phone.'_code';
         $phone_code = session($k);
-
         if($code != $phone_code){
             echo "<script>alert('验证码错误');location.href='/home/register'</script>";
             exit;
         }
-
-
         //将密码写入数据库
         if(self::ispay()==null){
 	    	$pay = new Userspay;
@@ -98,24 +124,21 @@ class SafeController extends Controller
     		if($pay->save()){
 	    		echo "<script>alert('密码设置成功');location.href='/home/safe'</script>";
 	    	}
-
 	    }else{
-	    	// dd(self::ispay());
 	    	$payid = self::ispay()->id;
-	    	// dd($payid);
-	    	$pay = Userspay::where('id',$payid)->first();
-	    	
-
+	    	$pay = Userspay::where('id',$payid)->first();    	
 	    	$pay->pay = Hash::make($request->input('num'));
     		if($pay->save()){
 	    		echo "<script>alert('密码设置成功');location.href='/home/safe'</script>";
 	    	}
 	    }
-    	
     }
-
-
-    //验证手机号
+    /**
+     * 验证手机号
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function sendPhone(Request $request){
         //接收手机号
         $phone = $request->input('phone');
@@ -179,15 +202,24 @@ class SafeController extends Controller
         return $response;
     } 
 
-    //手机验证
+    /**
+     * 手机验证
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function bindphone()
     {
     	return view('home.safe.bindphone');
     }
-    //更换手机
+    /**
+     * 更换手机
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function changephone(Request $request)
     {
-         dump($request->all());
         //验证手机验证码
         $phone1 = $request->input('phone1',0);
         $code1 = $request->input('code1',0);
@@ -224,17 +256,25 @@ class SafeController extends Controller
         }
     }
 
-    //邮箱换绑
+    /**
+     *邮箱换绑
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function email()
     {
         return view('home.safe.email');
     }
 
-    //发送邮箱验证码
+    /**
+     * 发送邮箱验证码
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function sendemail(Request $request)
     {
-
-
         $users = $_SESSION['user'];
         $users->email = $request->input('email');
         $_SESSION['email'] =  $request->input('email');
@@ -251,34 +291,32 @@ class SafeController extends Controller
         return redirect('/home/safe/email');
      
     }
-
+    /**
+     * 修改邮箱
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function changeemail(Request $request)
     {
-        //验证手机验证码
+        //验证邮箱验证码
         $email = $request->input('email');
         $code = $request->input('code',0);
-        //获取发送到手机的验证码
+        //获取发送到邮箱的验证码
         $k = $email.'_code';
-        // dd($email);
         $email_code = $_SESSION[$k];
-        // dd($email_code);
-
         if($code != $email_code){
             echo "<script>alert('验证码错误');location.href='/home/safe/email'</script>";
             exit;
         }
-        
+        //修改邮箱
         $users = Users::find($_SESSION['user']->id);
         $users->email = $request->input('email','');
-       
-        
         if($users->save()){
             $_SESSION['user']->email = $email;
              echo "<script>alert('更换成功');location.href='/home/safe'</script>";
         }else{
             echo "添加失败";
         }
-       
     }
-
 }

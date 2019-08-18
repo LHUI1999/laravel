@@ -29,7 +29,7 @@ Route::get('admin/allow',function(){
 	return view('admin.allow.allow');
 });
 
-Route::group(['middleware'=>['login']],function(){
+Route::group(['middleware'=>['login','allow']],function(){
 	//后台首页
 	Route::get('admin','Admin\IndexController@index');
 	//后台用户路由
@@ -58,7 +58,35 @@ Route::group(['middleware'=>['login']],function(){
 	//后台商品评价
 	Route::get('admin/goods/comment/{id}','Admin\GoodsController@comment');
 	
-	
+	// 后台收货地址
+	Route::get('admin/users/address/{id}','Admin\UserController@address');
+
+	//后台订单管理
+	//待发货
+	Route::get('admin/order/sendorder','Admin\OrderController@sendorder');
+	//订单详情
+	Route::get('admin/order/orderinfo','Admin\OrderController@orderinfo');
+	//已发货
+	Route::get('admin/order/send','Admin\OrderController@send');
+
+	// 待付款
+	Route::get('admin/order/payorder','Admin\OrderController@payorder');
+	// 订单详情
+	Route::get('admin/order/payinfo','Admin\OrderController@payinfo');
+
+	// 待收货
+	Route::get('admin/order/overorder','Admin\OrderController@overorder');
+	// 查看详情
+	Route::get('admin/order/overinfo','Admin\OrderController@overinfo');
+
+	// 待评价
+	Route::get('admin/order/commentorder','Admin\OrderController@commentorder');
+	// 查看详情
+	Route::get('admin/order/commentinfo','Admin\OrderController@commentinfo');
+	// 售后
+	Route::get('admin/order/refund','Admin\OrderController@refund');
+	// 处理退款
+	Route::get('admin/order/refundstore','Admin\OrderController@refundstore');
 
 });
 
@@ -198,35 +226,7 @@ Route::any('/home/index','Home\IndexController@index');
 
 
 
-// 后台收货地址
-Route::get('admin/users/address/{id}','Admin\UserController@address');
 
-//后台订单管理
-//待发货
-Route::get('admin/order/sendorder','Admin\OrderController@sendorder');
-//订单详情
-Route::get('admin/order/orderinfo','Admin\OrderController@orderinfo');
-//已发货
-Route::get('admin/order/send','Admin\OrderController@send');
-
-// 待付款
-Route::get('admin/order/payorder','Admin\OrderController@payorder');
-// 订单详情
-Route::get('admin/order/payinfo','Admin\OrderController@payinfo');
-
-// 待收货
-Route::get('admin/order/overorder','Admin\OrderController@overorder');
-// 查看详情
-Route::get('admin/order/overinfo','Admin\OrderController@overinfo');
-
-// 待评价
-Route::get('admin/order/commentorder','Admin\OrderController@commentorder');
-// 查看详情
-Route::get('admin/order/commentinfo','Admin\OrderController@commentinfo');
-// 售后
-Route::get('admin/order/refund','Admin\OrderController@refund');
-// 处理退款
-Route::get('admin/order/refundstore','Admin\OrderController@refundstore');
 
 
 // 收货地址

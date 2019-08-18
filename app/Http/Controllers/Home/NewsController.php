@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
-    // 新闻页面
+    /**
+     * 新闻页面
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function new1()
     {
         // 获取goods表中的数据

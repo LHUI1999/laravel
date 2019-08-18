@@ -8,10 +8,14 @@ use DB;
 
 class CenterController extends Controller
 {
-    //个人中心首页
+    /**
+     * 个人中心
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-
     	//待付款
     	$fukuan = DB::table('orders')->where('uid',$_SESSION['user']->id)->where('status',1)->count();
     	//代发货
@@ -21,18 +25,7 @@ class CenterController extends Controller
     	//待评价
     	$pingjia = DB::table('orders')->where('uid',$_SESSION['user']->id)->where('status',3)->count();
         //我的收藏
-
     	return view('home.center.index',['fukuan'=>$fukuan,'fahuo'=>$fahuo,'shouhuo'=>$shouhuo,'pingjia'=>$pingjia]);
-
-     //    // 收藏夹
-     //    if(!empty($_SESSION['collection'])){
-    	// 	$data = $_SESSION['collection'];
-    	// }else{
-    	// 	$data = [];
-     //    }
-        
-    	// return view('home.center.index',['data'=>$data]);
-
     }
 
 }

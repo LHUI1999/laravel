@@ -69,11 +69,11 @@
                                 <div class="s-content" style="">
                                         @foreach ($data as $k=>$v )
                                         @if($k<=2)
-                                        <div class="s-item-wrap" style="width:300px;height:425px;background:#E6E2D9;border:3px solid #BD9367;border-radius:18px;">
+                                        <div class="s-item-wrap" style="width:300px;height:470px;background:#E6E2D9;border:3px solid #BD9367;border-radius:18px;">
                                             <div class="s-item">
                                                 <div class="s-pic">
                                                 <a href="/home/goods?id={{ $v->id }}" class="s-pic-link" style="">
-                                                    <img  src="/uploads/{{ $v->pic }}" alt="" title="" class="s-pic-img s-guess-item-img">
+                                                    <img  src="/uploads/{{ $v->pic->pic }}" alt="" title="" class="s-pic-img s-guess-item-img">
                                                     </a>
                                                 </div>
                                             </div>
@@ -87,7 +87,7 @@
                                                     <span style="float:left;margin-left:10px;margin-top:10px;color:#FF0036;">价格：￥{{ $v->price }}元</span>
                                                 </div>
                                                 <div style="width:300px;height:42px;margin-top:1px;">
-                                                    <button style="width:250px;height:42px;background:#C90029;float:left;margin-left:25px;border:2px solid #EAC399;border-radius:15px;color:#ccc;">加入购物车</button>
+                                                    <button style="width:250px;height:42px;background:#C90029;float:left;margin-left:25px;border:2px solid #EAC399;border-radius:15px;margin-top:10px;color:#ccc;">加入购物车</button>
                                                 </div>
                                             </div>
                                         </div>

@@ -12,11 +12,7 @@
 				</div>
 			</div>
 			<div class="box-content">
-				{{-- <!-- <form action="/admin/users/address/{{ $_SESSION['user']->id }}" method="get">
-					关键字
-					<input type="text" name="search" placeholder="收货人" value="{{ $requests['search'] or '' }}">
-					<input type="submit"class="btn btn-danger"  value="搜索">
-				</form> --> --}}
+
 				<table class="table table-striped table-bordered " >
 				  <thead>
 					  <tr role="row">
@@ -36,9 +32,9 @@
 					  	<th class="sorting"  tabindex="0"  rowspan="1" colspan="1"  style="width: 154px;">
 					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">图片</font></font>
 					  	</th>
-					  	<th class="sorting"  tabindex="0"  rowspan="1" colspan="1"  style="width: 154px;">
+					  	<!-- <th class="sorting"  tabindex="0"  rowspan="1" colspan="1"  style="width: 154px;">
 					  		<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">操作</font></font>
-					  	</th>
+					  	</th> -->
 					  	
 					  </tr>
 				  </thead>   
@@ -72,9 +68,9 @@
 								<img style="width:30px;height:30px" src="/uploads/{{$vv->cmpic}}">
 								@endforeach
 							</td>
-							<td class="center ">
+							<!-- <td class="center ">
 								<a href="" class="btn btn-danger">回复</a>
-							</td>
+							</td> -->
 							
 							
 						</tr>

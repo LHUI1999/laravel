@@ -79,7 +79,7 @@
         </div>
         <aside class="menu">
             <ul>
-                <li class="person active">
+                    <li class="person active">
                         <a href="/home/center">个人中心</a>
                     </li>
                     <li class="person">
@@ -111,11 +111,11 @@
                         <ul>
                             <li> <a href="/home/collection">收藏</a></li>
                             <li> <a href="/home/comment/comment">评价</a></li>
+
                         </ul>
                     </li>
 
-
-            </ul>
+                </ul>
 
         </aside>
     </div>

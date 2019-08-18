@@ -14,7 +14,7 @@ use App\Models\Commentpic;
 class GoodsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 商品详情页
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,14 +22,11 @@ class GoodsController extends Controller
     {
         //获取id
         $id=$request->id;
-
         // 判断是否收藏
         if(isset($_SESSION['collection'][$id])){
             $coll=1;
-            
         }else{
             $coll=2;
-            
         }
         //获取id相对应商品的数据
         $goods=DB::table('goods')->where('id',$id)->get();
@@ -37,17 +34,18 @@ class GoodsController extends Controller
          $goods->pic = DB::table('goods_pic')->where('gid',$id)->get();
          //获得商品详情图片
          $goods->infopic = DB::table('goods_infopic')->where('gid',$id)->get();
-        
         //看了又看
-         $look = Goods::where('cid',rand(9,16))->take(5)->get();
-
+         $look = Goods::where('cid',rand(9,16))->take(3)->get();
          //评价
          $comment = DB::table('comment')->where('gid',$request->id)->paginate(2);
          //销量
          $order = DB::table('order_info')->where('gid',$request->id)->count();
          foreach($comment as $k=>$v){
+            //用户名称
              $v->user = Users::select('uname')->where('id',$v->uid)->first();
+             //用户头像
              $v->upic = Usersinfo::select('profile')->where('uid',$v->uid)->first();
+             //评价图片
              $v->cmpic = Commentpic::select('cmpic')->where('cmid',$v->id)->get();
          }
          //评价条数
@@ -66,7 +64,6 @@ class GoodsController extends Controller
                 $level2 +=1;
             }
          }
-
          //差评
          $level1= 0;
          foreach($comment as $k=>$v){
@@ -80,7 +77,7 @@ class GoodsController extends Controller
          {
             $like[$k]->pic = DB::table('goods_pic')->select('pic')->where('gid',$v->id)->first();
          }
-         
+         //返回商品详情
          return view('home.goods.index',['goods'=>$goods,'look'=>$look,'coll'=>$coll,'comment'=>$comment,'commentcount'=>$commentcount,'level1'=>$level1,'level2'=>$level2,'level3'=>$level3,'id'=>$id,'order'=>$order,'like'=>$like]);
  
     }

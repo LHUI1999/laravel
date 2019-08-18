@@ -98,7 +98,7 @@
 														<a href="#" class="J_MakePoint">
 															<img style="width:80px" src="/uploads/{{$v->pic->pic}}" class="itempic J_ItemImg"></a>
 													</div>
-													<div class="item-info">
+													<div class="item-info" style="width:300px">
 														<div class="item-basic-info">
 															<a href="#" target="_blank" title="$v->title" class="item-title J_MakePoint" data-point="tbcart.8.11">{{$v->title}}</a>
 														</div>

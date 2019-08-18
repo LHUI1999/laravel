@@ -9,94 +9,18 @@ use Illuminate\Support\Facades\DB;
 class LangmanController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 活动
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-        $cates=DB::table('cates')->get();
-        
-        // dump($cates[1]->id);
-        $data=DB::table('goods')->where('cid',$cates[1]->id)->get();
-        // dump($data);
-        // $pic=DB::table('goods_pic')->where('gid',$data[0]->id)->paginate(1);
-        // dump($pic);
+    { 
+        // 获得商品
+        $data=DB::table('goods')->where('cid',13)->take(2)->get();
         foreach ($data as $k=>$v) {
-            
-                $pic=DB::table('goods_pic')->where('gid',$data[0]->id)->get();
-                $v->pic=$pic[0]->pic;
-         
-           
-
+            //商品图片
+            $data[$k]->pic=DB::table('goods_pic')->where('gid',$v->id)->first();
         }
         return view('home.langman.index',['data'=>$data]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

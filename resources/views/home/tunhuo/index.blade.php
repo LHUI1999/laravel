@@ -24,31 +24,28 @@
                             <div class="s-content" style="">
                                     @foreach ($data as $k=>$v )
                                     @if($k<=2)
-                                    <div class="s-item-wrap" style="width:300px;height:425px;background:#AFC6DB;border:3px solid white;border-radius:18px;">
-                                        <div class="s-item">
-                                            <div class="s-pic">
-                                            <a href="/home/goods?id={{ $v->id }}" class="s-pic-link" style="">
-                                                <img  src="/uploads/{{ $v->pic }}" alt="" title="" class="s-pic-img s-guess-item-img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="s-info">
-                                                <div class="s-title">
-                                                    <a href="#" title="" style="color:#888782;font-size:22px;float:left;margin-left:12px;">{{ $v->title }}</a>
+                                     <div class="s-item-wrap" style="width:300px;height:470px;background:#E6E2D9;border:3px solid #BD9367;border-radius:18px;">
+                                            <div class="s-item">
+                                                <div class="s-pic">
+                                                <a href="/home/goods?id={{ $v->id }}" class="s-pic-link" style="">
+                                                    <img  src="/uploads/{{ $v->pic->pic }}" alt="" title="" class="s-pic-img s-guess-item-img">
+                                                    </a>
                                                 </div>
-                                        </div>  
-                                        <div>
-                                            <div style="width:300px;height:42px;margin-top:46px;">
-                                                <span style="float:left;margin-left:10px;margin-top:10px;color:#FF0036;">价格：￥{{ $v->price }}元</span>
                                             </div>
-                                            <div style="width:300px;height:42px;margin-top:1px;">
-                                                <a href="/home/goods?id={{ $v->id }}">
-                                                    <button style="width:250px;height:42px;background:#C90029;float:left;margin-left:25px;border:2px solid #EAC399;border-radius:15px;color:#ccc;">加入购物车</button>
-
-                                                </a>
+                                            <div class="s-info">
+                                                    <div class="s-title">
+                                                        <a href="#" title="" style="color:#888782;font-size:22px;float:left;margin-left:12px;">{{ $v->title }}</a>
+                                                    </div>
+                                            </div>  
+                                            <div>
+                                                <div style="width:300px;height:42px;margin-top:46px;">
+                                                    <span style="float:left;margin-left:10px;margin-top:10px;color:#FF0036;">价格：￥{{ $v->price }}元</span>
+                                                </div>
+                                                <div style="width:300px;height:42px;margin-top:1px;">
+                                                    <button style="width:250px;height:42px;background:#C90029;float:left;margin-left:25px;border:2px solid #EAC399;border-radius:15px;margin-top:10px;color:#ccc;">加入购物车</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endif
                                     @endforeach
                             </div>

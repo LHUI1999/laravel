@@ -189,7 +189,7 @@
                                                         <div class="item-status">
                                                             <p class="Mystatus">卖家已发货</p>
                                                             <p class="order-info"><a href="/home/order/orderinfo?oid={{$v->id}}">订单详情</a></p>
-                                                            <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                            
                                                             
                                                         </div>
                                                     </li>
@@ -204,7 +204,7 @@
                                                             <div class="item-status">
                                                                 <p class="Mystatus">交易成功</p>
                                                                 <p class="order-info"><a href="/home/order/orderinfo?oid={{$v->id}}">订单详情</a></p>
-                                                                <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                                
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
@@ -220,7 +220,7 @@
                                                             <div class="item-status">
                                                                 <p class="Mystatus">退款退货</p>
                                                                 <p class="order-info"><a href="/home/order/orderinfo?oid={{$v->id}}">订单详情</a></p>
-                                                                <p class="order-info"><a href="logistics.html">查看物流</a></p>
+                                                                
                                                             </div>
                                                         </li>
                                                         <li class="td td-change">
@@ -762,7 +762,7 @@
     </div>
     <aside class="menu">
         <ul>
-            <li class="person active">
+                    <li class="person active">
                         <a href="/home/center">个人中心</a>
                     </li>
                     <li class="person">
@@ -779,7 +779,7 @@
                         <a href="#">我的交易</a>
                         <ul>
                             <li><a href="/home/order">订单管理</a></li>
-                            <li> <a href="change.html">退款售后</a></li>
+                            <li> <a href="/home/order/change">退款售后</a></li>
                         </ul>
                     </li>
                     <li class="person">
@@ -794,10 +794,11 @@
                         <ul>
                             <li> <a href="/home/collection">收藏</a></li>
                             <li> <a href="/home/comment/comment">评价</a></li>
+
                         </ul>
                     </li>
 
-        </ul>
+                </ul>
 
     </aside>
 </div>

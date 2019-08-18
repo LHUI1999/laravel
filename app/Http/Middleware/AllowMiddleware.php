@@ -23,7 +23,6 @@ class AllowMiddleware
     public function handle($request, Closure $next)
     {
         $admin_nodes = session('admin_nodes');
-        dump($admin_nodes);
 
         $data = $this->list();
         //获取正在访问的控制器名称和方法名称

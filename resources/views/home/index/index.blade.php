@@ -341,21 +341,30 @@
 							@foreach($data as $c=>$d)
 						
 
+
 								@foreach($d->name as $e=> $f)
 								@if($f->cid==$v->id)
 								<div class="am-u-sm-7 am-u-md-4 text-two ">
 									<div class="outer-con ">
 										<div class="title ">
-											{{$f->title}}
+											<div style="font-size:11px;color:#666666;overflow:hidden;width:152px;height:17px;float:left;margin-left:44px;margin-top:-26px;">
+												{{ $f->title }}
+
+
+											</div>
 										</div>									
 										<div class="sub-title ">
-											{{$f->price}}
+											<div style='width:60px;height:24px;float:left;margin-left:44px;margin-top:8px;'>
+												<i style="font-size:8px;color:#2F2F2F;float:left;margin-left:0px;margin-top:-2px;">￥</i>
+												<span style="color:#2F2F2F;font-weight:bolder;">{{ $f->price }}</span>
+											</div>
+											
 										</div>
 											<a href="/home/car/add?id={{$f->id}}">
 												<i class="am-icon-shopping-basket am-icon-md  seprate"></i>				
 											</a>					
 									</div>
-									<a href="/home/goods?id={{$f->id}} "><img src="/uploads/{{$f->goodspic->pic}}"></a>
+									<a href="/home/goods?id={{$f->id}} "><img style="width:142px;height:139px;" src="/uploads/{{$f->goodspic->pic}}"></a>
 								</div>
 								@endif
 								@endforeach

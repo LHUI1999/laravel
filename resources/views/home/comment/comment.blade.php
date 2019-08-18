@@ -23,7 +23,7 @@
 							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">评价管理</strong> / <small>Manage&nbsp;Comment</small></div>
 						</div>
 						<hr/>
-						@if($data)
+						@if(!$data)
 						<div style="width:500px;height:100px;margin-left:350px;margin-top:50px;">
 							<h2 class="am-article-title blog-title" style="font-weight: 700;font-size:25px;">
 								您还没有评论呦！！！
@@ -55,9 +55,6 @@
 													<div class="th th-item">
 														<td class="td-inner">商品</td>
 													</div>	
-													{{-- <div style="position:absolute;left:943px;">
-														<td>评价</td>	
-													</div>										 --}}
                                                 </div>
                                                 @foreach ($data as $k=>$v)  
 												<li class="td td-item">
@@ -184,18 +181,18 @@
 					<li class="person">
 						<a href="#">个人资料</a>
 						<ul>
-		
+
 							<li> <a href="/home/geren">个人信息</a></li>
 							<li> <a href="/home/safe">安全设置</a></li>
 							<li> <a href="/home/address">收货地址</a></li>
-		
+
 						</ul>
 					</li>
 					<li class="person">
 						<a href="#">我的交易</a>
 						<ul>
 							<li><a href="/home/order">订单管理</a></li>
-							<li> <a href="change.html">退款售后</a></li>
+							<li> <a href="/home/order/change">退款售后</a></li>
 						</ul>
 					</li>
 					<li class="person">
@@ -204,15 +201,16 @@
 							<li> <a href="/home/bill">账单明细</a></li>
 						</ul>
 					</li>
-		
+
 					<li class="person">
 						<a href="#">我的小窝</a>
 						<ul>
 							<li> <a href="/home/collection">收藏</a></li>
 							<li> <a href="/home/comment/comment">评价</a></li>
+
 						</ul>
 					</li>
-		
+
 				</ul>
 
 			</aside>

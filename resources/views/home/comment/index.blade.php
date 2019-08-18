@@ -114,8 +114,7 @@
             </div>
 
             <aside class="menu">
-                <ul>
-
+               <ul>
                     <li class="person active">
                         <a href="/home/center">个人中心</a>
                     </li>
@@ -133,7 +132,7 @@
                         <a href="#">我的交易</a>
                         <ul>
                             <li><a href="/home/order">订单管理</a></li>
-                            <li> <a href="change.html">退款售后</a></li>
+                            <li> <a href="/home/order/change">退款售后</a></li>
                         </ul>
                     </li>
                     <li class="person">
@@ -147,14 +146,12 @@
                         <a href="#">我的小窝</a>
                         <ul>
                             <li> <a href="/home/collection">收藏</a></li>
-                            <li> <a href="/home/comment">评价</a></li>
+                            <li> <a href="/home/comment/comment">评价</a></li>
+
                         </ul>
                     </li>
 
-
-						
-
-				</ul>
+                </ul>
 
             </aside>
         </div>

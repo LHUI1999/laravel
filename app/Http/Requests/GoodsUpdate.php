@@ -25,8 +25,9 @@ class GoodsUpdate extends FormRequest
     {
         return [
             //验证规则
-            'price' => 'regex:/^[\d]{1,9}$/',
-            'num' => 'regex:/^[\d]{1,9}$/',
+            'title' => 'required|',
+            'price' => 'required|regex:/^[\w]{1,9}[\.][\w]{1,9}$/',
+            'num' => 'required|regex:/^[\d]{1,9}$/'
             
         ];
     }

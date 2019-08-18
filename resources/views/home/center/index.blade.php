@@ -98,13 +98,7 @@
 									<a class="i-load-more-item-shadow" href="/home/collection">更多收藏</a>
 
 								</div>
-								@if(!$data)	
-								<div style="width:500px;height:100px;margin-left:265px;margin-top:50px;">
-									<h2 class="am-article-title blog-title" style="font-weight: 700;font-size:25px;">
-										您的收藏夹还是空的呦！！！
-									</h2>
-								</div>
-								@else
+								
 								<div class="s-content">
 
 									@if(!empty($_SESSION['collection']))

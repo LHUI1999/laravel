@@ -15,29 +15,43 @@ use Storage;
 
 class CommentController extends Controller
 {
-    //
+    /**
+     * 商品评价
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
+        //订单信息
     	$order = DB::table('order_info')->where('oid',$request->oid)->get();
     	foreach($order as $k=>$v){
+            //商品名称价格
     		$order[$k]->goods = DB::table('goods')->select('price','title')->where('id',$v->gid)->first();
+            //商品图片
     		$order[$k]->pic = DB::table('goods_pic')->select('pic')->where('gid',$v->gid)->first();
     	}
-    	dump($order);
         return view('home.comment.index',['order'=>$order]);
     }
 
-    //添加评论
+    /**
+     * 添加商品评论
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-    	dump($request->all());
+        //获取商品评论信息
     	foreach($request->text as $k=>$v)
     	{
+            //写入数据库
     		$comment = new Comment;
     		$comment->gid = $k;
     		$comment->uid = $_SESSION['user']->id;
     		$comment->text = $v[0];
     		$comment->oid = $request->oid;
+            //判断是否写入成功
     		if($comment->save()){
     			if($request['pic']){
     				//存储图片
@@ -47,14 +61,15 @@ class CommentController extends Controller
 			            foreach($d as $cc=>$dd)
 			            {
 			            	$pic[$c][]=$dd->store(date('Ymd'));
-
 			            }
 			        }
 			        //存储图片
 			    	foreach($pic as $a=>$b)
 			    	{
+                        //判断评价图片是否对应评价商品
 			    		if($a == $k){
 			    			foreach($b as $aa=>$bb){
+                                //写入评价图片库
 			    				$commentpic = new Commentpic;
 					    		$commentpic->cmid = $comment->id;
 					    		$commentpic->cmpic = $bb;
@@ -63,7 +78,6 @@ class CommentController extends Controller
 			    		}	    		
 			    	}
     			}
-    			
     		}
     	}
 
@@ -71,11 +85,8 @@ class CommentController extends Controller
     	foreach($request->level as $k=>$v)
     	{
     		$comment = Comment::where('gid',$k)->where('oid',$request->oid)->first();
-    		dump($comment);
     		$comment->level = $v[0];
-    		if($comment->save()){
-
-            }
+            $comment->save();
     	}
     	//更改订单状态
     	$order = Orders::find($request->oid);
@@ -83,25 +94,28 @@ class CommentController extends Controller
     	if($order->save()){
     		return redirect('home/order');
     	}
-
-
-    	
     }
 
-    // 评论
+    /**
+     * 评价管理
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function comment()
     {
 		// 获取用户id
 		$id = $_SESSION['user']->id;
-		
 		// 获取表中的数据
 		$data = DB::table('comment')->where('uid',$id)->get();
         foreach($data as $k=>$v){
+            //商品名称
 			$v->goods = Goods::select('id','title')->where('id',$v->gid)->first();
+            //商品图片
 			$v->gpic = Goodspic::select('pic')->where('gid',$v->gid)->first();
+            //商品评价图片
             $v->cmpic = Commentpic::select('cmpic')->where('cmid',$v->id)->get();
 		}
-		// dd($data);
         return view('home.comment.comment',['data'=>$data]);
     }
 }

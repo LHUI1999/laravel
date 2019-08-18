@@ -21,7 +21,7 @@
               随着经济的发展和消费水平的提高，消费者对于休闲零食数量和品质的需求不断增长。很多人想不到的是，绿叶蔬菜还是胡萝卜素的优质来源，虽然略逊于胡萝卜，但远高于番茄，
               橙子和红薯。每100克深绿色的叶菜可以提供二到四毫克胡萝卜素，换算成维生素A，相当于成年人一日必须的三分之一到二分之一。</p>
           
-          <strong class="blog-tit"><p>一张毛爷爷<span>丨</span>水果</p></strong>
+          <strong class="blog-tit"><p>一张毛爷爷<span>丨</span></p></strong>
           <div class="Row">
           	<li>
                 <a href="/home/goods?id={{ $cates[0]->id }}"><img src="/uploads/{{ $cates[0]->pic }}"/></a>
@@ -36,7 +36,7 @@
           <p>水果是对我们身体很有益的一类食物。水果营养，指水果所带有的物质营养和文化营养。普通水果含有丰富的维生素、膳食纤维等物质营养，而创意文化水果还带有文化营养。</p>
 
 
-         <strong class="blog-tit"><p>两张毛爷爷<span>丨</span>蔬菜</p></strong>
+         <strong class="blog-tit"><p>两张毛爷爷<span>丨</span></p></strong>
           <div class="Row">
           	<li>
                 <a href="/home/goods?id={{ $cates[3]->id }}"><img src="/uploads/{{ $cates[3]->pic }}"/></a>
@@ -52,7 +52,7 @@
           <p>蔬菜是指可以做菜、烹饪成为食品的一类植物或菌类，蔬菜是人们日常饮食中必不可少的食物之一。蔬菜可提供人体所必需的多种维生素和矿物质等营养物质。</p>
           
           
-         <strong class="blog-tit"><p>三张毛爷爷<span>丨</span>饮品</p></strong>
+         <strong class="blog-tit"><p>三张毛爷爷<span>丨</span></p></strong>
           <div class="Row">
           	<li>
                 <a href="/home/goods?id={{ $cates[6]->id }}"><img src="/uploads/{{ $cates[6]->pic }}"/></a>

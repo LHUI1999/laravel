@@ -13,7 +13,6 @@ use App\Models\Users;
 use App\Models\Orders;
 use App\Models\Orderinfo;
 use App\Models\Commentpic;
-
 use DB;
 use Storage;
 
@@ -26,7 +25,6 @@ class GoodsController extends Controller
      */
     public function index(Request $request)
     {
-
         //获得搜索内容
         $search = $request->input('search','');
         //获取商品数据
@@ -60,10 +58,10 @@ class GoodsController extends Controller
      */
     public function store(GoodsStore $request)
     {
+        //判断是否添加infopic
          if(!$request->hasFile('infopic')){
             return back();
          }
-        // dd($request->all());
         // 检测文件上传
         if($request->hasFile('goodspic')){
             $goodspic = [];
@@ -76,7 +74,6 @@ class GoodsController extends Controller
             foreach($request['infopic'] as $k=>$v){
                 $infopic[$k]=$v->store(date('Ymd'));
             }
-            
         }else{
             return back();
         }
@@ -103,22 +100,8 @@ class GoodsController extends Controller
                 $infopic->infopic = $v;
                 $infopic->save();
             }
-
             return redirect('admin/goods')->with('success','添加成功');
-
         }
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -135,10 +118,8 @@ class GoodsController extends Controller
         $goodspic = Goodspic::where('gid',$id)->get();
         //商品详情图片
         $goodsinfopic = Goodsinfopic::where('gid',$id)->get();
-
         //所属分类
         $cates = DB::table('cates')->where('pid',0)->get();
-        // dd($goods);
 
         return view('admin.goods.edit',['goods'=>$goods,'goodspic'=>$goodspic,'goodsinfopic'=>$goodsinfopic,'cates'=>$cates]);
     }
@@ -152,20 +133,19 @@ class GoodsController extends Controller
      */
     public function update(GoodsUpdate $request, $id)
     {
-
-
         //检测用户是否文件上传
         if(!$request->hasfile('goodspic') && !$request->hasfile('infopic')){
+            //查找商品
             $goods = Goods::find($id);
+            //修改商品信息
             $goods->title = $request->input('title',$goods->title);
             $goods->price = $request->input('price',$goods->price );
             $goods->num = $request->input('num',$goods->num);
+            //判断商品是否修改成功
             if($goods->save()){
                 return redirect('admin/goods')->with('success','修改成功');
-
             }else{
                 return back();
-
             }
         }else{
             //修改商品主信息
@@ -173,7 +153,7 @@ class GoodsController extends Controller
             $goods->title = $request->input('title');
             $goods->price = $request->input('price');
             $goods->num = $request->input('num');
-
+            //是否添加商品图片
             if($request->hasfile('goodspic')){
                 //查找商品图片
                 $goodspic=Goodspic::where('gid',$id)->get();
@@ -182,11 +162,10 @@ class GoodsController extends Controller
                 foreach($goodspic as $k => $v){
                     $pathpic[$k] = $v->pic;
                 }
-                  // 删除商品图片
+                // 删除商品图片
                 $res1 = Goodspic::where('gid',$id)->delete();
-                 //删除图片
+                //删除图片
                 Storage::delete($pathpic);
-
                  // 检测文件上传
                 $goodspic = [];
                  //获取商品图片
@@ -205,27 +184,25 @@ class GoodsController extends Controller
                     }
                 }
             }
+            //判断是否添加商品详情图片
             if($request->hasfile('infopic')){
                  //查找商品详情图片
                 $goodsinfopic=Goodsinfopic::where('gid',$id)->get();
-                
                 //获得详情图片路径
                 $pathinfopic = [];
                 foreach($goodsinfopic as $kk => $vv){
                     $pathinfopic[$kk] = $vv->infopic;
                 }
-               
                  // 删除商品详情图片
                 $res2 = Goodsinfopic::where('gid',$id)->delete();
                 Storage::delete($pathinfopic);
                 //存储新的图片
-           
                 $infopic = [];
-               
                 //获取商品详情图片
                 foreach($request['infopic'] as $k=>$v){
                     $infopic[$k]=$v->store(date('Ymd'));
                 }
+                //判断商品是否添加成功
                  if($goods->save()){
                     $gid = $goods->id;
                       //添加商品详情库
@@ -235,20 +212,11 @@ class GoodsController extends Controller
                         $infopic->infopic = $v;
                         $infopic->save();
                     }
-
                 }
-
-               
-
             }
-
-            //删除文件夹中图片
-
                 return redirect('admin/goods')->with('success','修改成功');
-
             }
         }
-    
 
     /**
      * 删除商品
@@ -262,7 +230,6 @@ class GoodsController extends Controller
         DB::beginTransaction();
         //删除主信息
         $res1 = Goods::destroy($id);
-
         //查找商品图片
         $goodspic=Goodspic::where('gid',$id)->get();
         //查找商品图片
@@ -277,13 +244,10 @@ class GoodsController extends Controller
         foreach($goodsinfopic as $kk => $vv){
             $pathinfopic[$kk] = $vv->infopic;
         }
-        
          // 删除商品图片
         $res2 = Goodspic::where('gid',$id)->delete();
          // 删除商品详情图片
         $res3 = Goodsinfopic::where('gid',$id)->delete();
-
-
         if($res1 && $res2 &&$res3){
             //删除图片
             Storage::delete($pathpic);
@@ -296,20 +260,23 @@ class GoodsController extends Controller
             DB::rollback();
             return back()->with('error','删除失败');
         }
-        
     }
 
-    // 商品评论
+    /**
+     * 商品评论
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function comment($id)
     {
+        //获取商品的评论
         $data = DB::table('comment')->where('gid',$id)->get();
         foreach($data as $k=>$v){
+            //将用户名称和评价图片压入数组
             $v->user = Users::select('uname')->where('id',$v->uid)->first();
             $v->cmpic = Commentpic::select('cmpic')->where('cmid',$v->id)->get();
         }
-        // dd($data);
         return view('admin.goods.comment',['data'=>$data]);
     }
-
-    
 }

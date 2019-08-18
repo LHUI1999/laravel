@@ -38,7 +38,6 @@ class UserController extends Controller
     {
         //显示页面
         return view("admin.users.create");
-        
     }
 
     /**
@@ -84,17 +83,6 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * 修改页面
      *
      * @param  int  $id
@@ -106,11 +94,12 @@ class UserController extends Controller
         $user = Users::find($id);
         $userinfo = Usersinfo::where('uid',$id)->first();
         $user->profile = $userinfo->profile;
+        //返回用户修改模板
         return view('admin.users.edit',['user'=>$user]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * 中兴用户修改
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -123,6 +112,7 @@ class UserController extends Controller
             $user = Users::find($id);
             $user->email = $request->input('email','');
             $user->phone = $request->input('phone','');
+            //判断用户是否修改成功
             if($user->save()){
                 return redirect('admin/users')->with('success','修改成功');
             }else{
@@ -131,6 +121,7 @@ class UserController extends Controller
         }else{
             //开启事务
             DB::beginTransaction();
+            //获得图片路径
             $path = $request->file('profile')->store(date('Ymd'));
             $userinfo = Usersinfo::where('uid',$id)->first();
             //删除图片
@@ -144,6 +135,7 @@ class UserController extends Controller
             $user->email = $request->input('email','');
             $user->phone = $request->input('phone','');
             $res2 = $user->save();
+            //判断是否添加成功
             if($res1 && $res2){
                 DB::commit();
                 return redirect('admin/users')->with('success','修改成功');
@@ -152,7 +144,6 @@ class UserController extends Controller
                  return back()->with('error','修改失败');
             }
         }
-        // dump($request->all());
     }
 
     /**
@@ -167,15 +158,13 @@ class UserController extends Controller
         DB::beginTransaction();
         //删除主信息
         $res1 = Users::destroy($id);
-
         //查找图片
         $userinfo=Usersinfo::where('uid',$id)->first();
         //获得图片路径
         $path=$userinfo->profile;
-
          // 删除头像
         $res2 = Usersinfo::where('uid',$id)->delete();
-
+        //判断是否删除成功
         if($res1 && $res2){
             //删除图片
             Storage::delete([$path]);
@@ -189,15 +178,18 @@ class UserController extends Controller
         }
     }
 
-    // 收货地址
+    /**
+     * 收获地址
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function address(Request $request,$id)
     {
         //获得搜索内容
         $search = $request->input('search','');
-        
         // 获取信息
         $data = DB::table('address')->where('uid',$id)->where('uname','like','%'.$search.'%')->paginate(2);
-        // dd($data);
         return view('admin.users.address',['data'=>$data,'requests'=>$request->input()]);
     }
 }

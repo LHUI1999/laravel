@@ -13,7 +13,7 @@ use DB;
 class RegisterController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 用户注册首页
      *
      * @return \Illuminate\Http\Response
      */
@@ -24,48 +24,38 @@ class RegisterController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * 执行用户注册
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        //判断两次密码是否一致
         if($request->input('upass')!=$request->input('repass')){
             echo "<script>alert('两次密码不一致');location.href='/home/register'</script>";
         }
+        //用户写入数据库
         $users = new users;
         $users->email = $request->input('email','');
         $users->uname = $request->input('email','');
         $users->token = str_random(30);
         $users->upass = Hash::make($request->input('upass',''));
         $uid =  $users->id;
-        
+        //判断是否提交成功
         if($users->save()){
             $uid = $users->id;
             $userinfo = new Usersinfo;
             $userinfo->uid = $uid;
             $users->cishu = 0;
-
-            $userinfo->profile = '20190726/a1wthG6a6oepzqa3SWp5FqTSXXz5pvCLNR6ILP4T.jpeg';
+            $userinfo->profile = 'mansmall.jpg';
+            //判断是否添加成功
             if($userinfo->save()){
                 //发送邮件
                 Mail::send('home.email.email',['id'=>$users->id,'token'=>$users->token],function($m) use ($users){
                     $m->to($users->email)->subject('your reminder');
                 }); 
             }
-            
             echo '添加成功';
         }else{
             echo "添加失败";
@@ -74,62 +64,24 @@ class RegisterController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * 邮箱激活账号
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    //邮箱激活账号
     public function changestatus(Request $request){
+        //获得用户id
         $id = $request->input('id',0);
         $token = $request->input('token',0);
         $user = Users::find($id);
+        //判断token是否一致
         if($user->token!=$token){
             return view('errors.404');
         }
         $user->status = 1;
         $user->cishu = 0;
-
         $user->token = str_random(30);
+        //判断是否修改成功
         if($user->save()){
             return view('home.register.changestatus');
         }else{
@@ -137,9 +89,14 @@ class RegisterController extends Controller
         }
     } 
 
-    //执行手机号注册
-    public function  phonestore(Request $request){
-        // dump($request->all());
+    /**
+     * 执行手机号注册
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function  phonestore(Request $request)
+    {
         //验证手机验证码
         $phone = $request->input('phone',0);
         $code = $request->input('code',0);
@@ -151,7 +108,7 @@ class RegisterController extends Controller
         //     echo "<script>alert('验证码错误');location.href='/home/register'</script>";
         //     exit;
         // }
-
+        //添加用户
         $users = new users;
         $users->phone = $request->input('phone','');
         $users->uname = $request->input('phone','');
@@ -159,25 +116,26 @@ class RegisterController extends Controller
         $users->upass = Hash::make($request->input('upass',''));
         $users->cishu = 0;
         $users->status = 1;
+        //判断是否添加成功
         if($users->save()){
-            // dd('a');
             $uid = $users->id;
             $userinfo = new Usersinfo;
             $userinfo->uid = $uid;
-            $userinfo->profile = '20190726/a1wthG6a6oepzqa3SWp5FqTSXXz5pvCLNR6ILP4T.jpeg';
-
+            $userinfo->profile = 'mansmall.jpg';
             $userinfo->save();
-            echo '添加成功';
-
+            return redirect('home/login');
         }else{
             echo "添加失败";
         }
 
 
     }
-
-
-    //验证手机号
+    /**
+     * 验证手机号
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function sendPhone(Request $request){
         //接收手机号
         $phone = $request->input('phone');
@@ -198,15 +156,6 @@ class RegisterController extends Controller
         $paramstring = http_build_query($params);
         $content = self::juheCurl($url, $paramstring);
         echo $content;
-        // $result = json_decode($content, true);
-        //返回的结果
-        // if ($result) {
-        //     var_dump($result);
-        // } else {
-        //     //请求异常
-        // }
-
-
     } 
 
         /**

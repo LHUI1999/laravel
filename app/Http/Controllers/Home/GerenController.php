@@ -15,20 +15,18 @@ use App\Http\Requests\GeRen;
 class GerenController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 个人中心
      *
      * @return \Illuminate\Http\Response
      */
     //
     public function index(Request $request)
     {
-
+        //返回个人中心模板
         return view('home.geren.index');
     }
-    
-
     /**
-     * Show the form for editing the specified resource.
+     * 修改个人信息
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -40,12 +38,11 @@ class GerenController extends Controller
         $userinfo=Usersinfo::where('uid',$id)->first();
         $user->profile=$userinfo->profile;
         return view('home.geren.edit',['user'=>$user]);
-       
     }
 
 
     /**
-     * Update the specified resource in storage.
+     * 执行用户信息修改
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -55,11 +52,14 @@ class GerenController extends Controller
     {
          //检测用户是否文件上传
          if(!$request->hasfile('profile')){
+            //修改用户主信息
             $user = Users::find($id);
             $user->uname = $request->input('uname','');
             $user->email = $request->input('email','');
             $user->phone = $request->input('phone','');
+            //判断是否修改成功
             if($user->save()){
+                //修改session
                 $_SESSION['user']->email = $request->input('email','');
                 $_SESSION['user']->phone = $request->input('phone','');
                 $_SESSION['user']->uname = $request->input('uname','');
@@ -70,6 +70,7 @@ class GerenController extends Controller
         }else{
             //开启事务
             DB::beginTransaction();
+            //获得图片路径
             $path = $request->file('profile')->store(date('Ymd'));
             $userinfo = Usersinfo::where('uid',$id)->first();
             //删除图片
@@ -78,21 +79,24 @@ class GerenController extends Controller
             $userinfo->profile = $path;
             //执行修改
             $res1 = $userinfo->save();
-            // dd($path);
             //修改用户的主信息
             $user = Users::find($id);
             $user->uname = $request->input('uname','');
             $user->email = $request->input('email','');
             $user->phone = $request->input('phone','');
             $res2 = $user->save();
+            //判断是否修改成功
             if($res1 && $res2){
+                //修改session
                 $_SESSION['user']->email = $request->input('email','');
                 $_SESSION['user']->phone = $request->input('phone','');
                 $_SESSION['user']->uname = $request->input('uname','');
                 $_SESSION['user']->profile = $path;
+                //提交事务
                 DB::commit();
                 return redirect('home/geren');
             }else{
+                //事物回滚
                 DB::rollBack();
                  return back()->with('error','修改失败');
             }
